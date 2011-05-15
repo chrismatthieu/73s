@@ -2,14 +2,25 @@ GEM
   remote: http://rubygems.org/
   specs:
     RedCloth (4.2.7)
-    colored (1.1)
+    colored (1.2)
+    flickr (1.0.2)
+      xml-simple (>= 1.0.7)
+    gravtastic (3.1.0)
     hoe (2.9.4)
       rake (>= 0.8.7)
     hpricot (0.6.161)
+    json (1.5.1)
+    mime-types (1.16)
+    oauth (0.4.4)
     rake (0.8.7)
     redgreen (1.2.2)
-    uuidtools (1.0.3)
-    will_paginate (2.2.2)
+    twitter_oauth (0.4.3)
+      json (>= 1.1.9)
+      mime-types (>= 1.16)
+      oauth (>= 0.4.1)
+    uuidtools (2.1.2)
+    will_paginate (2.3.15)
+    xml-simple (1.0.15)
     youtube-g (0.4.1)
       hoe (>= 1.5.0)
 
@@ -18,9 +29,12 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  colored (= 1.1)
+  colored
+  flickr
+  gravtastic
   hpricot (= 0.6.161)
-  redgreen (= 1.2.2)
-  uuidtools (= 1.0.3)
-  will_paginate (~> 2.2.2)
+  redgreen
+  twitter_oauth
+  uuidtools
+  will_paginate
   youtube-g (= 0.4.1)

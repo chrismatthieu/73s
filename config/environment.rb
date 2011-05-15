@@ -35,15 +35,10 @@ Rails::Initializer.run do |config|
   # Gem dependencies
   config.gem 'will_paginate', :version => '~> 2.2.2'
   config.gem 'colored', :version=> '1.1'
-  # config.gem 'youtube-g', :version=> '0.4.9.9', :lib=>'youtube_g'
-  # config.gem 'uuidtools', :version=> '1.0.4'
-  # config.gem 'hpricot', :version=> '0.6.164'
   config.gem 'youtube-g', :version=> '0.4.1', :lib=>'youtube_g'
   config.gem 'uuidtools', :version=> '1.0.3'
   config.gem 'hpricot', :version=> '0.6.161'
-  # config.gem 'mocha', :version=> '0.9.3'
   config.gem 'redgreen', :version=> '1.2.2' unless ENV['TM_MODE']
-  # config.gem 'gcnovus-avatar', :version=> '0.0.7', :lib => 'avatar'
   config.gem 'flickr'
   config.gem 'twitter_oauth'
   config.gem 'gravtastic', :version => '= 2.2.0'

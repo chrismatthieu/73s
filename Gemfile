@@ -9,3 +9,5 @@ gem 'hpricot',  '0.6.161'
 gem 'redgreen'
 gem 'flickr'
 gem 'twitter_oauth'
+
+gem 'gravtastic'
