@@ -2,16 +2,34 @@ GEM
   remote: http://rubygems.org/
   specs:
     RedCloth (4.2.7)
+    actionmailer (2.3.11)
+      actionpack (= 2.3.11)
+    actionpack (2.3.11)
+      activesupport (= 2.3.11)
+      rack (~> 1.1.0)
+    activerecord (2.3.11)
+      activesupport (= 2.3.11)
+    activeresource (2.3.11)
+      activesupport (= 2.3.11)
+    activesupport (2.3.11)
     colored (1.2)
     flickr (1.0.2)
       xml-simple (>= 1.0.7)
-    gravtastic (3.1.0)
+    gravtastic (2.2.0)
     hoe (2.9.4)
       rake (>= 0.8.7)
     hpricot (0.6.161)
     json (1.5.1)
     mime-types (1.16)
     oauth (0.4.4)
+    rack (1.1.2)
+    rails (2.3.11)
+      actionmailer (= 2.3.11)
+      actionpack (= 2.3.11)
+      activerecord (= 2.3.11)
+      activeresource (= 2.3.11)
+      activesupport (= 2.3.11)
+      rake (>= 0.8.3)
     rake (0.8.7)
     redgreen (1.2.2)
     twitter_oauth (0.4.3)
@@ -31,8 +49,9 @@ DEPENDENCIES
   RedCloth
   colored
   flickr
-  gravtastic
+  gravtastic (= 2.2.0)
   hpricot (= 0.6.161)
+  rails (= 2.3.11)
   redgreen
   twitter_oauth
   uuidtools

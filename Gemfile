@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'rails', '2.3.11'
 gem 'RedCloth'
 gem 'will_paginate'
 gem 'colored'
@@ -10,4 +11,4 @@ gem 'redgreen'
 gem 'flickr'
 gem 'twitter_oauth'
 
-gem 'gravtastic'
+gem 'gravtastic', '2.2.0'
