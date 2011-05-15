@@ -1,0 +1,69 @@
+
+<div id="forum">
+	
+  <h1><%= link_to "Forums", forums_path %> &gt; <%= h @forum.title %></h1>
+
+  <h2><%= h @forum.description %></h2>
+
+
+	<br />
+	<% if @u %>
+	  <%= link_to "Post New Topic", new_forum_topic_path(@forum) %>
+	<% else %>
+		<strong>You must <%= link_to 'Login', login_path %> or <%= link_to 'Sign-up', signup_path %> to participate</strong>
+	<% end %>
+	<br />	<br />
+	
+   <table class="forum_topics">
+
+     <tr class="labels" id="topic_labels_row">
+       <td class="">Topic</td>
+
+       <td class="posts">Replies</td>
+
+       <td class="last_post">Last Post</td>
+
+     </tr>
+
+
+    <% for topic in @topics -%>
+
+	<%# if !topic.user.nil? %>
+	<tr id="forum_topic_<%=topic.id%>">
+  <td class="">
+	<% @profile = Profile.find(:first, :conditions => ['id = ?', topic.user_id]) %>
+
+	<%= image_tag @profile.gravatar_url, :width => "50"%>
+
+	<!-- <% if !@profile.nil? && !@profile.icon.blank? %>
+		<%=image_tag(url_for_file_column(@profile, :icon, :small.to_s), {:title=>@profile.user.login, :alt=>@profile.user.login}) rescue ""%>
+	<% else %>
+		<%= link_to image_tag("/images/avatar_default_small.png"), '/' + @profile.user.login %>
+	<% end %> -->
+	<%# icon @profile, :small, :class => 'left avatar_on_comment'   rescue "" %>	
+
+	<%#image_tag(url_for_file_column(@profile, :icon, :medium.to_s), {:title=>@profile.user.login, :alt=>@profile.user.login}) rescue ""%>
+
+    <%# link_to h(topic.user.login), "/#{topic.user.login}" %> posted <%= link_to h(topic.title), forum_topic_path(@forum, topic) %>
+</td>
+  <td class="posts">
+		<%= topic.posts.count - 1%>
+	</td>
+
+  <td class="last_post">
+		<%# topic.created_at.strftime("%m-%d-%Y %H:%M") %>
+		<%= time_ago_in_words topic.last_post_at  %>
+</td></tr>
+<%# end %>
+
+    <% end -%>
+</table>
+        <%= will_paginate @topics %>
+</div>
+<% if @u %>
+  <%= link_to "Post New Topic", new_forum_topic_path(@forum) %>
+<% else %>
+	<strong>You must <%= link_to 'Login', login_path %> or <%= link_to 'Sign-up', signup_path %> to participate</strong>
+<% end %>
+
+

@@ -1,0 +1,18 @@
+<p>
+  <b>User:</b>
+  <%=h @list.user_id %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%=h @list.product_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @list.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

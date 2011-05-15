@@ -1,0 +1,18 @@
+<%
+#locals
+message ||= @message
+message ||= Message.new params[:message]
+email ||= @email
+%>
+<div id="thickbox_form">
+	<% less_remote_form_for :invite, :url => {:controller => 'home', :action => :invite} do |f| %>
+	<%= f.text_field :email, :value => email %>
+	<%= f.text_area :message %>
+
+	<div class="row button">
+	  <%= submit_tag 'Send Invite', :class=>'button' %>
+	</div>
+	<%end %>
+</div>
+
+

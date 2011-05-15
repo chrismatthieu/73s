@@ -1,0 +1,19 @@
+
+<%
+ doc = Hpricot.parse(open("http://www.dxanywhere.com/api/cluster_lastten")) 
+ (doc/:spot).each do |item| 
+
+%>
+
+<div class="bubble">
+		<blockquote>
+			<p>
+			<a href="http://73s.org/<%= (item/:dxcallsign).inner_html %>"><%= (item/:dxcallsign).inner_html %></a>
+			<%=h (item/:comment).inner_html %>
+			</p>
+		</blockquote>
+		<cite><strong><a href="http://73s.org/<%= (item/:callsign).inner_html %>"><%= (item/:callsign).inner_html %></a> </strong> on Freq <%= (item/:freq).inner_html %> at <%= (item/:time).inner_html %></cite>
+	</div>
+<% end %>
+
+ 

@@ -1,0 +1,29 @@
+<%
+profile ||= @profile
+%>
+<div class="activity_box learn">
+  <div class="left avatar"><%# icon profile, :big %><%= image_tag profile.gravatar_url, :width => "50"%>
+</div>
+  <div class="right bio_stuff">
+    <h1><%= h profile.f %></h1> 
+    <strong>Current Status:</strong> <%= @statuses.message rescue "no updates yet" %> (<a href="/<%=profile.user.login%>/mystatus">...more</a>)
+		<a href="/statuses?replycall=@<%=profile.user.login.upcase%>"><img src="/images/reply.gif" border="0"></a>
+	  <h3><strong>Location:</strong> <%= profile.location rescue "nowhere" %></h3>
+		<% unless profile.about_me.blank? %><div><strong>About:</strong> <%= sanitize(textilize(profile.about_me)) %></div><% end %>
+		<% unless profile.website.blank? %><div><strong>Website:</strong> <%= link_to h(profile.website), h(profile.website) %></div><% end %>
+		<% unless profile.blog.blank? %><div><strong>Blog:</strong> <%= link_to h(profile.blog), h(profile.blog) %></div><% end %>
+		<% unless profile.flickr.blank? %><div><strong>Flickr:</strong> <%= link_to h(profile.flickr), h(profile.flickr) %></div><% end %>
+<% if @p %>
+		<% unless profile.aim_name.blank? %><div><strong>AIM:</strong> <a href="aim:goim?screenname=<%= h profile.aim_name %>"><%= h profile.aim_name %></a></div><% end %>
+		<% unless profile.gtalk_name.blank? %><div><strong>GTalk:</strong> <a href="xmpp:<%= h profile.gtalk_name %>"><%=h profile.gtalk_name %></a></div><% end %>
+		<% unless profile.ichat_name.blank? %><div><strong>iChat:</strong> <a href="ichat:<%= h profile.ichat_name %>"><%=h profile.ichat_name %></a></div><% end %>
+		<% unless profile.irc_name.blank? %><div><strong>IRC:</strong> <%=h profile.irc_name %></div><% end %>
+		<% unless profile.echolink_name.blank? %><div><strong>Echolink Node:</strong> <%=h profile.echolink_name %></div><% end %>
+		<% unless profile.irlp_name.blank? %><div><strong>IRLP Node:</strong> <%=h profile.irlp_name %></div><% end %>
+		<% unless profile.twitter_name.blank? %><div><strong>Twitter:</strong> <a href="http://twitter.com/<%= h profile.twitter_name %>"><%=h profile.twitter_name %></a></div><% end %>
+		<% unless profile.skype_name.blank? %><div><strong>Skype:</strong> <a href="http://www.tduri.com/s.php?s-<%= h profile.skype_name %>" target="_new"><%=h profile.skype_name %><br /><img src="http://mystatus.skype.com/<%= h profile.skype_name %>" border="0" alt="" /></a></div><% end %>
+<% end %>		
+<br/><a href="http://www.qrz.com/db/<%=profile.user.login%>" target="_new">&rarr View QRZ Info</a>
+	</div>
+    <div class="clear"></div>
+</div>

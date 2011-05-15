@@ -1,0 +1,123 @@
+<div>	
+  <h1><%= icon @profile rescue '' %><br /><%= "#{@profile.f.upcase rescue ''}'s Gear" %></h1>
+
+  <div id="sub_nav">
+    <%= link_to '&larr; Back to Dashboard', '/' + @profile.user.login if me %>
+    <%= link_to "&larr; Back to #{h @profile.f}'s profile", '/' + @profile.user.login unless me %> 
+     | <%= link_to 'View Gear by Manufacturer', '/companies' %>
+  </div>	
+</div>
+
+<h2>Want (<%=@want.size rescue "0" %>)</h2>
+<hr>
+
+<% @want.each do |list| %>
+
+<% product = Product.find(list.product_id) rescue false %>
+<% if product %>
+<a href="<%= '/products/' + list.product_id.to_s %>"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+<a href="<%= '/products/' + list.product_id.to_s %>"> View <%=h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %> | <%= link_to 'Remove from list', list, :confirm => 'Are you sure?', :method => :delete %><br/>
+
+<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
+
+<div id="add_list<%=list.id.to_s%>" style="display:none;">
+	<table bgcolor="#CCFFCC" width="200"><tr><td>
+
+	<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
+	    :html => {:id => 'list_form'}) do %>
+
+	<%= hidden_field :list, :product_id, :value => list.product_id %>
+
+	<%= radio_button("list", "status", "1")  %> Want List <br/>
+	<%= radio_button("list", "status", "2")  %> Have List <br/>
+	<%= radio_button("list", "status", "3")  %> Had List <br/>
+	<br/>
+	<%= submit_tag 'Update' %>
+	<% end %>	
+
+	</td></tr></table>
+	<br />
+</div>
+
+<% end %>
+
+<% end %>
+
+<br /><br />
+
+<h2>Have (<%=@have.size rescue "0" %>)</h2>
+<hr>
+
+<% @have.each do |list| %>
+
+<% product = Product.find(list.product_id) rescue false %>
+<% if product %>
+<a href="<%= '/products/' + list.product_id.to_s %>"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+<a href="<%= '/products/' + list.product_id.to_s %>"> View <%=h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %>  | <%= link_to 'Remove from list', list, :confirm => 'Are you sure?', :method => :delete %><br/>
+
+<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
+
+<div id="add_list<%=list.id.to_s%>" style="display:none;">
+	<table bgcolor="#CCFFCC" width="200"><tr><td>
+
+	<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
+	    :html => {:id => 'list_form'}) do %>
+
+	<%= hidden_field :list, :product_id, :value => list.product_id %>
+
+	<%= radio_button("list", "status", "1")  %> Want List <br/>
+	<%= radio_button("list", "status", "2")  %> Have List <br/>
+	<%= radio_button("list", "status", "3")  %> Had List <br/>
+	<br/>
+	<%= submit_tag 'Update' %>
+	<% end %>	
+
+	</td></tr></table>
+	<br />
+</div>
+
+
+<% end %>
+<% end %>
+
+<br /><br />
+
+<h2>Had (<%=@had.size rescue "0" %>)</h2>
+<hr>
+
+<% @had.each do |list| %>
+
+<% product = Product.find(list.product_id) rescue false %>
+<% if product %>
+<a href="<%= '/products/' + list.product_id.to_s %>"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+<a href="<%= '/products/' + list.product_id.to_s %>"> View <%=h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %>  | <%= link_to 'Remove from list', list, :confirm => 'Are you sure?', :method => :delete %><br/>
+
+<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
+
+<div id="add_list<%=list.id.to_s%>" style="display:none;">
+	<table bgcolor="#CCFFCC" width="200"><tr><td>
+
+	<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
+	    :html => {:id => 'list_form'}) do %>
+
+	<%= hidden_field :list, :product_id, :value => list.product_id %>
+
+	<%= radio_button("list", "status", "1")  %> Want List <br/>
+	<%= radio_button("list", "status", "2")  %> Have List <br/>
+	<%= radio_button("list", "status", "3")  %> Had List <br/>
+	<br/>
+	<%= submit_tag 'Update' %>
+	<% end %>	
+
+	</td></tr></table>
+	<br />
+</div>
+
+
+<% end %>
+<% end %>
+
+
+<br /><br />
+
+<%= link_to 'Find products to add to my list', '/companies' %>

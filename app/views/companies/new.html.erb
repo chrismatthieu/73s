@@ -1,0 +1,17 @@
+<h1>New Company</h1>
+
+<%# form_for(@company) do |f| %>
+<% less_form_for [@company], :html => {:multipart=>true} do |f| %>
+
+  <%= f.error_messages %>
+
+    <%= f.text_field :name %>
+    <%= f.text_field :url %>
+    <%= f.text_area :description %>
+	<%= f.wrap(:image, :label => 'Icon: '){file_column_field "company", "image", :size => 15} %>
+    <%= f.submit 'Create', :class=>"button" %>
+<% end %>
+<br/><br/>
+
+<%= link_to 'Back', companies_path %>
+

@@ -1,0 +1,22 @@
+<h1>Listing groupers</h1>
+
+<table>
+  <tr>
+    <th>Profile</th>
+    <th>Group</th>
+  </tr>
+
+<% for grouper in @groupers %>
+  <tr>
+    <td><%=h grouper.profile_id %></td>
+    <td><%=h grouper.group_id %></td>
+    <td><%= link_to 'Show', grouper %></td>
+    <td><%= link_to 'Edit', edit_grouper_path(grouper) %></td>
+    <td><%= link_to 'Destroy', grouper, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New grouper', new_grouper_path %>

@@ -1,0 +1,39 @@
+<% 
+#locals
+blog ||= @blog 
+truncate = truncate.nil? ? true : truncate
+
+if blog.profile.user != nil 
+%>
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+<tbody>
+<tr>
+<td style="padding-top: 1px;" colspan="2">
+<div class="box_section_head">
+  Posted <%= time_ago_in_words blog.created_at  %>
+</div>
+</td>
+</tr>
+<tr>
+<td valign="top" style="padding-left: 8px; width: 89px;">
+<%# icon blog.profile, :small, :class => 'left avatar_on_comment' rescue "" %>
+<%= image_tag blog.profile.gravatar_url, :width => "50"%>
+
+<%= link_to h(blog.profile.user.login), blog.profile %>
+</td>
+<td class="feature_summary" valign="top" style="padding-left: 8px; width: 306px;">
+	<strong><a href="/<%= blog.profile.user.login%>/blog/<%= blog.id%>"><%= sanitize blog.title %></a></strong>
+
+<!p>
+	<div class="comment_message jstruncate">
+	  <%= blog_body_content blog %>
+	</div>
+<!/p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<% end %>

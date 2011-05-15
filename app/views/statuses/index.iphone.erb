@@ -1,0 +1,38 @@
+<%=
+  l = {  :caption => 'New', :url => new_status_path, :html_options => {} }
+  r = { :back => true, :caption => 'Back', :url => "/", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+<h1>Status Updates</h1>
+
+<ul id="tabnav">
+	<% if @p != nil %>
+	<li class="tab1"><a href="/<%=@p.user.login%>/status">My Updates</a></li>
+	<% end %>
+	<li class="tab2"><a href="/statuses">All Updates</a></li>
+</ul>
+
+
+<% for status in @statuses %>
+
+<% if !status.profile.id.blank? and !status.message.blank? %>
+
+<div class="bubble">
+		<blockquote>
+			<p><%= icon status.profile, :small, :class => 'left avatar_on_comment' rescue "" %> 
+				<cite><strong><a href="/<%= status.profile.user.login rescue ""%>"><%= status.profile.user.login rescue ""%></a>: </strong> </cite>
+			 <%=h status.message rescue ""%> (<a href="/<%= status.profile.user.login rescue ""%>/status">...more</a>) updated <%= time_ago_in_words status.created_at %> ago
+			</p>
+		</blockquote>
+		
+</div>
+	
+<% end %>
+   
+
+<% end %>
+
+<br />
+
+<p><%= will_paginate @statuses, :inner_window => 10, :outer_window => 10 %></p>

@@ -1,0 +1,41 @@
+<h1>New Club</h1>
+
+<%= error_messages_for :club %>
+
+<% form_for(@club) do |f| %>
+  <p>
+    <b>Clubname</b><br />
+    <%= f.text_field :clubname %>
+  </p>
+
+  <p>
+    <b>Club Website</b><br />
+    <%= f.text_field :cluburl %>
+  </p>
+
+  <p>
+    <b>Clubdesc</b><br />
+    <%= f.text_area :clubdesc %>
+  </p>
+
+  <p>
+    <b>Clubcountry</b><br />
+    <%= f.text_field :clubcountry %>
+  </p>
+
+  <p>
+    <b>Clubstate</b><br />
+    <%= f.text_field :clubstate %>
+  </p>
+
+  <p>
+    <b>Clubcity</b><br />
+    <%= f.text_field :clubcity %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', clubs_path %>

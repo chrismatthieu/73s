@@ -1,0 +1,14 @@
+<div class="title">
+	<h2>Confirmation code being sent via email</h2>
+<br />
+<p>
+<%= error_messages_for :contact %>
+<% form_tag do -%>
+<p><label for="confirmation_code">Enter Confirmation Code</label><br/>
+<%= text_field_tag 'confirmation_code' %></p>
+<br />
+<p><%= submit_tag 'Confirm' %></p>
+<% end -%>
+</p>
+<br />
+</div>

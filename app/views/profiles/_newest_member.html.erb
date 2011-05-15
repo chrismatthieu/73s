@@ -1,0 +1,17 @@
+
+<% if newest_member.user != nil %>
+<div class="newest_member clear">
+  	<div class="left">
+	<%# icon newest_member %> 
+	<%= image_tag newest_member.gravatar_url, :width => "50"%>
+	</div>
+	
+	<div class="left" style="margin-left: 10px;">
+	<%= link_to h(newest_member.user.login), '/' + newest_member.user.login %>
+	<small><%= h(newest_member.location) || 'Nowhere' %></small>
+  	</div>
+
+	<div class="clear"></div>
+
+</div>
+<% end %>

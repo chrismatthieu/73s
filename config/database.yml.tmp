@@ -1,0 +1,14 @@
+
+development:
+  adapter: mysql
+  database: 73slove_development
+  username: root
+  password:
+  encoding: utf8
+
+test:
+  adapter: mysql
+  database: 73slove_test
+  username: root
+  password:
+  encoding: utf8

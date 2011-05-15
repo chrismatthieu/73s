@@ -1,0 +1,17 @@
+<%
+#locals
+blog ||= @blog
+%>
+
+<div id="blog">
+  <% less_form_for [@profile, blog] do |f| %>
+    <%= f.text_field :title %>
+    <%# f.text_area :body %>
+	<%= textile_editor 'blog', 'body', :cols => "60" -%>
+	<br />You can now embed links into your post by click on the link icon in the toolbar under your subject.
+	
+	  <div class="row button">
+    	<%= f.submit 'Save', :class=>'button' %>
+  	</div>
+  <% end %>
+</div>

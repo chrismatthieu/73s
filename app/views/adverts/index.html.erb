@@ -1,0 +1,32 @@
+<h1>Listing Adverts</h1>
+
+<table>
+  <tr>
+<th>Active</th><th>Profile</th><th>Start Date</th><th>End Date</th><th>Views</th><th>Clicks</th><th>Actions</th>
+  </tr>
+  
+<% for advert in @adverts %>
+  <tr>
+	<td>
+		<% 	if advert.startdate < Time.now && advert.enddate > Time.now %>
+			<%= image_tag("star.png")%>
+		<% end %>
+	</td>
+    <td><%=h advert.profile_id %></td>
+    <td><%=h advert.startdate %></td>
+    <td><%=h advert.enddate %> - </td>
+    <td><%=h advert.viewcount %> </td>
+    <td><%=h advert.clickcount %> </td>
+    <td><%= link_to 'Show', :action => 'show', :id => advert %> | </td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => advert %> | </td>
+    <td><%= link_to 'Delete', advert, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New advert', new_advert_path %>
+
+<p><%= will_paginate @adverts, :inner_window => 10, :outer_window => 10 %>
+	

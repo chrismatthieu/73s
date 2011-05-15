@@ -1,0 +1,21 @@
+
+
+<div id="forum">
+  <h1><%= link_to "Forums", forums_path %> &gt; <%= link_to h(@forum.title), forum_path(@forum) %></h1>
+
+  <h1>Response on <%= h @topic.title %></h1>
+
+  <% form_for @post, :url => forum_topic_posts_path(@forum, @topic), :method => :post do |form| %>
+  <p>
+    <h2>Message</h2>
+
+    <% fields_for ForumPost.new do |post| %>
+    <%= post.text_area :body %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= form.submit "Submit" %>
+  </p>
+  <% end %>
+</div>

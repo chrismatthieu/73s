@@ -1,0 +1,104 @@
+<div class="title">
+	<h2>Contact Details</h2>
+<br />
+<p>
+  <b>CallSign:</b>
+  <a href="/callsign?id=<%=h @contact.callsign %>"><%=h @contact.callsign %></a>
+</p>
+
+<p>
+  <b>Name:</b>
+  <% #h @contact.name %>
+  <% if @contact.name == "" 
+    @contactname = "n/a"
+  else
+    @contactname = @contact.name
+  end %>
+  <span id="name"><%= h @contactname %></span>
+  <%= in_place_editor "name", 
+                      {:url => url_for(:action => "updatename", :id => @contact.id) } %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @contact.email %>
+</p>
+
+<p>
+  <b>DXCC:</b>
+  <%=h @contact.dxcc %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @contact.country %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @contact.state %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @contact.city %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @contact.address %>
+</p>
+
+<p>
+  <b>Band:</b>
+  <%=h @contact.band %>
+</p>
+
+<p>
+  <b>Frequency:</b>
+  <%=h @contact.frequency %>
+</p>
+
+<p>
+  <b>Grid Square:</b>
+  <%=h @contact.gridsquare %>
+</p>
+
+<p>
+  <b>Signal Strength:</b>
+  <%=h @contact.signal %>
+</p>
+
+<p>
+  <b>Event:</b>
+  <%=h @contact.event %>
+</p>
+
+<p>
+  <b>Private Notes:</b>
+  <%=h @contact.notes %> <%=h @contact.comment %>
+</p>
+
+<p>
+  <b>QSL Message:</b>
+  <%=h @contact.qslmessage %>
+</p>
+
+<p>
+  <b>Contacttime:</b>
+  <%=h @contact.contacttime %>
+</p>
+<br />
+
+
+<p>
+  <img src="/images/tag_blue.png" alt="" /> <b>Tags:</b>
+  <%=h @contact.tag_list %>
+</p>
+<br />
+
+<p>
+<%= link_to 'Edit (Resend Confirmation)', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>
+</p><br />
+</div>

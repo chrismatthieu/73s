@@ -1,0 +1,82 @@
+This is the source code to the popular 73s.org ham radio social network!  It is written in Ruby on Rails and based on the LovdByLess social platform from LessEverything.com.  We have open sourced this project with the hopes of getting more assistance from the ham development community in making the site even better than it is today.
+
+How to get 73s up and running on your local server:
+
+    * 73s runs on Ruby on Rails, so first you need to get rails running. Go download rails (http://rubyonrails.org/down) and follow it's instructions to get rails running.
+    * The directions in this README file assume some knowledge of rails, but I'll go through it a bit here first.
+    * The first thing to do is install the ruby gems that are required. For each gem listed in the README, at the command line, do something like "gem install [gem name]" or "sudo gem install [gem name]".
+    * The next thing to do is set up your database (steps 1-4 in the README). 73s is setup to use MySQL by default, so just follow the instructions in the README and configure the files for your computer.
+    * Skip step 5.
+    * Now setup global variable (site name and url and stuff) (steps 6-13) and change the (r)html and css to suit your taste.
+    * In dev mode, search (steps 14-16) should work right out of the box (assuming you install the gems). The search instructions are really for a production environment.
+    * Start 73s with the typical "./script/server" and point your browser to "http://localhost:3000".
+
+
+
+
+Instructions:
+
+Quick Setup (currently for non-Windows users only - due to ferret gem issues):
+
+  1. Edit config/database.yml.tmp to reflect the database names you would like to use.
+  2. Edit config/environments/production.rb so asset_host reflects the name of the production asset server
+  3. cp config/database.yml.tmp config/database.yml
+  4. rake lovdbyless:getting_started
+  5. rake test
+  6. See step #6 below to continue setup (near "Setup default values")
+
+The getting_started rake task will install all required gems, create the databases in database.yml, 
+and migrate the development and test databases.
+
+Manual Setup:
+
+Install the Required Gems:
+
+- youtube-g
+- rflickr
+- uuidtools
+- colored
+- hpricot
+- tzinfo
+- mocha
+- redgreen
+- RedCloth
+- rmagick (will require ImageMagick, which is not a gem)
+- win32console (windows only)
+- avatar (version 0.0.5 or greater)
+
+TIPS:
+Installing ImageMagick and RMagick
+See these posts for tips:
+http://b.lesseverything.com/2007/9/26/installing-imagemagick-and-rmagick-on-mac-os-x
+http://www.randycullom.com/chatterbox/archives/2006/12/installing_imag.html
+
+Setup the databases:
+
+1. Edit config/database.yml.tmp to reflect the database names you would like to use.
+2. cp config/database.yml.tmp config/database.yml
+3. rake db:create:all
+4. rake mig a=no
+
+All tests pass:
+
+5. rake
+
+Setup default values:
+
+6. Edit config/initializers/exception_notifier.rb
+7. Edit the config/environment.rb file and change the config.action_controller.session data
+8. Edit config/environments/development.rb and production.rb to suit your tastes. (Specifically config.action_mailer.delivery_method)
+9. Change the values in config/initializers/global_variables.rb to match your site and domain. (Specifically SITE_NAME, SITE, MAILER_TO_ADDRESS, MAILER_FROM_ADDRESS, REGISTRATION_RECIPIENTS)
+10. Go to the section "About flickr integration" and follow the steps to either use flickr or not.
+
+Start 73s:
+
+11. ./script/server
+12. Go to the home page http://localhost:3000
+13. Go to the signup page and create an account.
+14. Go into the database and turn the is_admin flag to true on your new account.
+
+Why is public/javascripts/less_routes.js always modified and needing to be checked in? I swear I didn't touch it.
+
+less_routes.js is automatically generate when your app starts. Any changes to this app will be lost the next time it's generated.

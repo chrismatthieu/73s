@@ -1,0 +1,14 @@
+<%- 
+#locals
+feed_items ||= @feed_items 
+
+-%>
+
+<%- unless feed_items.empty? -%>
+	<h2>Recent Network Activity</h2>
+		<% feed_items.each do |feed_item| %>
+		<% next unless feed_item.item and feed_item.created_at > 8.days.ago%>
+		<%= render( :partial => "feed_items/#{feed_item.partial}", :locals => {:feed_item => feed_item}) %>
+		<% end %>
+		
+<%- end -%>

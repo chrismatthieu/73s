@@ -1,0 +1,11 @@
+<% if @contact != nil %>
+<%= @contact.callsign.upcase %>, 
+
+Please click on the following link (<%= @url %>) to confirm your contact with <%= @contact.profile.user.login.upcase %>!  
+Notes from the contact include: 
+
+<%= @contact.qslmessage %>
+    
+73s!  
+<%= @contact.profile.user.login.upcase %>
+<% end %>

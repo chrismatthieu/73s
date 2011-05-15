@@ -1,0 +1,22 @@
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => "/", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+
+	<h1>Ham Radio Clubs  
+  </h1>
+<p>
+<ul>
+<% for club in @clubs %>
+<li> <%= link_to h(club.clubname) + ' (' + h(club.clubstate) + ')', club %> </li>
+<% end %>
+</ul>
+</p>
+<p><%= will_paginate @clubs, :inner_window => 10, :outer_window => 10 %>
+</p>

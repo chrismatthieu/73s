@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelationViewerData>
+
+<!-- ------------------- Nodes ------------------------------ -->	
+
+
+	<Nodes>
+		<!--  
+			Define all occurring nodes
+			The tag name defines the class AND movieclip symbol to be used to display the node
+			
+			Available parameters are:
+				id:			Unique identifier for the node (case-sensitive). 
+				name:		Node title (displayed in center of the node)
+				
+			Additionally, you can add a description text as a child node. 
+			Make sure to add <![CDATA[ at the beginning and ]]> at the end of the description.
+			In actionscript, it will be available as _text property of the corresponding class instance.
+			
+			You can add any parameter you like; they will automatically be copied into the 
+			corresponding class instance. In this example, I added a URL property to some of the nodes.
+			In order to make these show up in the detail view, modify the getDetails() function in the
+			corresponding node class (see NodeClasses.as for an example).
+		
+		-->
+			
+			<Person id="progressiveLoadingTest2" name="progressiveLoadingTest2" hops="2" imageURL=""  dataURL="relationBrowser.xml"/>
+			
+	</Nodes>
+
+<!-- ------------------- Relations ------------------------------ -->	
+
+	<Relations>
+    	<!--  
+    		Define all relations between the above defined nodes
+    		The tag name defines the class to be used to display the relation
+ 
+    		Available parameters are:
+    			fromID:		Unique identifier of the source node of the relation (case-sensitive). 
+    			toID:		Unique identifier of the target node of the relation (case-sensitive).
+ 
+ 			You can overwrite any of the parameters set in RelationTypes (like lineSize etc.)
+			per relation instance.
+    	-->
+		
+		<DirectedRelation  fromID="http://lijit.com/users/der_mo" quality="50" toID="progressiveLoadingTest"/>
+		<DirectedRelation  fromID="progressiveLoadingTest" quality="50" toID="http://lijit.com/users/c4chaos"/>
+		<DirectedRelation  fromID="progressiveLoadingTest" quality="50" toID="http://lijit.com/users/fabian"/>	
+		<DirectedRelation  fromID="progressiveLoadingTest" quality="50" toID="progressiveLoadingTest2"/>	
+	</Relations>
+	
+	
+<!-- Do not change anything below. -->	
+</RelationViewerData>
+

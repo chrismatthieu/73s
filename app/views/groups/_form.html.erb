@@ -1,0 +1,17 @@
+<%= error_messages_for :group %>
+
+<% form_for(@group) do |f| %>
+  <p>
+    <b>Group Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <b>Group Description</b><br />
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

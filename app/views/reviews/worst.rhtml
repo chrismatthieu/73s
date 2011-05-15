@@ -1,0 +1,49 @@
+<div class="title">
+<h2>
+<a href="/reviews/rss"><img src="/images/feed-icon.png" border="0" alt="" /> Subscribe to RSS</a>
+
+<script type="text/javascript">
+function doForms(form)
+{
+	var sort = form.sort_order[form.sort_order.selectedIndex].value;
+   	window.location = '/' + sort;
+}
+</script>
+<form id="sortBy">
+	<label>QSTs: </label>
+	<select id="sort_order" onchange="doForms(this.form)">
+		<% if controller.action_name == "all" %>
+			<option value="all" selected>Most Recent QSTs</option>
+		<% else %>
+			<option value="all">Most Recent QSTs</option>
+		<% end %>
+		<% if controller.action_name == "popular" %>
+			<option value="popular" selected>Most Viewed QSTs</option>
+		<% else %>
+			<option value="popular">Most Viewed QSTs</option>
+		<% end %>
+		<% if controller.action_name == "best" %>
+			<option value="best" selected>Best Voted QSTs</option>
+		<% else %>
+			<option value="best">Best Voted QSTs</option>
+		<% end %>
+		<% if controller.action_name == "worst" %>
+			<option value="worst" selected>Worst Voted QSTs</option>
+		<% else %>
+			<option value="worst">Worst Voted QSTs</option>
+		<% end %>
+		<% if controller.action_name == "tags" %>
+			<option value="tags" selected>QSTs by Tags</option>
+		<% else %>
+			<option value="tags">QSTs by Tags</option>
+		<% end %>
+	</select>
+  <% if @p != nil %>
+    <%= link_to ' (+ Add New QST)',  :controller => 'reviews', :action => 'new' %>
+  <% end %>  
+</form>
+</h2>
+
+<%= render(:partial => 'reviews') %> 
+
+</div>

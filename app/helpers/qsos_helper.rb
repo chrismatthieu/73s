@@ -1,0 +1,2 @@
+module QsosHelper
+end

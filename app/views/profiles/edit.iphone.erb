@@ -1,0 +1,7 @@
+<%=
+  l = { :caption => 'Public', :url => profile_path(@p).add_param(:public_view=>true), :html_options => {} }
+  r = { :back => true, :caption => 'Back', :url => profile_path(@p), :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+<%= render :partial=>'form' %>

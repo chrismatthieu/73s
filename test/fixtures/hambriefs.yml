@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  episode: 1
+  title: MyString
+  description: MyText
+  embedcode: MyString
+
+two:
+  episode: 1
+  title: MyString
+  description: MyText
+  embedcode: MyString

@@ -1,0 +1,162 @@
+<% content_for :head do  -%>
+	
+	<style type="text/css">
+
+	/* begin css tabs */
+
+	ul#tabnav { /* general settings */
+	text-align: left; /* set to left, right or center */
+	margin: 1em 0 1em 0; /* set margins as desired */
+	font: bold 11px verdana, arial, sans-serif; /* set font as desired */
+	border-bottom: 1px solid #6c6; /* set border COLOR as desired */
+	list-style-type: none;
+	padding: 3px 10px 3px 10px; /* THIRD number must change with respect to padding-top (X) below */
+	}
+
+	ul#tabnav li { /* do not change */
+	display: inline;
+	}
+
+	body#tab1 li.tab1, body#tab2 li.tab2, body#tab3 li.tab3, body#tab4 li.tab4 { /* settings for selected tab */
+	border-bottom: 1px solid #fff; /* set border color to page background color */
+	background-color: #fff; /* set background color to match above border color */
+	}
+
+	body#tab1 li.tab1 a, body#tab2 li.tab2 a, body#tab3 li.tab3 a, body#tab4 li.tab4 a { /* settings for selected tab link */
+	background-color: #fff; /* set selected tab background color as desired */
+	color: #000; /* set selected tab link color as desired */
+	position: relative;
+	top: 1px;
+	padding-top: 4px; /* must change with respect to padding (X) above and below */
+	}
+
+	ul#tabnav li a { /* settings for all tab links */
+	padding: 3px 4px; /* set padding (tab size) as desired; FIRST number must change with respect to padding-top (X) above */
+	border: 1px solid #6c6; /* set border COLOR as desired; usually matches border color specified in #tabnav */
+	background-color: #cfc; /* set unselected tab background color as desired */
+	color: #666; /* set unselected tab link color as desired */
+	margin-right: 0px; /* set additional spacing between tabs as desired */
+	text-decoration: none;
+	border-bottom: none;
+	}
+
+	ul#tabnav a:hover { /* settings for hover effect */
+	background: #fff; /* set desired hover color */
+	}
+
+	/* end css tabs */
+
+	</style>
+	
+<% end -%>
+
+<body id="tab4">
+
+<ul id="tabnav">
+	<li class="tab1"><a href="/directory">Users</a></li>
+	<li class="tab2"><a href="/repeaters">Repeaters</a></li>
+	<li class="tab3"><a href="/clubs">Clubs</a></li>
+	<li class="tab4"><a href="/events">Events</a></li>
+	<li class="tab5"><a href="/groups">Groups</a></li>
+	
+</ul>
+
+<div class="title">
+	<h2>Ham Radio Events  
+	
+	<% if @u != nil %>
+  (<%= link_to_function '+ Add New Event', 
+  "new Effect.Parallel([
+  new Effect.toggle('welcome'),
+  new Effect.toggle('target', 'slide')
+  ])" %>)
+    
+  <% end %>
+  
+  </h2>
+<br />
+
+<div id="target" style="display:none">
+	<div><p>
+	<%= link_to_function 'cancel', 
+  "new Effect.Parallel([
+  new Effect.toggle('welcome', 'slide'),
+  new Effect.toggle('target')
+  ])" %>
+  </p><br />
+    <%= render :partial => "form" %>
+    
+	</div>
+</div>
+
+
+<div id="welcome">
+<p>
+
+<span id="calendar">
+	<div id="calendar_wrap">
+
+  <center>
+	<% if @emonth == 1 then %>
+    <%= link_to '<< Prev', :action => 'index', :month => 12, :year => @eyear - 1 %>
+  <% else %>
+    <%= link_to '<< Prev', :action => 'index', :month => @emonth - 1, :year => @eyear %>
+  <%end%>
+  | 
+  <%
+  et = Time.now
+  @etyear = et.year
+  @etmonth = et.mon
+  %>
+  <%= link_to 'Today', :action => 'index', :month => @etmonth, :year => @etyear %>
+  |
+  <% if @emonth == 12 then %>
+    <%= link_to 'Next >>', :action => 'index', :month => 1, :year => @eyear + 1 %>
+  <% else %>
+    <%= link_to 'Next >>', :action => 'index', :month => @emonth + 1, :year => @eyear %>
+  <%end%>
+  </center>
+
+  <%= calendar({:year => @eyear, :month => @emonth}) do |d|
+    cell_text = "#{d.mday}<br />" 
+    cell_attrs = {:class => 'day'}
+    @events.each do |e|
+      if e.eventdate == d
+        cell_text << '<a href="/events/' + e.id.to_s + '">' + e.eventname + '</a>' << "<br />" 
+        cell_attrs[:class] = 'specialDay'
+      end
+    end
+    [cell_text, cell_attrs]
+  end
+  %>
+		
+	</div>
+</span>
+
+<p>
+<% for event in @events %>
+<%=h event.eventname %> <%=h event.eventdate %> from <%=h event.starttime.strftime('%H:%M') %> to <%=h event.endtime.strftime('%H:%M') %> in 
+<% if event.eventcity != nil %>
+  <%=h event.eventcity %>, 
+<% end %>
+<%=h event.eventstate %> <%=h event.eventcountry %>  
+ 
+<%= link_to 'Show', event %> 
+<% if @p != nil && event.profile_id == @p.id %>
+| 
+<%= link_to 'Edit', edit_event_path(event) %> | 
+<%= link_to 'Delete', event, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
+
+<br />
+
+<% end %>
+</p>
+<br /><p><%= will_paginate @events %>
+</p>
+</div>
+
+<br />
+
+</div>
+</body>

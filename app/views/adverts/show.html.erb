@@ -1,0 +1,22 @@
+<p>Advert ID: <%= @advert.id%></p>
+<p>Profile: <%= @advert.profile_id%></p>
+<p>Description: <%= @advert.description%></p>
+<p>Placement: <%= @advert.placement%></p>
+
+<p><img src="<%= url_for(:action => "banner",  :id => @advert.id) %>" border="0" />
+</p>
+<p>Target URL: <%= @advert.url %></p>
+
+<p>
+  <b>Viewcount:</b>
+  <%=h @advert.viewcount %>
+</p>
+
+<p>
+  <b>Clickcount:</b>
+  <%=h @advert.clickcount %>
+</p>
+
+
+<%= link_to 'Edit', edit_advert_path(@advert) %> |
+<%= link_to 'Back', adverts_path %>

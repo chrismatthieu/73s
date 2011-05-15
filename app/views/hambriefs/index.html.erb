@@ -1,0 +1,22 @@
+
+
+<% for hambrief in @hambriefs %>
+ 
+	<h2><%=h hambrief.title %></h2><br />
+	<%= hambrief.embedcode %><br />
+    <%=h hambrief.description %><br />
+    <%= link_to 'Show', '/hambriefs/' + hambrief.episode.to_s %>
+	<% if @u != nil && @u.is_admin %>
+	    <%= link_to 'Edit', edit_hambrief_path(hambrief) %>
+	    <%= link_to 'Destroy', hambrief, :confirm => 'Are you sure?', :method => :delete %>
+	<% end %>
+<% end %>
+
+<br /><p><%= will_paginate @hambriefs, :inner_window => 2, :outer_window => 2 %>
+</p>
+
+<br />
+
+<% if @u != nil && @u.is_admin %>
+<%= link_to 'New hambrief', new_hambrief_path %>
+<% end %>

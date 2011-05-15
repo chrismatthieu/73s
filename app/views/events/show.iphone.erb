@@ -1,0 +1,50 @@
+
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => "/clubs", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+<p>
+  <b>Eventname:</b>
+  <%=h @event.eventname %>
+</p>
+
+<p>
+  <b>Eventdesc:</b>
+  <%=h @event.eventdesc %>
+</p>
+
+<p>
+  <b>Eventdate:</b>
+  <%=h @event.eventdate %>
+</p>
+
+<p>
+  <b>Starttime:</b>
+  <%=h @event.starttime.strftime('%H:%M') %>
+</p>
+
+<p>
+  <b>Endtime:</b>
+  <%=h @event.endtime.strftime('%H:%M') %>
+</p>
+
+<p>
+  <b>Eventcountry:</b>
+  <%=h @event.eventcountry %>
+</p>
+
+<p>
+  <b>Eventstate:</b>
+  <%=h @event.eventstate %>
+</p>
+
+<p>
+  <b>Eventcity:</b>
+  <%=h @event.eventcity %>
+</p>

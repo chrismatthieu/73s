@@ -1,0 +1,44 @@
+<%-
+#locals
+list ||= @list
+sub ||= 'inbox'
+label ||= 'Inbox Messages'
+sent = params[:action]=='sent'
+-%>
+
+<h1>Message Center</h1>	
+<div id="sub_nav">
+	<%= link_to '&larr; Back to Dashboard', @p %>  
+	<%= link_to "Inbox", messages_path if sent %>
+	<%= link_to "Sent", sent_messages_path, :class=>"selected"  unless sent || @p.sent_messages.empty? %>
+</div>
+
+<div class="activity_box" id="comment">
+	<h2><%= sanitize label %></h2>
+</div>
+ 
+<%- if list.empty? -%>
+<p>No Messages</p>
+<%- else -%>
+<table id="messages" border="0" cellspacing="0" cellpadding="0">
+ 	<tr>
+   		<th><%= sent ? "To" : "From" %></th>
+    	<th><%= "When" %></th>
+    	<th><%= "Subject" %></th>
+		<th>&nbsp;</th>
+	</tr>
+	<% list.each do |m|
+		mail_user = (@p == m.sender ? m.receiver : m.sender)%>
+	<tr>
+		<td><%= icon mail_user, :small rescue "" %><br /><%= link_to mail_user.f,  mail_user %></td>
+		<td><%= time_ago_in_words m.created_at %></td>
+		<td><%= link_to h( m.subject), message_path(m) %></td>
+		<td>
+			<%= link_to '(delete)', profile_message_path(mail_user, m), :method => :delete %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+<%- end -%>
+
+

@@ -1,0 +1,13 @@
+<h1>New Status</h1>
+
+<%= error_messages_for :status %>
+
+<% form_for(@status) do |f| %>
+<br />
+  <p>&nbsp;What are you doing right now?<br />
+    <%= f.text_field :message, :size => 110 %>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
+
+

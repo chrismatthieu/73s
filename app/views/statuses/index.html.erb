@@ -1,0 +1,194 @@
+<% content_for :head do  -%>
+	<%= stylesheet_link_tag 'redbox' %>
+	<%= javascript_include_tag 'redbox' %>
+	<link rel="stylesheet" href="/stylesheets/bubbles.css" type="text/css" media="screen" charset="utf-8" />
+	<script type="text/JavaScript" src="/javascripts/rounded_corners.inc.js"></script>
+	<script type="text/JavaScript">
+	  window.onload = function() {
+	      settings = {
+	          tl: { radius: 10 },
+	          tr: { radius: 10 },
+	          bl: { radius: 10 },
+	          br: { radius: 10 },
+	          antiAlias: true,
+	          autoPad: true
+	      }
+	      var myBoxObject = new curvyCorners(settings, "rounded");
+	      myBoxObject.applyCornersToAll();
+	  }
+	</script>
+	
+	<script type="text/javascript">
+	function addLink(text)
+	{
+	var TheTextBox = document.getElementById("status_input_box");
+    TheTextBox.value = '@' + text + ' ' + TheTextBox.value;
+	    
+	// var textarea = document.getElementById("status_input_box");
+	// textarea.innerHTML += link;
+	}
+	</script>
+	
+	<style type="text/css">
+
+	/* begin css tabs */
+
+	ul#tabnav { /* general settings */
+	text-align: left; /* set to left, right or center */
+	margin: 1em 0 1em 0; /* set margins as desired */
+	font: bold 11px verdana, arial, sans-serif; /* set font as desired */
+	border-bottom: 1px solid #6c6; /* set border COLOR as desired */
+	list-style-type: none;
+	padding: 3px 10px 3px 10px; /* THIRD number must change with respect to padding-top (X) below */
+	}
+
+	ul#tabnav li { /* do not change */
+	display: inline;
+	}
+
+	body#tab1 li.tab1, body#tab2 li.tab2, body#tab3 li.tab3, body#tab4 li.tab4, body#tab5 li.tab5, body#tab6 li.tab6 { /* settings for selected tab */
+	border-bottom: 1px solid #fff; /* set border color to page background color */
+	background-color: #fff; /* set background color to match above border color */
+	}
+
+	body#tab1 li.tab1 a, body#tab2 li.tab2 a, body#tab3 li.tab3 a, body#tab4 li.tab4 a, body#tab5 li.tab5 a, body#tab6 li.tab6 a { /* settings for selected tab link */
+	background-color: #fff; /* set selected tab background color as desired */
+	color: #000; /* set selected tab link color as desired */
+	position: relative;
+	top: 1px;
+	padding-top: 4px; /* must change with respect to padding (X) above and below */
+	}
+
+	ul#tabnav li a { /* settings for all tab links */
+	padding: 3px 4px; /* set padding (tab size) as desired; FIRST number must change with respect to padding-top (X) above */
+	border: 1px solid #6c6; /* set border COLOR as desired; usually matches border color specified in #tabnav */
+	background-color: #cfc; /* set unselected tab background color as desired */
+	color: #666; /* set unselected tab link color as desired */
+	margin-right: 0px; /* set additional spacing between tabs as desired */
+	text-decoration: none;
+	border-bottom: none;
+	}
+
+	ul#tabnav a:hover { /* settings for hover effect */
+	background: #fff; /* set desired hover color */
+	}
+
+	/* end css tabs */
+
+	</style>
+	
+	
+<% end -%>
+
+<% if controller.action_name == "friends" %>
+	<body id="tab3">
+<% elsif controller.action_name == "callsign" %>
+	<body id="tab4">
+<% elsif controller.action_name == "replies" %>
+	<body id="tab5">
+<% elsif controller.action_name == "directs" %>
+	<body id="tab6">
+<% elsif controller.action_name == "hamfeed" %>
+	<body id="tab2">
+<% else %>	
+	<body id="tab1">
+<% end %>
+
+
+  <div id="inline_box" style="display: none">
+  	<div style="width: 600px;"><br />
+		
+		<table width="600"><tr><td>
+			<br />
+			
+	  	<p>
+		<b>Status Updates Help:</b><br /><br />
+		73s' Status Updates work very much like Twitter!  You simply answer the question, "What am I doing right now?".  
+		Many hams use this feature for coordinating QSOs or simply making comments about their day or their ham radio hobby. 
+		<br /><br />
+		You can put an '@' symbol in front of a ham's callsign to make it linkable to their profile page such as <a href="/n7ice">@N7ICE</a>. 
+		You can simply include links (with the http://) to make them linkable.  
+		<br /><br />
+		You can also privately direct message a fellow ham by starting the status with a 'd ' followed by their callsign and the message such as 'd n7ice 73s73s message'.  
+		Note: Direct messages also transmit over APRS to the ham's radio like an SMS text message!
+		<br /><br />
+		<%= link_to_close_redbox('Close Help', html_options = {})%>
+		</p>
+		</td></tr></table>
+	</div>
+	</div>
+
+<div>
+
+
+<div id="terms_and_service" class="clear">
+
+<a href="/statuses.rss"><img src="/images/feed-icon-48x48.gif" border="0" align="right"></a><h1>Status Updates </h1>
+
+<% if @p != nil %>
+<%    @status = Status.new %>
+<% form_for(@status) do |f| %>
+<br />
+
+  <p>&nbsp;What are you doing right now? - <span id="counter_box">150</span> characters remaining 	- 
+		<%= link_to_redbox('Help?', :inline_box, html_options = {})%>		<br />
+    <%= f.text_field :message, :size => 100, :maxlength => 150, :id => "status_input_box", :value => @replycall, :onKeyPress => status_counter  %>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
+<% end %>
+
+
+<ul id="tabnav">
+	<li class="tab1"><a href="/statuses">All Updates</a></li>
+	<li class="tab2"><a href="/hamfeed">Hams on Twitter</a></li>
+	<% if @p != nil %>
+	<li class="tab3"><a href="/<%=@p.user.login%>/status">My Friends' Updates</a></li>
+	<li class="tab4"><a href="/<%=@p.user.login%>/mystatus">My Updates Only</a></li>
+	<li class="tab5"><a href="/<%=@p.user.login%>/replies">@<%=@p.user.login.upcase %> Replies</a></li>
+	<li class="tab6"><a href="/<%=@p.user.login%>/directs">Direct Messages</a></li>
+	<% end %>
+</ul>
+
+<% if controller.action_name == "hamfeed" %>
+	<iframe src="http://hamfeed.com/activities?partner=73s" width="875" height="2500"></iframe>
+<% else %>
+
+	<% for status in @statuses %>
+
+	<% if !status.profile.id.blank? and !status.message.blank? %>
+
+	<div class="bubble">
+			<blockquote>
+				<p><%# icon status.profile, :small, :class => 'left avatar_on_comment' rescue "" %> 
+					<%= image_tag status.profile.gravatar_url, :width => "50"%>
+					
+	<br />
+				<% 
+				@txt = status.message
+				@linkmessage = @txt.gsub(/(@)((?:[a-z][a-z]*[0-9]+[a-z0-9]*))/i) {|s| '<a href=/'+s[1..1000]+'>'+s+'</a>'}
+				@linkmessage = @linkmessage.gsub(/https?:\/\/([^\/]+)(.*)/) {|s| '<a href='+s+'>'+s+'</a>'}
+				%>
+				 <%=@linkmessage rescue ""%> (<a href="/<%= status.profile.user.login rescue ""%>/mystatus">...more</a>) 
+				<a href="#" onclick="addLink('<%= status.profile.user.login rescue ""%>');"><img src="/images/reply.gif" align="right"></a>
+				<% if @p != nil && status.profile_id == @p.id && controller.action_name != 'friends' %>
+				<%= link_to '<img src="/images/trash.gif" align="right">', status, :confirm => 'Are you sure?', :method => :delete %>
+				<% end %>
+				<br />
+				</p><br /><br />
+			</blockquote>
+			<cite><strong><a href="/<%= status.profile.user.login rescue ""%>"><%= status.profile.user.login rescue ""%></a> </strong> updated <%= time_ago_in_words status.created_at %> ago</cite>
+	</div>
+	
+	<% end %>
+   
+
+	<% end %>
+
+	<br />
+
+	<p><%= will_paginate @statuses %></p>
+
+<% end %>
+</div>
+</div>

@@ -1,0 +1,15 @@
+<div class="title">
+<h2>Edit QST </h2>
+
+
+<% form_tag(:action => 'update', :id => @review) do %>
+  <%= render :partial => 'formedit' %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<p>
+<%= link_to 'Show', :action => 'show', :id => @review %> |
+<%= link_to 'Back', :action => 'list' %>
+</p>
+
+</div>

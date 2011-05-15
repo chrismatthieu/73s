@@ -1,0 +1,10 @@
+<%=
+  l = {  }
+  r = { :back => true, :caption => 'Back', :url => "/", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+<h1><br />Callsign Lookup</h1>
+	<form id="searchform" method="get" action="/callsign/user">
+			<input type="text" id="s" name="id" />
+			<input type="submit" value="LookUp"/>
+	</form>

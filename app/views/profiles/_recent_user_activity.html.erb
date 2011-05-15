@@ -1,0 +1,21 @@
+<%- 
+#locals
+feed_items ||= @feed_items 
+
+-%>
+
+<%- unless feed_items.empty? -%>
+<div class="activity_box">
+	<h2>Recent Network Activity</h2>
+	<div class="inside_box">    
+		<% feed_items.each do |feed_item| %>
+		<% next unless feed_item.item %>
+			<% if (feed_item.partial == 'blog' and feed_item.item.profile == @profile) or (feed_item.partial == 'photo' and feed_item.item.profile == @profile) or (feed_item.partial == 'comment' and feed_item.item.profile == @profile) or (feed_item.partial == 'status' and feed_item.item.profile == @profile) or (feed_item.partial == 'friend' and feed_item.item.inviter == @profile) and (feed_item.created_at > 8.days.ago) %>
+				<%= render( :partial => "feed_items/#{feed_item.partial}", :locals => {:feed_item => feed_item}) %>
+			<% end %>
+		<% end %>
+		
+		<div class="clear"></div>      
+	</div>
+</div>
+<%- end -%>

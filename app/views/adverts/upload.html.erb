@@ -1,0 +1,11 @@
+<h2>Upload Banner Ad</h2>
+
+<%= error_messages_for("advert") %> 
+<%= form_tag({:action => 'save'}, :multipart => true) %> 
+
+Select Banner: <%= file_field("advert", "banner") %> 
+<br/> 
+<%= hidden_field("advert", 'id', :value => @params[:id] ) %><br>
+
+<%= submit_tag("Upload file") %> 
+<% end %> 

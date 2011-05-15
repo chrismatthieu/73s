@@ -1,0 +1,17 @@
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => profile_path(@p), :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+<h1>My Network</h1>	
+
+<%= render :partial => 'profiles/recent_activity' %>
+
+<%= render :partial => 'friends/list', :locals => {:type => 'friends', :with_friending => true, :size => nil} %>
+<%= render :partial => 'friends/list', :locals => {:type => 'followers', :with_friending => true, :size => nil} %>
+<%= render :partial => 'friends/list', :locals => {:type => 'followings', :with_friending => true, :size => nil} %>

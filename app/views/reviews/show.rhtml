@@ -1,0 +1,85 @@
+<div class="title">
+
+<div id="reviews">
+<div class="review">	
+
+<%
+if @user.profile.location.nil? 
+	@location = 'somewhere'
+else
+	@location = @user.profile.location
+end
+%>
+
+  <h1>
+  <%= @review.title %> - <%= time_ago_in_words @review.timestamp %> ago<br />
+   by <%= link_to @user.login.upcase, '/' + @user.login %>  (QTH <%=@location%>) </h1>
+	<!-- AddThis Bookmark Button BEGIN -->
+	<script type="text/javascript">
+	  addthis_url    = location.href;   
+	  addthis_title  = document.title;  
+	  addthis_pub    = 'cmatthieu';     
+	</script><script type="text/javascript" src="http://s7.addthis.com/js/addthis_widget.php?v=12" ></script>
+	<!-- AddThis Bookmark Button END -->
+	  
+<!-- <div id="star-ratings-block">
+  <%= render :partial => "reviews/rating", :locals => { :review => @review } %>
+
+  </div> -->
+
+<table width="100%"><tr>
+    <td valign="top">
+    <br />
+    <%= icon @user.profile, :small, :class => 'left' %>
+    <% #link_to @user.login,  :controller => 'account', :action => 'callsign', :callsign => @u.login %>
+
+	 
+    </td>
+
+    <td>
+    
+	  <p>    <%= textilize @review.body %>
+</p>
+<br /><br />
+<p>
+<%= image_tag "tag.gif"%>
+<b>Tags:</b> 
+<% 
+# for tagger in @review.tag_list
+%>
+  <a href="/reviews/tag/<%# tagger %>"><%# tagger %></a></center>
+<%
+# end
+%>
+<br />
+
+	</div>	
+
+<br />
+<h3></h3>
+    <div id="comments">
+      <%= render(:partial => 'comments') %> 
+    </div>
+
+    </td>
+
+	<td valign="top"><strong><%= @review.viewcount %> views</strong></td>
+      <% if @p != nil %>
+
+        <% if @p.user.login.upcase == 'N7ICE' %>
+          <td valign="top"><%= link_to 'Edit', :action => 'edit', :id => @review %></td>
+          <td valign="top"><%= link_to 'Destroy', { :action => 'destroy', :id => @review }, :confirm => 'Are you sure?', :method=>:post %></td>
+		<% elsif @p.id == @u.id %>
+			<td valign="top"><%= link_to 'Edit', :action => 'edit', :id => @review %></td>
+        <% end %>    
+
+      <% end %>    
+
+
+    </tr>
+  </table>   
+   
+</div>   
+</div>   
+</div>   
+   

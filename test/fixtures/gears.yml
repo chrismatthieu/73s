@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  desc: MyText
+  forsale: false
+  price: 1.5
+  active: false
+  profile_id: 1
+
+two:
+  title: MyString
+  desc: MyText
+  forsale: false
+  price: 1.5
+  active: false
+  profile_id: 1

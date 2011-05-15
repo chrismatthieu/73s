@@ -1,0 +1,19 @@
+<%
+#locals
+message ||= @message
+message ||= Message.new params[:message]
+to_list ||= @to_list
+to_list ||= [@profile] #used on someone's profile page
+%>
+<div id="thickbox_form">
+	<% less_remote_form_for :nudge, :url => {:controller => 'messages', :action => :nudge} do |f| %>
+	<%= f.wrap('To') {to_list.to_select :message, :receiver_id, :selected=>(params[:message][:receiver_id].to_i rescue ''), :name => :f} %>
+	<%= f.text_area :message %>
+
+	<div class="row button">
+	  <%= submit_tag 'Send Nudge', :class=>'button' %>
+	</div>
+	<%end %>
+</div>
+
+

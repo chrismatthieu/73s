@@ -1,0 +1,60 @@
+<%= error_messages_for :event %>
+
+<% form_for(:event, :url => events_path) do |f| %>
+  <p>
+    <b>Event Name</b><br />
+    <%= f.text_field :eventname %>
+  </p>
+
+  <p>
+    <b>Event Description</b><br />
+    <%# f.text_area :eventdesc %>
+<%= textile_editor 'event', 'eventdesc', :cols => "60" -%>
+  </p>
+
+  <p>
+    <b>Event Date</b><br />
+    <%= f.date_select :eventdate %>
+  </p>
+
+  <p>
+    <b>Start Time</b><br />
+    <%= f.time_select :starttime %>
+  </p>
+
+  <p>
+    <b>End Time</b><br />
+    <%= f.time_select :endtime %>
+  </p>
+
+  <p>
+    <b>Country</b><br />
+    <% #f.text_field :eventcountry %>
+    <%= country_select 'event', 'eventcountry' %>
+    <%# observe_field :event_eventcountry, :frequency=>0.5,
+    :update=>"state_select",
+    :url=> {:action=>'state_select', :only_path=>false},
+    :with=>"'country=' + encodeURIComponent(value)" %>
+    
+  </p>
+
+  <p>
+    <b>State</b><br />
+		<span id="state_select">
+    </span>
+    <%= f.text_field :eventstate %>
+  </p>
+
+
+  <p>
+    <b>City</b><br />
+    <%= f.text_field :eventcity %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+<%= textile_editor_initialize -%>
+
+

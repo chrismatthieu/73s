@@ -1,0 +1,15 @@
+<%=
+l = {  :caption => 'LogOut', :url => "/logout", :html_options => {} }
+r = {  }
+  te_navigation_bar( r, "73s.org", l )
+%>
+<%# te_list @list %>
+<ul>
+	<li><%= link_to @p.user.login.upcase + ' Dashboard', profile_path(@p) %></li>
+	<li><%= link_to 'Status Updates', "/statuses" %></li>
+	<li><%= link_to 'Callsign Lookup', "/callsignlookup" %></li>
+	<li><%= link_to 'Repeater Listings', "/repeaters" %></li>
+	<li><%= link_to 'Club Listings', "/clubs" %></li>
+	<li><%= link_to 'Event Listings', "/events" %></li>
+</ul>	
+

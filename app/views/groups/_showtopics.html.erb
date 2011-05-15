@@ -1,0 +1,53 @@
+
+<div id="forum">
+
+	<% if @u %>
+	  <%= link_to "Post New Topic", new_forum_topic_path(@forum) %>
+	<% end %>
+	<br />	<br />
+	
+   <table class="forum_topics">
+
+     <tr class="labels" id="topic_labels_row">
+       <td class="">Topic</td>
+
+       <td class="posts">Replies</td>
+
+       <td class="last_post">Last Post</td>
+
+     </tr>
+
+
+    <% for topic in @topics -%>
+
+	<tr id="forum_topic_<%=topic.id%>">
+  <td class="">
+	<% @profile = Profile.find(:first, :conditions => ['user_id = ?', topic.user_id]) %>
+
+	<%# icon @profile, :small, :class => 'left avatar_on_comment'   rescue "" %>	
+	<%= image_tag @profile.gravatar_url, :width => "50"%>
+	
+	
+    <%= link_to h(topic.user.login), "/#{topic.user.login}"  rescue ''%> posted <%= link_to h(topic.title), forum_topic_path(@forum, topic)  rescue ''%>
+</td>
+  <td class="posts">
+		<%= topic.posts.count - 1%>
+	</td>
+
+  <td class="last_post">
+		<%# topic.created_at.strftime("%m-%d-%Y %H:%M") %>
+		<%= time_ago_in_words topic.created_at  %>
+</td></tr>
+    <% end -%>
+</table>
+<% if @topics %>
+        <%= will_paginate @topics %>
+<% end %>
+</div>
+<% if @u %>
+  <%= link_to "Post New Topic", new_forum_topic_path(@forum) %>
+<% end %>
+</div>
+</div>
+
+

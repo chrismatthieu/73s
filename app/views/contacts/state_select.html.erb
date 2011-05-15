@@ -1,0 +1,25 @@
+<% if params[:country] == "United States" %>
+<%= state_select 'contact', 'state', country='US_WITH_CODE' %>
+<% elsif params[:country] == "India" %>
+<%= state_select 'contact', 'state', country='INDIA' %>
+<% elsif params[:country] == "Canada" %>
+<%= state_select 'contact', 'state', country='CANADA' %>
+<% elsif params[:country] == "Australia" %>
+<%= state_select 'contact', 'state', country='AUSTRALIA' %>
+<% elsif params[:country] == "Spain" %>
+<%= state_select 'contact', 'state', country='SPAIN' %>
+<% elsif params[:country] == "Uganda" %>
+<%= state_select 'contact', 'state', country='UGANDA' %>
+<% elsif params[:country] == "France" %>
+<%= state_select 'contact', 'state', country='FRANCE' %>
+<% elsif params[:country] == "Germany" %>
+<%= state_select 'contact', 'state', country='GERMAN' %>
+<% elsif params[:country] == "Brazil" %>
+<%= state_select 'contact', 'state', country='BRAZIL' %>
+<% elsif params[:country] == "Ireland" %>
+<%= state_select 'contact', 'state', country='IRELAND' %>
+<% elsif params[:country] == "Poland" %>
+<%= state_select 'contact', 'state', country='POLAND' %>
+<% else %>
+<%= text_field 'contact', 'state', :class=>"text" %>
+<% end %>

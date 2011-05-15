@@ -1,0 +1,23 @@
+<%=
+
+l = {  }
+r = {  }
+
+  te_navigation_bar( r, "73s.org", l )
+%>
+<% less_form_for @user, :url => login_path, :method => :post do |f| %>
+  <h1>
+	<center><img src="/images/73s.jpg"></center>
+	Log-in your Account</h1>
+
+
+  <%= f.text_field :login, :class => "focus_first", :label => 'Call Sign:' %>
+  <%= f.password_field :password %>
+  <%= f.wrap(:remember_me, :for => :remember_me){ check_box_tag 'remember_me',1,false, :class=>"checkbox" } %>
+
+  <%= f.submit 'Log-in Now' %>
+
+
+<% end %>
+<br>
+<%= link_to 'SignUp!', "/register" %>

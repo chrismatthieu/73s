@@ -1,0 +1,60 @@
+<div class="title">
+	<h2>Edit Event</h2>
+<br />
+
+<%= error_messages_for :event %>
+
+<% form_for(@event) do |f| %>
+  <p>
+    <b>Eventname</b><br />
+    <%= f.text_field :eventname %>
+  </p>
+
+  <p>
+    <b>Eventdesc</b><br />
+    <%# f.text_area :eventdesc %>
+	<%= textile_editor 'event', 'eventdesc', :cols => "60" -%>
+
+  </p>
+
+  <p>
+    <b>Eventdate</b><br />
+    <%= f.date_select :eventdate %>
+  </p>
+
+  <p>
+    <b>Starttime</b><br />
+    <%= f.time_select :starttime %>
+  </p>
+
+  <p>
+    <b>Endtime</b><br />
+    <%= f.time_select :endtime %>
+  </p>
+
+  <p>
+    <b>Eventcountry</b><br />
+    <%= f.text_field :eventcountry %>
+  </p>
+
+  <p>
+    <b>Eventstate</b><br />
+    <%= f.text_field :eventstate %>
+  </p>
+
+  <p>
+    <b>Eventcity</b><br />
+    <%= f.text_field :eventcity %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+<%= textile_editor_initialize -%>
+
+<br />
+<p>
+<%= link_to 'Show', @event %> |
+<%= link_to 'Back', events_path %>
+</p></div>

@@ -1,0 +1,16 @@
+<%=
+  l = { :caption => 'Reply', :url => new_profile_message_path(@p), :html_options => {} }
+  r = { :back => true, :caption => 'Back', :url => message_path, :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+<%
+#locals
+label ||= 'Reading a Message'
+@title = label
+%>
+
+<h1><%= sanitize label %></h1>
+
+
+<%= render :partial => "messages/message" %>

@@ -1,0 +1,59 @@
+<%= error_messages_for :repeater %>
+
+<% form_for(:repeater, :url => repeaters_path) do |f| %>
+  <p>
+    <b>Trustee</b><br />
+    <%= f.text_field :trustee %>
+  </p>
+
+  <p>
+    <b>Frequency</b><br />
+    <%= f.text_field :frequency %>
+  </p>
+
+  <p>
+    <b>Long</b><br />
+    <%= f.text_field :long %>
+  </p>
+
+  <p>
+    <b>Lat</b><br />
+    <%= f.text_field :lat %>
+  </p>
+
+  <p>
+    <b>City</b><br />
+    <%= f.text_field :city %>
+  </p>
+
+  <p>
+    <b>State</b><br />
+    <%= f.text_field :state %>
+  </p>
+
+  <p>
+    <b>Range</b><br />
+    <%= f.text_field :range %>
+  </p>
+
+  <p>
+    <b>Offset</b><br />
+    <%= f.text_field :offset %>
+  </p>
+
+  <p>
+    <b>Pl</b><br />
+    <%= f.text_field :pl %>
+  </p>
+
+  <p>
+    <b>Notes</b><br />
+    <%= f.text_area :notes %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', repeaters_path %>

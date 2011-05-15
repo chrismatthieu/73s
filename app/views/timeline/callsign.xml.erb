@@ -1,0 +1,21 @@
+<data>
+<% require 'date' %>
+<% #require 'hpricot' %>
+
+<% for contact in @contacts %>
+
+<%
+ #doc = Hpricot(avatar_tag(contact.profile))
+ #add this line to event below to embed image ->   image="<%= doc.search('img').first[:src]  rescue "" %> "
+%>
+
+<% if contact.contacttime != nil and contact.callsign != nil%>
+<event 
+    start="<%=contact.contacttime.strftime("%b %d %Y %H:%M:%S GMT")%>"
+    title="<%=contact.callsign.upcase %> - <%=contact.country rescue ''%>" 
+    >
+    Notes: <%= contact.notes %>
+    </event>
+<% end %>
+<% end %>
+</data>

@@ -1,0 +1,14 @@
+<div class="title">
+	<h2>QSTs Tag Cloud
+	<div id="searchform"><% form_tag(:controller => 'reviews', :action => 'search') do %><%= text_field("search", 'searchTextBox', :value => @searchterm ) %><input type="submit" value="Search"><% end %></div>
+  </h2>
+	<p>The most popular tags are displayed with the largest fonts.  Click on a tag to see all of the contacts that share the same tag.</p>
+</div>
+
+<div class="entry">
+	<p>
+<% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+  <%= link_to tag.name, { :controller => :reviews, :action => :tag, :id => tag.name }, :class => css_class %>
+<% end %>
+</p>
+<br /></div>

@@ -1,0 +1,74 @@
+SimpleForum
+===========
+
+  Simple Forum enable you to create a very simple forum structure
+  into any rails application.
+
+Dependencies
+============
+ * will_paginate need to be installed
+ * A User model with at least email and name attributes are required
+ * A current_user method/helper should be provided (RESTful Authentication compatible)
+ * RedCloth
+ 
+Example
+=======
+  The first thing you have to do is install the plugin :
+    # ./script/plugin install git://github.com/Gazer/simple-forum.git
+
+  Next you have to do is create the migration file for your project and migrate your database :
+    # ./script/generate simple_forum_migration [optinal name]
+    # rake db:migrate
+
+  And the last step is add routes to your routes.rb file:
+    map.resources :forums do |forum|
+      forum.resources :topics do |topic|
+        topic.resources :posts
+      end
+    end
+
+  Now you can go to your http://localhost:3000/forums URI and start using your new forum :)
+
+Extending Controller
+====================
+ In case you want to set a custom layout, or add login validation to the forums
+ you can add to the production.rb environment something like :
+
+config.after_initialize do
+  require 'application' unless Object.const_defined?(:ApplicationController)
+  ForumsController.class_eval do
+    include AuthenticatedSystem
+    helper ApplicationHelper
+
+    layout "application"
+
+    before_filter :login_required
+  end
+  TopicsController.class_eval do
+    include AuthenticatedSystem
+    helper ApplicationHelper
+
+    layout "application"
+
+    before_filter :login_required
+  end
+  PostsController.class_eval do
+    include AuthenticatedSystem
+    helper ApplicationHelper
+
+    layout "application"
+
+    before_filter :login_required
+  end
+end
+
+ Note : Using this in development environment will not work because Rails does not reload the plugins
+ on each request
+
+TODO
+====
+ * Subforums support
+ * Admin panel (maybe :)
+ * User/Post moderation
+
+Copyright (c) 2008 Ricardo Markiewicz <gazer.arg@gmail.com>, released under the MIT license

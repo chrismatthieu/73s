@@ -1,0 +1,38 @@
+<h1>Editing Advert</h1>
+
+<%= error_messages_for :advert %>
+
+<% form_tag({:action => 'update'},  :multipart => true) do %>
+
+
+<p><label for="advert_profile">Profile ID</label><br/>
+<%= text_field 'advert', 'profile_id'  %></p>
+
+<p><label for="advert_description">Description</label><br/>
+<%= text_area 'advert', 'description'  %></p>
+
+<p><label for="advert_placement">Placement</label><br/>
+<%= select( "advert", "placement", { "banner" => "0", "sidebar(dem)" => "1", "sidebar(rep)" => "2", "sidebar(other)" => "3", "sidebar(general)" => "4", "insert banner (general)" => "5"}) %>
+</p>
+
+
+<p><label for="advert_startdate">Startdate</label><br/>
+<%= datetime_select 'advert', 'startdate'  %></p>
+
+<p><label for="advert_enddate">Enddate</label><br/>
+<%= datetime_select 'advert', 'enddate'  %></p>
+
+<p>Upload Advert: <%= file_field("advert", "advert") %> 
+</p>
+
+<p><label for="advert_url">Target URL </label><br/>
+<%= text_field 'advert', 'url'  %></p>
+
+<%= hidden_field("advert", 'id', :value => params[:id] ) %>
+
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+
+<%= link_to 'Show', @advert %> |
+<%= link_to 'Back', adverts_path %>

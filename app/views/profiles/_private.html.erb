@@ -1,0 +1,54 @@
+<h1>Your Dashboard</h1>
+<div id="sub_nav">
+  <%= link_to 'View Public Profile', profile_path(@p).add_param(:public_view => true) %>
+  <%# link_to 'Messages Center (' + @p.received_messages.count.to_s + ')', messages_path unless @p.received_messages.empty? && !@p.has_network? %>
+  <%= link_to 'Messages Center (' + @messages + ' new)', messages_path unless @p.received_messages.empty? && !@p.has_network? %>
+  <%# link_to 'Manage Photos', '/' + @p.user.login + '/photos' %>
+  <%= link_to 'My Network', profile_friends_path(@p) if @p.has_network? %>
+  <%= link_to 'My Blog', '/' + @p.user.login + '/blogs' %>
+  <%= link_to 'My Gear', '/' + @p.user.login + '/gear' %>
+  <%= link_to 'Account Settings', edit_profile_path(@p) %>
+</div>
+
+<div id="status_form">
+&nbsp;What are you doing right now? (<a href="/<%=@p.user.login%>/mystatus">View my updates</a> | <a href="/<%=@p.user.login%>/status">View my friends' updates</a> | <a href="/statuses">View public timeline</a>) - <span id="counter_box">150</span> characters remaining
+<%    @status = Status.new %>
+<% form_for(@status) do |f| %>
+  <!p>
+    <%= f.text_field :message, :size => 100, :maxlength => 150, :id => "status_input_box", :onKeyPress => status_counter %>
+    <%# f.text_area :message, :size => 10, :id => "status_input_box", :onKeyPress => status_counter %>
+	<%# f.text_field :counter, :value => 140, :size => 3, :id => "counter_box", :readonly => 'true' %>
+    <%= f.submit "Submit" %>
+  <!/p>
+
+<% end %>
+</div>
+
+
+
+<%= render :partial => 'profiles/getting_started' %>
+
+
+<div class="half left">
+  <%= render :partial => 'profiles/recent_activity' %>
+  <%= render :partial => 'comments/list', :locals => {:with_form => true, :with_wall_to_wall => true} %>
+  <%= render :partial => 'profiles/groups' %>
+</div>
+
+
+
+
+
+
+<div class="half right">
+
+<%= render :partial => 'friends/list', :locals => {:type => 'friends'} %>
+<%= render :partial => 'friends/list', :locals => {:type => 'followers'} %>
+<%= render :partial => 'friends/list', :locals => {:type => 'followings'} %>
+
+</div>
+
+
+  <div class="clear"></div>
+
+

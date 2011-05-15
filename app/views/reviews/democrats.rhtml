@@ -1,0 +1,13 @@
+<p>
+	<%= link_to "Most Recent Reviews",  :controller => 'reviews', :action => 'all' %> | 
+	<%= link_to 'Most Viewed Reviews', :controller => 'reviews', :action => 'popular' %> | 
+	<%= link_to "Best Voted Reviews",  :controller => 'reviews', :action => 'best' %> | 
+	<%= link_to "Worst Voted Reviews",  :controller => 'reviews', :action => 'worst' %> | 
+	<%= link_to "Reviews by Tags",  :controller => 'reviews', :action => 'tags' %>  
+</p>
+
+<h2>Democratic Reviews</h2>
+
+<div id="reviews">
+   <%= render(:partial => 'reviews') %> 
+</div>

@@ -1,0 +1,13 @@
+<div class="title">
+<h2>
+  
+New QST</h2>
+
+<% form_tag(:action => 'create') do %>
+  <%= render :partial => 'form' %>
+<%= textile_editor_initialize -%>
+<p>
+  <%= submit_tag "Submit QST" %>
+</p>  
+<% end %>
+</div>

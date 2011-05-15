@@ -1,0 +1,15 @@
+<div id="forum">
+  <h1>Edit Message</h1>
+
+  <% form_for @post, :url => forum_topic_post_path(@forum, @topic, @post), :method => :put do |form| %>
+  <p>
+    <h2>Message</h2>
+
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.submit "Submit" %>
+  </p>
+  <% end %>
+</div>

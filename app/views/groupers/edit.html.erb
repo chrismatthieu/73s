@@ -1,0 +1,22 @@
+<h1>Editing grouper</h1>
+
+<%= error_messages_for :grouper %>
+
+<% form_for(@grouper) do |f| %>
+  <p>
+    <b>Profile</b><br />
+    <%= f.text_field :profile_id %>
+  </p>
+
+  <p>
+    <b>Group</b><br />
+    <%= f.text_field :group_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @grouper %> |
+<%= link_to 'Back', groupers_path %>

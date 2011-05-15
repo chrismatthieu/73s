@@ -1,0 +1,58 @@
+<% if  !@u.nil? %>
+<h1>Your Gear > <%= link_to 'View List', "/lists" %></h1><br/>
+<% end %>
+<h1>Used Gear > <%= link_to 'Billboard', "/gears" %></h1><br/>
+<h1>New Gear > by manufacturer below</h1>
+<br />
+<div class="paginationS">
+	<a href="/companies/search/a"><span class="current">A</span></a>
+	<a href="/companies/search/b"><span class="current">B</span></a>
+	<a href="/companies/search/c"><span class="current">C</span></a>
+	<a href="/companies/search/d"><span class="current">D</span></a>
+	<a href="/companies/search/e"><span class="current">E</span></a>
+	<a href="/companies/search/f"><span class="current">F</span></a>
+	<a href="/companies/search/g"><span class="current">G</span></a>
+	<a href="/companies/search/h"><span class="current">H</span></a>
+	<a href="/companies/search/i"><span class="current">I</span></a>
+	<a href="/companies/search/j"><span class="current">J</span></a>
+	<a href="/companies/search/k"><span class="current">K</span></a>
+	<a href="/companies/search/l"><span class="current">L</span></a>
+	<a href="/companies/search/m"><span class="current">M</span></a>
+	<a href="/companies/search/n"><span class="current">N</span></a>
+	<a href="/companies/search/o"><span class="current">O</span></a>
+	<a href="/companies/search/p"><span class="current">P</span></a>
+	<a href="/companies/search/q"><span class="current">Q</span></a>
+	<a href="/companies/search/r"><span class="current">R</span></a>
+	<a href="/companies/search/s"><span class="current">S</span></a>
+	<a href="/companies/search/t"><span class="current">T</span></a>
+	<a href="/companies/search/u"><span class="current">U</span></a>
+	<a href="/companies/search/v"><span class="current">V</span></a>
+	<a href="/companies/search/w"><span class="current">W</span></a>
+	<a href="/companies/search/x"><span class="current">X</span></a>
+	<a href="/companies/search/y"><span class="current">Y</span></a>
+	<a href="/companies/search/z"><span class="current">Z</span></a>
+</div>
+<br/>
+<table>
+<% @companies.each do |company| %>
+<tr><td>
+	<a href="<%= '/company/' + company.id.to_s + '/products/' %>"><%=image_tag(url_for_file_column(company, :image, :small.to_s), {:title=>company.name, :alt=>company.name}) rescue "" %></a>
+	<!-- <a href="<%= '/company/' + company.id.to_s + '/products/' %>"><%=h company.name %></a> -->
+</td><td>
+	<%= link_to ' View Products (' + company.products.size.to_s + ')', "/company/" + company.id.to_s + "/products" %>
+	| 
+    <%= link_to 'Edit Company', edit_company_path(company) %>
+	<% if  !@u.nil? and @u.is_admin  %>
+ | 
+    <%= link_to 'Destroy Company', { :action => "destroy", :id => company.id }, :confirm => "Are you sure?", :method => :delete %>
+	<% end %>
+	<br/><br/>
+<% end %>
+</td></tr>
+</table>
+<br />
+<p><%= will_paginate @companies %></p>
+
+<% if !@u.nil? %>
+<%= link_to 'Add New Company', new_company_path %>
+<% end %>

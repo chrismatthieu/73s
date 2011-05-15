@@ -1,0 +1,393 @@
+# Logfile created on Fri Apr 11 18:17:35 -0700 2008 by /
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+rebuild index: [Profile(id: integer, user_id: integer, first_name: string, last_name: string, website: string, blog: string, flickr: string, about_me: text, aim_name: string, gtalk_name: string, ichat_name: string, icon: string, location: string, created_at: datetime, updated_at: datetime, email: string, is_active: boolean, youtube_username: string, flickr_username: string)]
+reindexing model Profile
+reindex model Profile : 9448745571.43% complete : -654283.82 secs to finish
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: about_me:** f:** location:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: about_me:** f:** location:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: about_me:** f:** location:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: about_me:** f:** location:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: about_me:** f:** location:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: about_me:** f:** location:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: +(about_me:*search* f:*search* location:*search*) +(about_me:*for* f:*for* location:*for*) +(about_me:*friends* f:*friends* location:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: about_me:** f:** location:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: +(about_me:*search* f:*search* location:*search*) +(about_me:*for* f:*for* location:*for*) +(about_me:*friends* f:*friends* location:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: +(about_me:*search* f:*search* location:*search*) +(about_me:*for* f:*for* location:*for*) +(about_me:*friends* f:*friends* location:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/test/profile
+query: +(about_me:*search* f:*search* location:*search*) +(about_me:*for* f:*for* location:*for*) +(about_me:*friends* f:*friends* location:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+rebuild index: [Profile(id: integer, user_id: integer, first_name: string, last_name: string, website: string, blog: string, flickr: string, about_me: text, aim_name: string, gtalk_name: string, ichat_name: string, icon: string, location: string, created_at: datetime, updated_at: datetime, email: string, is_active: boolean, youtube_username: string, flickr_username: string)]
+reindexing model Profile
+reindex model Profile : 100.00% complete : 0.01 secs to finish
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*test* location:*test* f:*test*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*chris* location:*chris* f:*chris*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*n7ice* location:*n7ice* f:*n7ice*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: +(about_me:*search* location:*search* f:*search*) +(about_me:*for* location:*for* f:*for*) +(about_me:*friends* location:*friends* f:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: +(about_me:*search* location:*search* f:*search*) +(about_me:*for* location:*for* f:*for*) +(about_me:*friends* location:*friends* f:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: +(about_me:*search* location:*search* f:*search*) +(about_me:*for* location:*for* f:*for*) +(about_me:*friends* location:*friends* f:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: +(about_me:*search* location:*search* f:*search*) +(about_me:*for* location:*for* f:*for*) +(about_me:*friends* location:*friends* f:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: +(about_me:*search* location:*search* f:*search*) +(about_me:*for* location:*for* f:*for*) +(about_me:*friends* location:*friends* f:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: +(about_me:*search* location:*search* f:*search*) +(about_me:*for* location:*for* f:*for*) +(about_me:*friends* location:*friends* f:*friends*)
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*n7ice* location:*n7ice* f:*n7ice*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*n7ice* location:*n7ice* f:*n7ice*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*n7ice* location:*n7ice* f:*n7ice*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*n7ice* location:*n7ice* f:*n7ice*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*phoenix* location:*phoenix* f:*phoenix*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*n7ice* location:*n7ice* f:*n7ice*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: about_me:*founder* location:*founder* f:*founder*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: location:*phoenix* f:*phoenix* about_me:*phoenix*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: location:*test* about_me:*test* f:*test*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: location:*test* about_me:*test* f:*test*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: location:*n7ice* about_me:*n7ice* f:*n7ice*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: location:*chris* about_me:*chris* f:*chris*
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: location:** about_me:** f:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73slove/index/development/profile
+query: location:** about_me:** f:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** about_me:** f:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** about_me:** f:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+query: location:** f:** about_me:**
+stored_fields: 
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile
+LocalIndex: ensure_index_exists at /usr/local/src/73s/trunk/index/development/profile

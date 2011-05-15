@@ -1,0 +1,36 @@
+
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => "/clubs", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+
+<p>
+  <b>Club Name:</b>
+  <%=h @club.clubname %>
+</p>
+
+<p>
+  <b>Club Description:</b>
+  <%=h @club.clubdesc %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @club.clubcountry %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @club.clubstate %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @club.clubcity %>
+</p>

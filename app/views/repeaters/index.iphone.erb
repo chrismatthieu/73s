@@ -1,0 +1,27 @@
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => "/", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+	<h2>Ham Radio Repeaters</h2>
+
+<% form_tag(:controller => :repeaters, :action => :search ) do -%>
+
+<% #form_for :repeater, :action => 'search' do |f| %>
+<p><label for="city">Select a city</label><br/>
+
+<% if @u != nil %>
+<% @selected = @p.location %>
+<% else %>
+<% @selected = "" %>
+<% end %>
+
+<%= select :repeaters, :city, Repeater.find(:all, :order => 'city', :select => [:city], :group => "city", :conditions => ["city IS NOT NULL" ]).collect { |v| [ v.city ] }, { :selected => @selected } %>
+<%= submit_tag "Search" %>
+</p>
+<% end %>

@@ -1,0 +1,75 @@
+<%=
+  l = {  :caption => 'LogOut', :url => "/logout", :html_options => {} }
+  r = { :back => true, :caption => 'Back', :url => "/callsignlookup", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+<div class="title">
+	
+<% if @callelements[2] == nil or @callelements[2] == "" then %>
+  
+  - No such call sign on record </h2>
+  
+<% else %>  
+		
+
+<div id="welcomex">
+
+<% if @callelements[0] == nil or @callelements[0] == "" %>
+  <img src="/images/buddyicon.jpg" width="48" height="48" alt="" />
+<% else %>
+  <img src="<%=@callelements[0] %>" width="200" height="200" alt="" />
+<% end %>
+<%=  @callsign.upcase %> 
+
+
+<% # @calldata %>
+<p>
+<b>Name: </b>
+<%= @callelements[2] %><br />
+</p>
+
+<% if @website != "" and @website != nil %>
+  <p>
+  <b>Website: </b><br />
+  <a href="<%=@website%>" target="_new"><%=@website %></a><br />
+  </p>
+<% end %>
+
+
+<% if @email != "" and @email != nil and @p != nil %>
+<p>
+<b>Email: </b>
+  <a href="mailto:<%= @email%>"><%= @email %></a><br />
+</p>
+<% end %>
+
+
+<p>
+<b>Address: </b><br />
+<% if @callelements[3] != "" %>
+  <%= @callelements[3] %><br />
+<% end %>
+<%= @callelements[4] %><br />
+</p>
+<p>
+<b>Country: </b>
+<%= @callelements[5] %><br />
+</p>
+
+<% if @profile != "" %>
+  <p>
+  <b>Profile: </b>
+  <%= @profile %><br />
+  </p>
+<% end %>
+
+</div>
+
+<% end %>
+
+<br />
+
+
+
+</div>

@@ -1,0 +1,19 @@
+<%= error_messages_for 'review' %>
+
+<!--[form:review]-->
+
+<p><label for="review_title">Title</label><br/>
+<%= text_field 'review', 'title'  %></p>
+
+<p><label for="review_body">Review</label><br/>
+<%= text_area 'review', 'body'  %></p>
+
+<p>
+<!img src="/images/tag_blue.png" alt="" /> <!-- <b>Tags (separate tags with commas)</b><br /> -->
+<%# text_field 'review', 'tag_list' %>
+
+</p>
+
+
+<!--[eoform:review]-->
+

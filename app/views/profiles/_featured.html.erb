@@ -1,0 +1,12 @@
+<%
+profile ||= nil
+%>
+
+<% if profile %>
+  <!h2><!/h2>
+  	<!img src="/images/featured.png" align="left"><%# icon profile, :small, :class => 'left' rescue ""%>
+	<%= image_tag profile.gravatar_url, :width => "50"%>
+
+  <div><%= link_to h(profile.f), profile %></div>
+  <%# truncate_html sanitize(textilize(profile.about_me)), 360, link_to('more', profile_path(profile)) %>
+<% end %>

@@ -1,0 +1,37 @@
+<div class="title">
+	<h2>Gear For Sale <br /> </h2>
+<br />
+
+<div >
+<p>
+<% for gear in @gears %>
+
+
+<div class="newest_member clear">
+  <div class="left">
+  <% profile = gear.profile %>
+  <%= icon profile rescue '' %> 
+  </div>
+  <div class="left" style="margin-left: 10px; font-size:20px;">
+  <%= link_to h(gear.title), gear %>
+  <%= sprintf('$%0.2f',gear.price).gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")  %> 
+  </div>
+  <div class="clear"></div>
+</div>
+
+<% end %>
+
+</p>
+<br /><p><%= will_paginate @gears, :inner_window => 10, :outer_window => 10 %>
+</p>
+</div>
+
+<br />
+
+</div>
+
+<% if @u != nil %>
+  <%= link_to 'Post new gear for sale', new_gear_path %>
+<% else %>
+  <%= link_to 'Login to post new gear for sale', home_path %>
+<% end %>

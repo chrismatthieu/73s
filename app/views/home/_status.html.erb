@@ -1,0 +1,19 @@
+<!-- <h2>Your Current Status<br />(click text below)</h2><br /> -->
+<!p>
+	<% @currentstatus = Status.find(:first, :conditions => ['profile_id = ? and privatemsg != ?', @p.id, true], :order => 'created_at DESC' )%>
+  <% if @currentstatus 
+    @current_status = @currentstatus.message
+	else
+    @current_status = "n/a"
+  end %>
+  <span id="status"><%= h @current_status %></span>
+  <%= in_place_editor "status", 
+                      {:url => url_for(:controller => "home", :action => "updatestatus", :id => @p.id) } %>
+<!/p>
+<%
+# if @p != nil
+#   @userstatus = User.find(@p.user.id) 
+#   @userstatus.last_active = Time.now
+#   @userstatus.save
+# end
+%>

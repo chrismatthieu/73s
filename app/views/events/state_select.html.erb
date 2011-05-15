@@ -1,0 +1,25 @@
+<% if params[:country] == "United States" %>
+<%= state_select 'event', 'eventstate', country='US_WITH_CODE' %>
+<% elsif params[:country] == "India" %>
+<%= state_select 'event', 'eventstate', country='INDIA' %>
+<% elsif params[:country] == "Canada" %>
+<%= state_select 'event', 'eventstate', country='CANADA' %>
+<% elsif params[:country] == "Australia" %>
+<%= state_select 'event', 'eventstate', country='AUSTRALIA' %>
+<% elsif params[:country] == "Spain" %>
+<%= state_select 'event', 'eventstate', country='SPAIN' %>
+<% elsif params[:country] == "Uganda" %>
+<%= state_select 'event', 'eventstate', country='UGANDA' %>
+<% elsif params[:country] == "France" %>
+<%= state_select 'event', 'eventstate', country='FRANCE' %>
+<% elsif params[:country] == "Germany" %>
+<%= state_select 'event', 'eventstate', country='GERMAN' %>
+<% elsif params[:country] == "Brazil" %>
+<%= state_select 'event', 'eventstate', country='BRAZIL' %>
+<% elsif params[:country] == "Ireland" %>
+<%= state_select 'event', 'eventstate', country='IRELAND' %>
+<% elsif params[:country] == "Poland" %>
+<%= state_select 'event', 'eventstate', country='POLAND' %>
+<% else %>
+<%= text_field 'event', 'eventstate', :class=>"text" %>
+<% end %>

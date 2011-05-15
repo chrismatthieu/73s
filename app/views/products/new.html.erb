@@ -1,0 +1,52 @@
+<h1>New Product</h1>
+
+<% less_form_for @product, :html => {:multipart=>true} do |f| %>
+  <%= f.error_messages %>
+
+    <%= f.hidden_field :company_id, :value => @company %>
+
+  <p>
+	<%= f.select( "category", {"HT Radio" => "ht", "Mobile Radio" => "mobile", "Base Station Radio" => "base", "Antenna" => "antenna", "Test Equipment" => "test", "Amplifier" => "amplifier", "Microphone" => "microphone", "Power Supply" => "power", "Amateur TV" => "atv", "Sound Card Interface" => "soundcard", "Miscellaneous" => "misc" }) %> 
+
+    <%= f.text_field :name, :label => 'Product Name: ' %>
+    <%= f.text_field :url, :label => 'Product URL: ' %>
+    <%= f.text_area :description %>
+    <%= f.check_box :dstar, :label => 'Supports D-Star? ' %>
+    <%= f.check_box :aprs, :label => 'Supports APRS? ' %>
+    <%= f.check_box :computer, :label => 'Computer Interface? ' %>
+    <%= f.check_box :vox, :label => 'Supports VOX? ' %>
+    <%= f.check_box :fm, :label => 'Supports FM Mode? ' %>
+    <%= f.check_box :cw, :label => 'Supports CW Mode? ' %>
+    <%= f.check_box :ssb, :label => 'Supports SSB Mode? ' %>
+    <%= f.check_box :am, :label => 'Supports AM Mode? ' %>
+    <%= f.check_box :head, :label => 'Detachable Remote Head? ' %>
+    <%= f.check_box :speaker, :label => 'Includes Built-in Speaker? ' %>
+    <%= f.check_box :preamp, :label => 'Includes Built-in Pre-amp? ' %>
+    <%= f.check_box :swr, :label => 'Includes Built-in SWR? ' %>
+    <%= f.check_box :submersible, :label => 'Is it Submersible? ' %>
+    <%= f.check_box :widereceive, :label => 'Includes Wide Receive? ' %>
+    <%= f.check_box :cwtrainer, :label => 'Includes CW Trainer? ' %>
+    <%= f.check_box :gps, :label => 'Includes Built-in GPS? ' %>
+    <%= f.check_box :barometer, :label => 'Includes Built-in Barometer? ' %>
+    <%= f.check_box :temperature, :label => 'Includes Built-in Thermometer? ' %>
+    <%= f.check_box :dualband, :label => 'Supports Dual-band? ' %>
+    <%= f.check_box :bluetooth, :label => 'Includes Built-in Bluetooth? ' %>
+    <%= f.text_field :minpower, :label => 'Lowest Power Setting in Watts? ' %>
+    <%= f.text_field :maxpower, :label => 'Highest Power Setting in Watts? ' %>
+    <%= f.text_field :lowestband, :label => 'Lowest Band in Meters? ' %>
+    <%= f.text_field :highestband, :label => 'Highest Band in Meters? ' %>
+    <%= f.text_field :memorychannels, :label => 'How Many Memory Channels? ' %>
+	<%= f.select( "display", {"green" => "green", "amber" => "amber", "blue" => "blue" }) %>
+	
+
+    <%# f.text_field :display, :label => 'Display? ' %>
+    <%= f.text_field :price, :label => 'Price in USD: ' %>
+	<%= f.wrap(:image, :label => 'Image: '){file_column_field "product", "image", :size => 15} %>
+	
+</p>
+  <p>
+    <%= f.submit 'Create', :class=>"button" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', products_path %>

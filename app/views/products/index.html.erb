@@ -1,0 +1,101 @@
+<% content_for :head do  -%>
+	<%= stylesheet_link_tag 'redbox' %>
+	<%= javascript_include_tag 'redbox' %>
+<% end %>
+
+<% if !@company.nil? %>
+<a href="<%= '/companies/' + @company.id.to_s %>"><%=image_tag(url_for_file_column(@company, :image, :small.to_s), {:title=>@company.name, :alt=>@company.name}) rescue "" %></a
+<br/>
+<br/>
+<% end %>
+<%= link_to('&larr; Back to Companies', '/companies') %>
+
+<hr>
+<h2>Products</h2>
+<br/><br/>
+
+<% if @products.blank? %>
+	No products listed...
+<% else %>
+
+<table>
+
+	<% @products.each do |product| %>
+	<tr><td>
+		<%
+		@getrating = Rating.find(:all, :conditions => [ "controllername = ? and controllerid = ?", "products", product.id])
+		if @getrating.nil?
+		  @rating=0
+		else
+		  average = 0.0
+		  counter = 0
+		  @getrating.each { |r|
+		    average = average + r.rating
+		    counter = counter + 1
+		  }
+		  if counter != 0
+		    average = average / counter 
+		  end
+		  @rating = average    
+		end     
+		%>
+
+		<div>
+		<ul class='star-rating'>
+		    <li class='current-rating' style='width:<%= (@rating * 30).to_i -%>px;'>
+		          Currently <%= number_with_precision(@rating, 1) %>/5 Stars.
+		    </li>
+		<ul>
+		</div>
+	
+			<a href="<%= '/products/' + product.id.to_s %>"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+
+	</td><td>
+			<a href="<%= '/products/' + product.id.to_s %>"> View/Rate <%=h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %><br/>
+			
+    		<p id="add_link<%=product.id.to_s%>"><%= button_to_function("+ Add to List",
+			"Element.remove('add_link#{product.id.to_s}'); Element.show('add_list#{product.id.to_s}')")%></p>
+			<div id="add_list<%=product.id.to_s%>" style="display:none;">
+				<table bgcolor="#CCFFCC" width="200"><tr><td>
+
+				<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
+				    :html => {:id => 'list_form'}) do %>
+
+				<%= hidden_field :list, :product_id, :value => product.id %>
+
+				<%= radio_button("list", "status", "1")  %> Want List <br/>
+				<%= radio_button("list", "status", "2")  %> Have List <br/>
+				<%= radio_button("list", "status", "3")  %> Had List <br/>
+				<br/>
+				<%= submit_tag 'Add' %>
+				<% end %>	
+
+				</td></tr></table>
+				<br />
+			</div>
+			
+
+			
+			
+			<% if  !@u.nil? and @u.is_admin  %>
+			| 
+		    <%= link_to 'Edit Product', edit_product_path(product) %>
+			| 
+		    <%= link_to 'Destroy Product', { :action => "destroy", :id => product.id }, :confirm => "Are you sure?", :method => :delete %>
+		<br><br>
+			<% end %>
+
+				
+	</td></tr>
+		
+	<% end %>
+</table>
+
+<% end %>
+
+<br />
+<p><%= will_paginate @products %></p>
+
+<% if !@company.nil? and !@u.nil? %>
+<%= link_to 'Add New product', '/company/' + @company.id.to_s + '/product/new' %>
+<% end %>

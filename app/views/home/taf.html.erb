@@ -1,0 +1,32 @@
+
+<div class="activity_box learn">
+  <div class="left bio_stuff">
+	<img src="/images/bigmegaphone.png" align="left">
+	</div>
+
+<div class="right bio_stuff">
+
+<br /><br />
+
+Send your ham buddy an invitation to join 73s.org!
+
+<br />	<br />	
+
+<div class="forgot_form"> 
+
+<% less_form_for :invite, :url => {:controller => 'home', :action => :tafmail} do |f| %>
+
+	<%= f.text_field :email, :value => @email %>
+	
+	<%= f.text_area :message %>
+
+	<div class="row_button">
+	  <%= submit_tag 'Send Invite', :class=>'button' %>
+	</div>
+ 
+<% end %>
+
+</div>
+</div>
+</div>
+

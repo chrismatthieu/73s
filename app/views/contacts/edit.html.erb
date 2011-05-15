@@ -1,0 +1,109 @@
+<div class="title">
+	<h2>Editing Contact</h2>
+<br />
+<p>
+
+<%= error_messages_for :contact %>
+
+<% form_for(@contact) do |f| %>
+  <p>
+    <b>Callsign</b><br />
+    <%= f.text_field :callsign %>
+  </p>
+
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Email</b><br />
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <b>DXCC</b><br />
+    <%= f.text_field :dxcc %>
+  </p>
+
+  <p>
+    <b>Country</b><br />
+    <%= f.text_field :country %>
+  </p>
+
+  <p>
+    <b>State</b><br />
+    <%= f.text_field :state %>
+  </p>
+
+  <p>
+    <b>City</b><br />
+    <%= f.text_field :city %>
+  </p>
+
+  <p>
+    <b>Address</b><br />
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <b>Band</b><br />
+    <%= f.text_field :band %>
+  </p>
+
+  <p>
+    <b>Frequency</b><br />
+    <%= f.text_field :frequency %>
+  </p>
+
+  <p>
+    <b>Grid Square</b><br />
+    <%= f.text_field :gridsquare %>
+  </p>
+
+  <p>
+    <b>Signal</b><br />
+    <%= f.text_field :signal %>
+  </p>
+
+  <p>
+    <b>Event</b><br />
+    <%= f.text_field :event %>
+  </p>
+
+  <p>
+    <b>Private Notes</b><br />
+    <%= f.text_area :notes %>
+  </p>
+
+  <p>
+    <b>QSL Message (included in email to Contact)</b><br />
+    <%= f.text_area :qslmessage %>
+  </p>
+
+  <p>
+    <b>Contacttime</b><br />
+    <%= f.datetime_select :contacttime %>
+  </p>
+
+  <br />
+    <p>
+    <img src="/images/tag_blue.png" alt="" /> <b>Tags (separate tags with commas)</b><br />
+    <% # f.text_field(:tag_list) %>
+    <% # text_field_tag('tags', @contact.tag_list) %>
+    <%= text_field 'contact', 'tag_list' %>
+
+    </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<br />
+<p>
+<%= link_to 'Show', contact_path %> |
+<%= link_to 'Back', contacts_path %>
+</p>
+<br />
+</div>

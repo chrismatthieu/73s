@@ -1,0 +1,58 @@
+<%
+# require "rubygems"
+# require 'avatar/view/action_view_support'
+# require 'digest/md5'
+
+# include Avatar::View::ActionViewSupport
+%>
+
+<div class="forum_topic">
+
+
+  <ul id="posts_list">
+    <a name="forum_post_<%=post.id%>" href=""></a>
+<div class="post" id="forum_post_<%=post.id%>">
+  
+  <div class="info">
+	<%# icon post.user, :small, :class => 'left avatar_on_comment'   %>
+	<%# @profile = Profile.find(:first, :conditions => ['user_id = ?', post.user_id]) %>
+	<% @profile = Profile.find(:first, :conditions => ['user_id = ?', post.user_id]) %>
+	<%# img_opts = {:title => @profile.user.login, :alt => @profile.user.login, :class => "50"} %>
+	<%# link_to avatar_tag(@profile, {:size => "50", :file_column_version => "50" }, img_opts) + ' ' + @profile.user.login, '/' + @profile.user.login %>
+	
+	<%# icon @profile, :small  rescue "" %>	
+	
+	<%= image_tag @profile.gravatar_url, :width => "50"%>
+	
+	<!-- <% if !@profile.nil? && !@profile.icon.blank? %>
+		<a href="/<%=@profile.user.login%>"><img src="<%=url_for_file_column(@profile, :icon, :small.to_s) rescue ''%>">
+			<%#image_tag(url_for_file_column(@profile, :icon, :medium.to_s), {:title=>@profile.user.login, :alt=>@profile.user.login}) %>
+		</a>
+		<%# image_tag(profile_path( @profile, "small"), {:title=>@profile.user.login, :alt=>@profile.user.login, :class=>"small"}) %>
+	<% else %>
+		<%= link_to image_tag("/images/avatar_default_small.png"), '/' + @profile.user.login %>
+    <% end %> -->
+
+	<%# url_for_file_column(@profile, :icon, :medium.to_s) %>
+	
+<br />
+  Posted by <%= link_to h(@profile.user.login), "/#{@profile.user.login}" %><br/>
+  about <%= time_ago_in_words  post.created_at %> ago<br/>
+
+	 <% if forum_session.can_edit_post? post -%>
+    <%# link_to "Edit", edit_forum_topic_post_path(@forum, @topic, post) %> 
+    <% end -%>
+    <% moderator_actions_for @forum do -%>
+    <%= link_to "Delete", forum_topic_post_path(@forum, @topic, post), :confirm => "Are you sure?", :method => :delete %>
+    <% end %>
+
+  </div>
+  
+  <div class="body">
+    <p><%= textilize h(post.body) %></p>
+
+  </div>
+</ul>
+
+</div>
+

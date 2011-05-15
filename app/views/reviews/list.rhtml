@@ -1,0 +1,156 @@
+<div class="title">
+<h2>
+
+<script type="text/javascript">
+function doForms(form)
+{
+	var sort = form.sort_order[form.sort_order.selectedIndex].value;
+   	window.location = '/' + sort;
+}
+</script>
+<form id="sortBy">
+	<label>Reviews: </label>
+	<select id="sort_order" onchange="doForms(this.form)">
+		<% if controller.action_name == "all" %>
+			<option value="all" selected>Most Recent Reviews</option>
+		<% else %>
+			<option value="all">Most Recent Reviews</option>
+		<% end %>
+		<% if controller.action_name == "popular" %>
+			<option value="popular" selected>Most Viewed Reviews</option>
+		<% else %>
+			<option value="popular">Most Viewed Reviews</option>
+		<% end %>
+		<% if controller.action_name == "best" %>
+			<option value="best" selected>Best Voted Reviews</option>
+		<% else %>
+			<option value="best">Best Voted Reviews</option>
+		<% end %>
+		<% if controller.action_name == "worst" %>
+			<option value="worst" selected>Worst Voted Reviews</option>
+		<% else %>
+			<option value="worst">Worst Voted Reviews</option>
+		<% end %>
+		<% if controller.action_name == "tags" %>
+			<option value="tags" selected>Reviews by Tags</option>
+		<% else %>
+			<option value="tags">Reviews by Tags</option>
+		<% end %>
+	</select>
+</form>
+
+</h2>
+
+  
+<table width="100%">
+  
+<% counter = 0 %>
+
+<% for review in @reviews %>
+
+<% @revid = review.id %>
+
+<% counter = counter + 1
+if counter.remainder(2) == 0 %>
+  <tr bgcolor="lightblue">
+<% else %>
+<tr>
+<% end %>
+  
+  <td valign="top">
+  <% @mychug = User.find(review.user_id) %>
+  <% @myphoto = @mychug.photourl %>
+  
+  <% if @myphoto == nil || @myphoto == '' %>
+    <img src="/images/buddyicon.jpg" border="0" width="48" height="48" alt="" />
+  <% else %>
+    <img src="<%=h @myphoto %>" border="0" width="48" height="48" alt="" />
+  <% end %>
+  <br />
+  <%= link_to @mychug.login,  :controller => 'account', :action => 'callsign', :callsign => @mychug.login %>
+
+
+	<div id="thumb-<%= counter%>">
+<p>
+	<% if session[":thumb" + @revid.to_s] != true %>
+	    <%= link_to_remote( image_tag("/images/thumbup.gif", { :border => "0" }), :url => { :controller => "reviews", 
+	        :action => "thumbup", :id => @revid },
+			:method => 'get', 
+	        :update => "thumb-#{counter}") %>
+	<% else %>
+		<%= image_tag("/images/thumbup.gif", { :border => "0" }) %>
+	<% end %>
+
+	<%= review.thumbsup %>
+
+	<% if session[":thumb" + @revid.to_s] != true %>
+	    <%= link_to_remote( image_tag("/images/thumbdown.gif", { :border => "0" }), :url => { :controller => "reviews", 
+	        :action => "thumbdown", :id => @revid },
+			:method => 'get', 
+	        :update => "thumb-#{counter}") %>
+	<% else %>
+		<%= image_tag("/images/thumbdown.gif", { :border => "0" }) %>
+	<% end %>
+
+	<%= review.thumbsdown %>
+</p>
+</div>
+
+  </td>
+  
+  <td>
+  <% @coms = Comment.find(:all, :conditions => [ "controllername = ? and controllerid = ?", "reviews", review.id ]) %>
+
+	<% @rating = review.rating %>
+	<% if @rating == nil %>
+	  <% @rating = 0 %>
+	<% end %>
+	<table border="0"><tr><td>
+	<%= number_with_precision(@rating, 1) %>/5 Stars<br />
+	<ul class='star-rating'>
+	    <li class='current-rating' style='width:<%= (@rating * 12).to_i -%>px;'>
+	          Currently <%= number_with_precision(@rating, 1) %>/5 Stars.
+	        </li>
+	</ul>
+	</td></tr></table>
+		
+  <%= time_ago_in_words review.timestamp %> ago - <%= @coms.length.to_s %> comments <br />
+  <%= review.body[0, 199] %>
+
+
+  <br />
+  
+  <div id="comments">
+    <% # render(:partial => 'comments') %> 
+  </div>
+  
+
+  </td>
+  
+    <td valign="top"><%= link_to 'Show', :action => 'show', :id => review %></td>
+    
+    <% if current_user.id != nil %>
+
+      <% if current_user.login.upcase == 'N7ICE' %>
+        <td valign="top"><%= link_to 'Edit', :action => 'edit', :id => review %></td>
+        <td valign="top"><%= link_to 'Destroy', { :action => 'destroy', :id => review }, :confirm => 'Are you sure?', :method=>:post %></td>
+      <% end %>    
+
+    <% end %>    
+    
+    
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @reviews, :inner_window => 10, :outer_window => 10 %>
+
+<br />
+
+<% if current_user != :false %>
+  <p>
+  <%= link_to 'New review', :action => 'new' %>
+  </p>
+<% end %>
+
+</div>

@@ -1,0 +1,26 @@
+<%= error_messages_for 'review' %>
+
+<!--[form:review]-->
+<!--
+<p><label for="review_raing">Rating</label><br/>
+<select id="review_raing" name="review[rating]"><option value="5" selected>5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></p>
+-->
+
+<p><label for="review_title">Title</label><br/>
+<%= text_field 'review', 'title', :size => "60"  %></p>
+
+<p><label for="review_body">Review</label><br/>
+<%# text_area 'review', 'body'  %>
+<%= textile_editor 'review', 'body', :cols => "60" -%></p>
+
+<p><%= check_box "review", "emailcomments", :checked => 'checked'  %> <label for="review_emailcomments">Email me when people comment on my review</label><br/>
+</p>
+<br />
+<p>
+<!img src="/images/tag_blue.png" alt="" /> <!-- <b>Tags (separate tags with commas)</b><br /> -->
+<%# text_field 'review', 'tag_list' %>
+
+</p>
+
+
+<!--[eoform:review]-->

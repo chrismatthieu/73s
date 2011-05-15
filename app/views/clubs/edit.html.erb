@@ -1,0 +1,44 @@
+<h1>Editing club</h1>
+
+<%= error_messages_for :club %>
+
+<% form_for(@club) do |f| %>
+  <p>
+    <b>Club Name</b><br />
+    <%= f.text_field :clubname %>
+  </p>
+
+  <p>
+    <b>Club Website</b><br />
+    <%= f.text_field :cluburl %>
+  </p>
+
+  <p>
+    <b>Club Description</b><br />
+    <%# f.text_area :clubdesc %>
+<%= textile_editor 'club', 'clubdesc', :cols => "60" -%>
+  </p>
+
+  <p>
+    <b>Country</b><br />
+    <%= f.text_field :clubcountry %>
+  </p>
+
+  <p>
+    <b>State</b><br />
+    <%= f.text_field :clubstate %>
+  </p>
+
+  <p>
+    <b>City</b><br />
+    <%= f.text_field :clubcity %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+<%= textile_editor_initialize -%>
+
+<%= link_to 'Show', @club %> |
+<%= link_to 'Back', clubs_path %>

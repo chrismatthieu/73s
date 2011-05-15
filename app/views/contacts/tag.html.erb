@@ -1,0 +1,23 @@
+<div class="title">
+	<h2>Contacts Tagged with <%= @tag.capitalize %></h2>
+</div>
+<div class="entry">
+	<p>
+	
+  <% for contact in @contacts %>
+  <% if contact.confirmed %>
+    <img src="/images/icon_star.gif" width="16" height="16" alt="" />
+  <% else %>
+    <img src="/images/cleardot.gif" width="16" height="16" alt="" />
+  <% end %>
+  <%=h contact.name %> (<b><a href="/callsign/<%= contact.callsign %>"><%=h contact.callsign %></a></b>) from <%=h contact.country %> tagged by <%= contact.user.name %> (<b><a href="/callsign/<%= contact.user.login %>"><%= contact.user.login %></a></b>) from <%=h contact.user.country %> <%=h time_ago_in_words(contact.contacttime) %> ago
+
+  <br />
+
+  <% end %>
+  </p>
+  <br /><p><%= will_paginate @users, :inner_window => 10, :outer_window => 10 %>
+  </p>
+
+</p>
+<br /></div>

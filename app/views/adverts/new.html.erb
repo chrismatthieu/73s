@@ -1,0 +1,37 @@
+<h1>New advert</h1>
+
+<%= error_messages_for :advert %>
+
+<% form_tag({:action => 'create'}, :multipart => true) do  %>
+
+  <p>
+    <b>Description</b><br />
+	<%= text_area 'advert', 'description'  %></p>
+
+
+<p><label for="advert_placement">Placement</label><br/>
+<%= select( "advert", "placement", { "banner" => "0", "sidebar(dem)" => "1", "sidebar(rep)" => "2", "sidebar(other)" => "3", "sidebar(general)" => "4", "insert banner (general)" => "5"}) %>
+</p>
+
+<p><label for="advert_startdate">Startdate</label><br/>
+<%= datetime_select 'advert', 'startdate'  %></p>
+
+<p><label for="advert_enddate">Enddate</label><br/>
+<%= datetime_select 'advert', 'enddate'  %></p>
+
+<p><label for="advert_url">Target URL </label><br/>
+<%= text_field 'advert', 'url'  %></p>
+
+<p>Upload Advert: <%= file_field("advert", "advert") %> 
+</p>
+
+<%# f.hidden_field("advert", 'id', :value => @params[:id] ) %>
+
+<%= submit_tag "Create" %>
+
+<% end %>
+
+
+
+
+<%= link_to 'Back', adverts_path %>

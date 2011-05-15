@@ -1,0 +1,26 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    RedCloth (4.2.7)
+    colored (1.1)
+    hoe (2.9.4)
+      rake (>= 0.8.7)
+    hpricot (0.6.161)
+    rake (0.8.7)
+    redgreen (1.2.2)
+    uuidtools (1.0.3)
+    will_paginate (2.2.2)
+    youtube-g (0.4.1)
+      hoe (>= 1.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  RedCloth
+  colored (= 1.1)
+  hpricot (= 0.6.161)
+  redgreen (= 1.2.2)
+  uuidtools (= 1.0.3)
+  will_paginate (~> 2.2.2)
+  youtube-g (= 0.4.1)

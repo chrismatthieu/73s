@@ -1,0 +1,12 @@
+<div class="title">
+	<h2>Import Contacts </h2>
+<br />
+<p>You can now upload your ADIF-formated QSO log files into 73s.org!  Note: Depending on the size of your contact list, this import could take a while.  <b>Don't refresh or navigate away from this page while importing!</b></p>
+
+<% form_for :dump, :url=>{:controller=>"contacts", :action=>"adif_import"}, :html => { :multipart => true } do |f| -%>
+      <label for="dump_file">
+        Select ADIF File :
+      </label>
+       <%= f.file_field :file -%>
+       <%= submit_tag 'Submit' -%>
+<% end -%>

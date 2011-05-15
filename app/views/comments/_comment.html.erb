@@ -1,0 +1,63 @@
+<%-
+comment ||= @comment
+truncate = truncate.nil? ? true : truncate
+
+#REVISIT
+# youtube_videos = comment.comment.scan(/\[youtube:+.+\]/)
+youtube_videos = ""
+c = comment.comment.dup.gsub(/\[youtube:+.+\]/, '')
+-%>
+
+
+<div id="<%= comment.dom_id %>" class="comment_holder"> 
+  <%#icon comment.profile, :small, :class => 'left avatar_on_comment' rescue '' %> 
+	<%= image_tag(comment.profile.gravatar_url, :width => "50") %>
+
+  <!-- <div class="date_details_black">
+    <%# time_ago_in_words comment.created_at %> <%# link_to h(comment.profile.f), '/' + comment.profile.user.login %>
+  </div> -->
+<div>
+
+	
+	
+</div>
+<% if controller.controller_name == "blogs" %>
+<div class="date_details_black">
+  <%= time_ago_in_words comment.created_at %> ago <%# link_to h(comment.profile.f), '/' + comment.profile.user.login %>
+</div>
+  <div class="comment_message">
+<% else %>	
+  <div class="comment_message jstruncate">
+	<% parent = comment.commentable
+	  if parent.class.name == 'Profile' %>	
+	  <div class="date_details_black">
+	    <a href="/<%=parent.user.login%>">On <%=parent.user.login.upcase %>'s Wall</a><br />
+		<%= time_ago_in_words comment.created_at %> ago <%# link_to h(comment.profile.f), '/' + comment.profile.user.login %>
+	  </div>
+	    	<!-- <a href="/<%=parent.user.login%>">read full comment</a> -->
+	<% elsif parent.class.name == 'Blog' %>
+	  <div class="date_details_black">
+	    <a href="/<%=parent.profile.user.login rescue "/" %>/blog/<%=parent.id%>">On <%=parent.profile.user.login.upcase rescue "" %>'s Blog</a><br />
+		<%= time_ago_in_words comment.created_at %> ago <%# link_to h(comment.profile.f), '/' + comment.profile.user.login %>
+	  </div>
+	    	<!-- <a href="<%=profile_blog_path(parent.profile, parent) %>">read full comment</a> -->
+	<% end %>	
+<% end %>	
+      <%= sanitize(textilize(c)) %>
+	<% if @p != nil && comment.profile_id == @p.id %>
+	<%= link_to '<img src="/images/trash.gif" align="right">', comment, :confirm => 'Are you sure?', :method => :delete %>
+	<% end %>
+  </div>
+
+
+  <% unless youtube_videos.empty? %>
+    <strong><%= pluralize youtube_videos.size, 'video' %>:</strong><br/>
+    <% youtube_videos.each do |o| %>
+    <%= tb_video_link(o.gsub!(/\[youtube\:|\]/, '')) %>
+  <% end
+  end %>
+  <div class="clear"></div>
+</div>
+
+
+

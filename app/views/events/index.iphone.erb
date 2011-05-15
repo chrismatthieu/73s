@@ -1,0 +1,22 @@
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => "/", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+
+	<h1>Ham Radio Events  
+  </h1>
+<p>
+<ul>
+<% for event in @events %>
+<li> <%= link_to h(event.eventname) + ' (' + h(event.eventstate) + ')', event %> </li>
+<% end %>
+</ul>
+</p>
+<p><%= will_paginate @events, :inner_window => 10, :outer_window => 10 %>
+</p>

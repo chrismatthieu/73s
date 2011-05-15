@@ -1,0 +1,86 @@
+.forum_topic {
+	border: 1px solid #464646;
+}
+
+.forum_topic .clear {
+	clear: left;
+}
+
+.forum_topic .post {
+	padding: 0;
+	clear: left;
+	border-bottom: 1px dotted #464646;
+}
+
+.forum_topic .post ul {
+	float: right;
+	list-style: none;
+	margin-top: -1.5em;
+}
+
+.forum_topic .post ul li {
+	display: inline;
+}
+
+.forum_topic .post .date {
+	background: #DEDEDE;
+	font-weight: bold;
+	padding: 2px;
+	color: #464646;
+}
+
+.forum_topic .post .user {
+	float: left;
+	text-align: left;
+	padding: 7px;
+	border-right: 1px dotted #464646;
+	width: 120px;
+	overflow: hidden;
+}
+
+.forum_topic .post .body {
+	margin-left: 134px;
+	border-left: 1px dotted #464646;
+	padding-left: 10px;
+}
+
+.forum_topic .post .body p img {
+	float: none;
+}
+
+.forum_topic .post .user img,
+.forum_topic .post .user .name {
+	float: none;
+	display: block;
+}
+
+table.forum thead {
+	background: #464646;
+	color: #fff;
+}
+
+table.forum tbody td {
+	border-bottom: 1px dotted #464646;
+}
+
+#forum h2 {
+	font-weight: bold;
+	padding: 4px;
+	font-size: 14px;
+}
+
+#forum .title {
+  display: block;
+}
+
+#forum .new_posts{
+  font-weight: bold;
+}
+
+#forum .description {
+  display: block;
+  padding-left: 15px;
+  font-size: 0.9em;
+  font-style: italic;
+}
+

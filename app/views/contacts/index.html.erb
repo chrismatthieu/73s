@@ -1,0 +1,49 @@
+<div class="title">
+	<h2>Listing Contacts (<%= link_to_function '+ Add New Contact', 
+  "new Effect.Parallel([
+  new Effect.toggle('welcome'),
+  new Effect.toggle('target', 'slide')
+  ])" %>) <% if @p != nil %> - <a href="/upload">Import contacts (ADIF)</a><% end %></h2>
+  <p><strong><%= @totalcontacts %> QSO contacts - <%= @totalconfirmed %> QSOs confirmed (<img src="/images/icon_star.gif" width="16" height="16" alt="" />)</strong> - <a href="/map">Show Contact Map</a> <!-- | <a href="/<%=@callsign%>/graph">Social Graph</a> --> | <a href="/<%=@callsign%>/timeline">Timeline</a></p>
+
+	
+<div id="target" style="display:none">
+	<div><p>
+	<%= link_to_function 'cancel', 
+  "new Effect.Parallel([
+  new Effect.toggle('welcome', 'slide'),
+  new Effect.toggle('target')
+  ])" %>
+  </p><br />
+    <%= render :partial => "form" %>
+    
+	</div>
+</div>
+	
+<!-- <a href="/<%=@p.user.login%>/graph"><img src="/images/qsograph.jpg" align="right" border="0" width="200" alt="" /></a> -->
+
+<div id="welcome">
+<p>
+<% for contact in @contacts %>
+  <% if contact.confirmed %>
+    <img src="/images/icon_star.gif" width="16" height="16" border="0" alt="" />
+  <% else %>
+    <img src="/images/cleardot.gif" width="16" height="16" border="0" alt="" />
+  <% end %>
+
+    <%=h contact.name %> (<b><a href="/<%= contact.callsign %>"><%=h contact.callsign %></a></b>) from <%=h contact.country %> <%=h time_ago_in_words(contact.contacttime) %> ago 
+    <%= link_to 'Show', contact %> | 
+    <%= link_to 'Edit', edit_contact_path(contact) %> | 
+    <%= link_to 'Delete', contact, :confirm => 'Are you sure?', :method => :delete %>
+
+  <br />
+<% end %>
+</p>
+
+<br /><p><%= will_paginate @users, :inner_window => 10, :outer_window => 10 %>
+</p>
+</div>
+
+<br />
+
+</div>

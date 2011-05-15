@@ -1,0 +1,8 @@
+<%=
+  l = { :caption => 'New', :url => new_profile_message_path(@p), :html_options => {} }
+  r = { :back => true, :caption => 'Back', :url => profile_path(@p), :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+
+<%= render :partial=>'messages/list', :locals=>{:list=>@p.received_messages} %>

@@ -1,0 +1,117 @@
+  
+<table width="100%" cellspacing="0" cellpadding="0">
+  
+<% counter = 0 %>
+
+<% for review in @reviews %>
+
+<% @revid = review.id %>
+
+<% counter = counter + 1
+if counter.remainder(2) == 0 %>
+  <tr bgcolor="lightblue">
+<% else %>
+<tr>
+<% end %>
+  
+  <td valign="top">
+  <% @myphoto = @mychug.photo %>
+
+  <% @byuser = User.find(review.user_id) %>
+  
+  <% if @myphoto == nil || @myphoto == '' %>
+    <img src="/images/buddyicon.jpg" border="0" width="48" height="48" alt="" />
+  <% else %>
+    <img src="<%=h @myphoto %>" border="0" width="48" height="48" alt="" />
+  <% end %>
+  <br />
+  <br />by <%= link_to @byuser.userid.capitalize,  :controller => 'voters', :action => 'users', :user => @byuser.userid %>
+<div id="thumb-<%= counter%>">
+<p>
+	<% if session[":thumb" + @revid.to_s] != true %>
+	    <%= link_to_remote( image_tag("/images/thumbup.gif", { :border => "0" }), :url => { :controller => "reviews", 
+	        :action => "thumbup", :id => @revid },
+			:method => 'get', 
+	        :update => "thumb-#{counter}") %>
+	<% else %>
+		<%= image_tag("/images/thumbup.gif", { :border => "0" }) %>
+	<% end %>
+
+	<%= review.thumbsup %>
+
+	<% if session[":thumb" + @revid.to_s] != true %>
+	    <%= link_to_remote( image_tag("/images/thumbdown.gif", { :border => "0" }), :url => { :controller => "reviews", 
+	        :action => "thumbdown", :id => @revid },
+			:method => 'get', 
+	        :update => "thumb-#{counter}") %>
+	<% else %>
+		<%= image_tag("/images/thumbdown.gif", { :border => "0" }) %>
+	<% end %>
+
+	<%= review.thumbsdown %>
+</p>
+</div>
+  </td>
+
+  
+  <td>
+<% @coms = Comment.find(:all, :conditions => [ "controllername = ? and controllerid = ?", "reviews", review.id ]) %>
+
+<% @rating = review.rating %>
+
+
+    	<div class="stars" title="<%= number_with_precision(@rating, 1) %>/5 Stars">
+        	<div class="star-rating">
+				<div class="current-rating" style="width:<%= (@rating * 12).to_i -%>px">
+					<%= number_with_precision(@rating, 1) %>/5 Stars
+				</div>
+			</div>
+       </div>    <%= number_with_precision(@rating, 1) %>/5 Stars	
+		
+<h3><%= link_to review.title,  :controller => 'reviews', :action => 'show', :id => review %><span>, <%= time_ago_in_words review.timestamp %> ago - <%= @coms.length.to_s %> comments </span></h3>		
+  <%= review.body[0, 199] %>... <%= link_to '(read full review)', :controller=> 'reviews', :action => 'show', :id => review %>
+
+  	<p>
+	<table border="0"><tr><td>
+	<b>Tags:</b> </td>
+	<% 
+	require 'strscan'
+	str = review.tag_list
+	ss = StringScanner.new(str)
+	loop do
+	    word = ss.scan(/\w+/)
+	    break if word.nil?
+	%>
+	    <td background="/images/background-global-navigation.png"><center><a href="/reviews/tag/<%= word %>"><%= word %></a></center></td>
+	<%
+	    sep =  ss.scan(/\W+/)
+	    break if sep.nil?
+	end
+	%>
+
+	</tr></table>
+	</p>
+
+  <div id="comments">
+    <% # render(:partial => 'comments') %> 
+  </div>
+  
+  </td>
+  
+	<td valign="top"><%= review.viewcount %> views </td>
+    
+    <% if current_user.id != nil %>
+
+      <% if current_user.login.upcase == 'N7ICE' %>
+        <td valign="top"><%= link_to 'Edit', :action => 'edit', :id => review %></td>
+        <td valign="top"><%= link_to 'Destroy', { :action => 'destroy', :id => review }, :confirm => 'Are you sure?', :method=>:post %></td>
+      <% end %>    
+
+    <% end %>    
+    
+    
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @reviews, :inner_window => 10, :outer_window => 10 %>

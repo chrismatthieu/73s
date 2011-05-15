@@ -1,0 +1,26 @@
+<%
+#locals
+message ||= @message
+to_list ||= @to_list
+%>
+
+
+
+<div id="sub_nav">
+	<%= link_to '&larr; Back to Dashboard', @p %> 
+	<%= link_to "Inbox", messages_path %>
+	<%= link_to "Sent", sent_messages_path unless @p.sent_messages.empty? %>
+	<%= link_to 'Delete', profile_message_path(@p, message), :method => :delete %>
+
+</div>
+<h2 style="font-size: 11px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+	<%= icon message.sender, :big %><br />
+  From: <%= link_to message.sender.f, message.sender %><br />
+  When: <%= time_ago_in_words message.created_at %><br />
+  <strong>Subject: <%= h message.subject %></strong>
+</h2>
+<div class="clear" style="padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+  <%= textilize message.body %>
+</div>
+
+

@@ -1,0 +1,413 @@
+
+
+<% content_for :head do%>
+<%# auto_discovery_link_tag(:rss, "http://#{SITE}/latest_comments.rss", :title=>"Latest Comments") %>
+<%# auto_discovery_link_tag(:rss, "http://#{SITE}/newest_members.rss", :title=>"Newest Members") %>
+<%= stylesheet_link_tag 'redbox' %>
+<%= javascript_include_tag 'redbox' %>
+
+<script type="text/javascript">
+function addLink(text)
+{
+var TheTextBox = document.getElementById("status_input_box");
+TheTextBox.value = '@' + text + ' ' + TheTextBox.value;
+    
+// var textarea = document.getElementById("status_input_box");
+// textarea.innerHTML += link;
+}
+</script>
+
+
+<% end%>
+
+<div>
+	
+	
+	<% if @p != nil %>
+	<%    @statustop = Status.new %>
+	<% form_for(@statustop) do |f| %>
+	<br />
+	  <p>&nbsp;What are you doing right now? - <span id="counter_box">150</span> characters remaining <br />
+	    <%= f.text_field :message, :size => 100, :maxlength => 150, :id => "status_input_box", :onKeyPress => status_counter  %>
+	    <%= f.submit "Submit" %>
+	  </p>
+	<% end %>
+	<% end %>
+	
+  <div class="front_right_column right" style="margin-top: 0px;">
+	
+	<table width="300" cellspacing="0" cellpadding="0" border="0">
+		<tbody><tr>
+			<td width="1" valign="top" style="background-image: url(/images/dashed_vertical.gif); background-position: left center; background-repeat: repeat-y;">
+			</td>
+			<td valign="top">
+
+
+				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+				<tbody>
+				<tr>
+				<td style="padding-top: 1px;" colspan="2">
+				<div class="box_section_head">
+				  New QST
+				</div>
+				</td>
+				</tr>
+				<tr>
+				<td valign="top" style="padding-left: 8px; width: 89px;">
+					<%# icon @qst.profile, :small, :class => 'left' rescue ""%>
+					<%= image_tag @qst.profile.gravatar_url, :width => "50"%>
+			
+					
+				</td>
+				<td class="feature_summary" valign="top" style="padding-left: 8px; width: 306px;">
+					<a href="/reviews/<%=@qst.id rescue '' %>"><%=@qst.title rescue ''%></a>
+
+				<!p>
+					<div class="comment_message jstruncate">
+					  
+					</div>
+				<!/p>
+				</td>
+				</tr>
+				</tbody>
+				</table>
+
+
+				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+				<tbody>
+				<tr>
+				<td style="padding-top: 1px;" colspan="2">
+				<div class="box_section_head">
+				  Featured Member
+				</div>
+				</td> 
+				</tr>
+				<tr>
+				<td valign="top" style="padding-left: 8px; width: 89px;">
+					<%= render :partial => 'profiles/featured', :locals => {:profile => Profile.featured_profile[:profile]} %>
+				</td>
+				<td class="feature_summary" valign="top" style="padding-left: 8px; width: 200px;">
+					<%# truncate_html sanitize(textilize(Profile.featured_profile[:profile].about_me)), 360, link_to('more', profile_path(Profile.featured_profile[:profile])) %>
+					<%= Profile.featured_profile[:profile].about_me rescue ""%>
+
+				</td>
+				</tr>
+				</tbody>
+				</table>
+					
+				
+				<% if false #if @p != nil %>
+
+				
+					<table width="100%" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+					<tbody>
+					<tr>
+					<td style="padding-top: 1px;" colspan="2">
+					<div class="box_section_head">
+					  Your Current Status
+					</div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" style="padding-left: 8px; width: 89px;">
+						<% # javascript_tag "new Ajax.InPlaceEditor('my_status', '#{user_url(:id => current_user)}', {loadTextURL:'#{status_user_url(:id => current_user)}', ajaxOptions:{method:'put'}, callback:function(form, value){ return 'user[status]='+escape(value); }});" %>
+
+				        </li></ul>
+				        <% # javascript_tag "new PeriodicalExecuter(function(){ new Ajax.Updater('status', '#{status_users_url}', {method:'get'}); }, 300)" %>
+
+				      <ul>
+
+				      <li><br />
+
+					</td>
+					<td class="feature_summary" valign="top" style="padding-left: 8px; width: 306px;">
+						<%= render :partial => "home/status" %>
+
+					<!p>
+						<div class="comment_message jstruncate">
+						  <!-- <small>^ Inform fellow Hams of your status or CQ freq. by updating your status.  Click on the status text above to update.</small> -->
+						</div>
+					<!/p>
+					</td>
+					</tr>
+					</tbody>
+					</table>
+
+
+			    <% end %>
+			    
+				<table width="100%" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+				<tbody>
+				<tr>
+				<td style="padding-top: 1px;" colspan="2">
+				<div class="box_section_head">
+				  Tell A Friend
+				</div>
+				</td>
+				</tr>
+				<tr>
+				<td valign="top" style="padding-left: 8px; width: 89px;"  colspan="2">
+					<a href="/taf"><img src="/images/megaphone.gif" align="left"><br /><br /> Tell a fellow ham about our new social network!</a>
+				</td>
+
+				</tr>
+				</tbody>
+				</table>
+			
+					
+			</td>
+			</tr>
+			<tr>
+				<table width="300" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+				<tbody>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				</tbody>
+				</table>	
+					
+			</tr>
+		</tbody>
+	</table>	
+    <%# render :partial => 'profiles/featured', :locals => {:profile => Profile.featured_profile[:profile]} %>
+
+
+
+	<!-- <div id="twitter_div2" class="twitter_div" >
+	<table border="0" bgcolor="#FFEC70" width="100%"><tr><td>
+    <h2 class="twitter-title">Latest QST</h2>
+	<a href="/reviews/<%=@qst.id rescue '' %>"><%# @qst.title rescue ''%></a>
+	</td></tr></table>
+   </div><br /> -->
+
+<!-- <% if @p %>
+	<script type='text/javascript'>TOM_BgColor="white";document.write('<table cellpadding="0" cellspacing="0"><tr><td bgcolor="' + TOM_BgColor +'"><iframe allowTransparency="true" src="/<%=@p.user.login%>/widget" width="300" Height="400" frameborder="0"></iframe></td></tr></table><img src="http://73s.org/images/73s.jpg" width="50"><a href="/widget">Get your 73s widget!</a>');</script>    	
+<% else %>
+	<script type='text/javascript'>TOM_BgColor="white";document.write('<table cellpadding="0" cellspacing="0"><tr><td bgcolor="' + TOM_BgColor +'"><iframe allowTransparency="true" src="/n7ice/widget" width="300" Height="400" frameborder="0"></iframe></td></tr></table><img src="http://73s.org/images/73s.jpg" width="50"><a href="/widget">Get your 73s widget!</a>');</script>    	
+<% end %> -->
+
+<div id="front_middle_column" class="left"> 
+  <h2>New Members</h2>
+  <%= render :partial => 'profiles/newest_member', :collection => new_members %>
+</div>
+
+
+	<!-- <center><a href="http://twitter.com/73s"><img src="/images/follow-me-on-twitter.gif" /></a></center><br /> -->
+    
+    <!-- <div id="twitter_div">
+    <h2 class="twitter-title">@73s Twitter Updates</h2><br />
+    <ul id="twitter_update_list"></ul></div>
+    <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+    <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/73s.json?callback=twitterCallback2&count=5"></script> -->
+
+	<div id="twitter_div3" class="twitter_div">
+    <!-- <h2 class="twitter-title">Related Ham Links</h2><br /> -->
+	<img src="/images/advertisement_300.gif" /> <br />
+	<a href="http://hambrief.tv"><img src="/images/hambrief.png" width="250" height="100" alt="" /></a><br />
+	<!-- <a href="http://hamfeed.com"><img src="/images/hamfeed.gif" width="100" alt="" /></a>
+	<a href="http://cafepress.com/73s"><img src="/images/cafepress.gif" width="125" alt="" /></a><br />
+
+
+<a href="http://astridsembroidery.com/73sorg-hat.html"><img src="/images/FcallSlogo_small.jpg" border="0" align="left"><br /><br />Order the official 73s.org embroidered callsign cap at our cost!</a> -->
+
+<br />
+<!-- DONATE -->
+<center><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="4334570">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form></center>
+
+
+   </div>
+
+  </div>
+
+
+
+<h2><a href="http://73s.blip.tv/rss"><img src="/images/feed-icon-48x48.gif" border="0" width="20" alt="" /></a>HamBrief.TV episode <%= @hambrief[0].episode %> (<a href="/hambriefs">MORE VIDEOS!</a>)</h2>
+<%= @hambrief[0].embedcode %>
+<br />
+<%= link_to_function '+ Watch New 73s Screencast!', 
+  "new Effect.Parallel([
+  new Effect.toggle('welcome'),
+  new Effect.toggle('target', 'slide')
+  ])" %>
+
+<div id="target" style="display:none">
+	<div><p>
+	<%= link_to_function 'cancel', 
+  "new Effect.Parallel([
+  new Effect.toggle('welcome', 'slide'),
+  new Effect.toggle('target')
+  ])" %>
+  </p><br />
+    
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/GmsyL7OmKLI&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/GmsyL7OmKLI&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>
+
+	</div>
+</div>
+
+<br />
+<%# periodically_call_remote( :update => 'statustweets',
+	:url => { :controller => 'home', :action => 'statuslist' },
+    :frequency => 5 )%>
+
+<h2>New Status Updates (<a href="/statuses">VIEW ALL STATUS UPDATES</a>)</h2>
+
+
+<table width="480" cellspacing="0" cellpadding="0" border="0">
+	<tbody><tr>
+		<td width="1" valign="top" style="background-image: url(/images/dashed_vertical.gif); background-position: left center; background-repeat: repeat-y;">
+		</td>
+		<td valign="top">
+			
+			<div id="statustweets">
+				<% if @status.empty? %>
+					No status updates today.
+				<% else %>
+					<%= render :partial => 'home/statuslist' %>	
+				<% end %>
+			</div>
+			
+		</td>
+		</tr>
+		<tr>
+			<table width="480" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+			<tbody>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			</tbody>
+			</table>	
+				
+		</tr>
+	</tbody>
+</table>	
+
+
+
+<h2>New Gear (<a href="/companies">VIEW ALL PRODUCTS</a>)</h2>
+<% if @gear.empty? %>
+No gear.
+<% else %>
+<table width="480" cellspacing="0" cellpadding="0" border="0">
+	<tbody><tr>
+		<td width="1" valign="top" style="background-image: url(/images/dashed_vertical.gif); background-position: left center; background-repeat: repeat-y;">
+		</td>
+		<td valign="top">
+			<%= render :partial => 'home/gear', :collection => @gear %>	
+		</td>
+		</tr>
+		<tr>
+			<table width="480" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+			<tbody>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			</tbody>
+			</table>	
+				
+		</tr>
+	</tbody>
+</table>	
+
+<% end %>
+
+
+
+
+<h2>New Blog Posts (<a href="/blogs/all">VIEW ALL BLOG POSTS</a>)</h2>
+<% if @blogs.empty? %>
+No blog posts.
+<% else %>
+<table width="480" cellspacing="0" cellpadding="0" border="0">
+	<tbody><tr>
+		<td width="1" valign="top" style="background-image: url(/images/dashed_vertical.gif); background-position: left center; background-repeat: repeat-y;">
+		</td>
+		<td valign="top">
+		<%= render :partial => 'home/blog', :collection => @blogs %>
+	</td>
+</tr>
+<tr>
+	<table width="480" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+
+</tr>
+</tbody>
+</table>
+
+<% end %>
+
+
+<h2>New Forum Updates (<a href="/forums">VIEW ALL FORUM UPDATES</a>)</h2>
+
+
+<table width="480" cellspacing="0" cellpadding="0" border="0">
+	<tbody><tr>
+		<td width="1" valign="top" style="background-image: url(/images/dashed_vertical.gif); background-position: left center; background-repeat: repeat-y;">
+		</td>
+		<td valign="top">
+
+			<div id="forumupdates">
+				<% if @topics.empty? %>
+					No topics found.
+				<% else %>
+					<%= render :partial => 'home/topicslist' %>	
+				<% end %>
+			</div>
+
+		</td>
+		</tr>
+		<tr>
+			<table width="480" cellspacing="0" cellpadding="0" border="0" style="background-image: url(/images/dashed_horizontal.gif); background-position: center top; background-repeat: repeat-x; margin-bottom: 5px;">
+			<tbody>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			</tbody>
+			</table>	
+
+		</tr>
+	</tbody>
+</table>	
+
+
+
+
+
+  
+  <div>
+
+    <!-- <div id="front_left_column" class="left"> 
+      <h2>New Comments</h2>
+      <%# render :partial => 'comments/comment', :collection => recent_comments %>
+    </div>   -->
+
+    <!-- <div id="front_middle_column" class="left"> 
+      <h2>New Members</h2>
+      <%# render :partial => 'profiles/newest_member', :collection => new_members %>
+    </div> -->
+
+    <!-- <div class="front_right_column right">
+      <h2>New Photos</h2>
+      <%# newest_pictures.each do |picture|%>
+		<%# next unless picture.profile.user != nil %>
+      <div class="image left small_down_image">
+        <div>
+          <%# link_to image(picture, :small), '/' + picture.profile.user.login + '/photos' %>
+        </div>
+      </div>
+      <%# end %>
+      <div class="clear"></div>  
+    </div> -->
+
+    <div class="clear"></div>
+  </div>
+</div>

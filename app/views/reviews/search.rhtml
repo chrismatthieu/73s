@@ -1,0 +1,8 @@
+<div class="title">
+<h2>QSTs that match "<i><%= session[:searchterm] %></i>"
+<div id="searchform"><% form_tag(:controller => 'reviews', :action => 'search') do %><%= text_field("search", 'searchTextBox', :value => @searchterm ) %><input type="submit" value="Search"><% end %></div>
+</h2><br />
+
+<%= render(:partial => 'reviews') %> 
+
+</div>

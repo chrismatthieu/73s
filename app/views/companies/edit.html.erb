@@ -1,0 +1,28 @@
+<h1>Editing Company</h1>
+
+<%# javascript_tag "new Ajax.InPlaceEditor('company_description', '#{company_url(:id => @company_id)}', {loadTextURL:'#{company_description_url(:id => @company.id)}', ajaxOptions:{method:'put'}, callback:function(form, value){ return 'company[description]='+escape(value); }});" %>
+
+<% less_form_for 'company', :html => {:multipart=>true} do |f| %>
+
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+	<%= f.wrap(:image, :label => 'Icon: '){file_column_field "company", "image", :size => 15} %>
+  </p>
+  <p>
+    <%= f.submit 'Update', :class=>"button" %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Show', @company %> |
+<%= link_to 'Back', companies_path %>

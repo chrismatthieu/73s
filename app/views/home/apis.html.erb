@@ -1,0 +1,31 @@
+<div id="terms_and_service" class="clear">
+
+<h1>Developer APIs</h1><br />
+<b>QSOs</b>
+<p>This API allows anyone to search any 73s user logbook with an intelligent URL that returns XML for the purpose of sharing data with other applications. The URL format is http://73s.org/qsos/mycall/yourcall/year/month. You can stop at any part of the URL after mycall and add asterisks for any element of the URL as a wildcard. 
+</p>
+<p>To search all of my QSOs:
+http://73s.org/qsos/n7ice</p>
+
+<p>To search all of my QSOs with K7DIG:
+http://73s.org/qsos/n7ice/k7dig</p>
+
+<p>To search all of my QSOs made in September of 2008 (regardless of contact) you can use the following URL:
+http://73s.org/qsos/n7ice/*/2008/09
+</p>
+<p>The response returns XML</p>
+
+
+
+<!-- <b>Callsign</b><p>
+This API returns basic callsign information in XML format.  Simply append any callsign to the 73s.org domain with an xml extension such as http://73s.org/n7ice.xml
+</p> -->
+
+<b>Events</b><p>
+This API returns event information in XML format.  Simply calls http://73s.org/events.xml to return a list of events or http://73s/events/eventid.xml such as http://73s/events/5.xml for a specific event
+</p>
+<b>Clubs</b><p>
+This API returns club information in XML format.  Simply calls http://73s.org/clubs.xml to return a list of events or http://73s/clubs/clubtid.xml such as http://73s/clubs/5.xml for a specific club
+</p>
+
+</div>

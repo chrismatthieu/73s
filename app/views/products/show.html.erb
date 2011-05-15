@@ -1,0 +1,354 @@
+<% content_for :head do  -%>
+	<%= stylesheet_link_tag 'redbox' %>
+	<%= javascript_include_tag 'redbox' %>
+<% end %>
+
+  <div id="inline_box" style="display: none">
+  	<div style="width: 300px;">
+		
+		<table width="300"><tr><td>
+		
+	  	<p><center>
+		<b>Add this gear to my: </b><br /><br />
+		
+		<table><tr><td>
+		
+		<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
+		    :html => {:id => 'list_form'}) do %>
+		    
+		<%= hidden_field :list, :product_id, :value => @product.id %>
+		
+		<%= radio_button("list", "status", "1")  %> Want List <br/>
+		<%= radio_button("list", "status", "2")  %> Have List <br/>
+		<%= radio_button("list", "status", "3")  %> Had List <br/>
+		<br/>
+		<%= submit_tag 'Add' %>
+		<% end %>	
+			
+		</td></tr></table>
+		<br />
+		<%= link_to_close_redbox('Close', html_options = {})%>
+		<br />
+		
+		<br />
+		</center>
+		</p>
+		</td></tr></table>
+	</div>
+	</div>
+
+<div>
+
+
+
+<h1><a href="<%= '/company/' + @company.id.to_s + '/products/' %>"><%=h @company.name.capitalize %></a> <%=h @product.name.capitalize %> </h1>
+
+<br/>
+<%= link_to('&larr; Back to Products', '/company/' + @company.id.to_s + '/products') %>
+<br/>
+
+<% if !@u.nil? %>
+<a href="<%= '/products/' + @product.id.to_s %>"><%=image_tag(url_for_file_column(@product, :image, :small.to_s), {:title=>@product.name, :alt=>@product.name}) rescue "" %></a>
+
+
+<%= link_to 'Discuss', '/forums/' + @product.forum_id.to_s %>
+
+<div id="star-ratings-block">
+  <%= render :partial => "products/rating", :locals => { :review => @product } %>
+</div>
+
+<%# link_to_redbox('>> Add to list!', :inline_box, html_options = {})%>
+<p id="add_link"><%= button_to_function("+ Add to List",
+"Element.remove('add_link'); Element.show('add_list')", :class => 'button')%></p>
+<div id="add_list" style="display:none;">
+	<table bgcolor="#CCFFCC" width="200"><tr><td>
+
+	<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
+	    :html => {:id => 'list_form'}) do %>
+
+	<%= hidden_field :list, :product_id, :value => @product.id %>
+
+	<%= radio_button("list", "status", "1")  %> Want List <br/>
+	<%= radio_button("list", "status", "2")  %> Have List <br/>
+	<%= radio_button("list", "status", "3")  %> Had List <br/>
+	<br/>
+	<%= submit_tag 'Add' %>
+	<% end %>	
+
+	</td></tr></table>
+	<br />
+</div>
+
+<% end %>
+
+
+<table width=50%>
+	
+<tr bgcolor="#c0c0c0"><td>
+  <b>Category:</b>
+</td><td>
+  <%=h @product.category %>
+</td></tr>
+
+<tr><td>
+  <b>Product Website:</b>
+</td><td>
+  <a href="<%=h @product.url %>" target="_new"><%=h @product.url %></a>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Description:</b>
+</td><td>
+  <%=h @product.description %>
+</td></tr>
+
+<tr><td>
+  <b>Lowest Power Setting in Watts:</b>
+</td><td>
+  <%=h @product.minpower %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Highest Power Setting in Watts:</b>
+</td><td>
+  <%=h @product.maxpower %>
+</td></tr>
+
+<tr><td>
+  <b>Lowest Band in Meters:</b>
+</td><td>
+  <%=h @product.lowestband %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Highest Band in Meters:</b>
+</td><td>
+  <%=h @product.highestband %>
+</td></tr>
+
+<tr><td>
+  <b>Many Memory Channels:</b>
+</td><td>
+  <%=h @product.memorychannels %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Display Color:</b>
+</td><td>
+  <%=h @product.display %>
+</td></tr>
+
+<tr><td>
+  <b>Price in USD:</b>
+</td><td>
+  <%=h @product.price %>
+</td></tr>
+
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Supports D-Star:</b>
+</td><td>
+	<% if @product.dstar == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Supports APRS:</b>
+</td><td>
+	<% if @product.aprs == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Computer Interface: </b>
+</td><td>
+	<% if @product.computer == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Supports VOX:</b>
+</td><td>
+	<% if @product.vox == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Supports FM Mode:</b>
+</td><td>
+	<% if @product.fm == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Supports CW Mode: </b>
+</td><td>
+	<% if @product.cw == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Supports SSB Mode: </b>
+</td><td>
+	<% if @product.ssb == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Supports AM Mode: </b>
+</td><td>
+	<% if @product.am == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Detachable Remote Head: </b>
+</td><td>
+	<% if @product.head == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Includes Built-in Speaker:</b>
+</td><td>
+	<% if @product.speaker == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Includes Built-in Pre-amp:</b>
+</td><td>
+	<% if @product.preamp == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Includes Built-in SWR:</b>
+</td><td>
+	<% if @product.swr == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Submersible:</b>
+</td><td>
+	<% if @product.submersible == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Includes Wide Receive:</b>
+</td><td>
+	<% if @product.widereceive == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Includes CW Trainer:</b>
+</td><td>
+	<% if @product.cwtrainer == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Includes Built-in GPS: </b>
+</td><td>
+	<% if @product.gps == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Includes Built-in Barometer:</b>
+</td><td>
+	<% if @product.barometer == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Includes Built-in Thermometer:</b>
+</td><td>
+	<% if @product.temperature == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr bgcolor="#c0c0c0"><td>
+  <b>Supports Dual-band:</b>
+</td><td>
+	<% if @product.dualband == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+<tr><td>
+  <b>Includes Built-in Bluetooth:</b>
+</td><td>
+	<% if @product.bluetooth == true %>
+		<img src="/images/check.png" width="25">
+	<% else %>
+		<img src="/images/cross.png" width="25">
+	<% end %>
+</td></tr>
+
+</table>
+<br><br>
+<% if @u %>
+	<%= link_to 'Edit', edit_product_path(@product) %> |
+<% end %>
+
+<%= link_to('Back to Products', '/company/' + @company.id.to_s + '/products') %>

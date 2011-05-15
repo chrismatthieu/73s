@@ -1,0 +1,23 @@
+<%
+#locals
+list ||= feed_item.item
+profile = Profile.find(:first, :conditions => ["id = ?", list.user_id])
+product = Product.find(:first, :conditions => ["id = ?", list.product_id])
+%>
+
+<% if !profile.user.nil? %>
+
+<div class="feed_item photo_feed" id="<%= feed_item.dom_id %>">
+  <div class="left">
+	<img src="/images/blurp_comment.jpg" class="png icon_small" title="User Photo Icon"  alt="User Photo Icon" /> 
+	<% if profile.user %>
+	<%= link_to h(profile.f), '/' + profile.user.login %> added new gear to list <%= time_ago_in_words list.created_at %> ago <%= link_to sanitize(textilize(product.name)), "/" + profile.user.login + "/gear" %>
+	<% end %>
+	</div> 
+  	<div class="right">
+    	<%= x_feed_link(feed_item) if me %>
+  	</div>
+	<div class="clear"></div>
+</div>
+
+<% end %>

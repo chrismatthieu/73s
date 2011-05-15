@@ -1,0 +1,10 @@
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => messages_path, :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+<%= render :partial=>'messages/list', :locals=>{:list=>@p.sent_messages, :label=>'Sent Messages'} %>

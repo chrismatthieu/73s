@@ -1,0 +1,45 @@
+<table cellpadding="10" cellspacing="0" width="100%">
+  
+<% 
+counter = 0 
+@comments = Comment.find(:all, :conditions => [ "commentable_type = ? and commentable_id = ?", 'Reviews', @revid ])
+
+for comment in @comments
+counter = counter + 1
+if counter.remainder(2) == 0 %>
+  <tr bgcolor="lightblue" width="100%">
+<% else %>
+<tr width="100%">
+<% end %>
+  
+  <td>
+  <% @mychug = User.find(comment.user_id) %>
+  <% @myphoto = @mychug.photourl %>
+  
+  <% if @myphoto == nil || @myphoto == '' %>
+    <img src="/images/buddyicon.jpg" border="0" width="48" height="48" alt="" />
+  <% else %>
+    <img src="<%=h @myphoto %>" border="0" width="48" height="48" alt="" />
+  <% end %>
+    </td>
+  
+    <td>
+	By <%= link_to @mychug.login,  :controller => 'account', :action => 'callsign', :callsign => @mychug.login %> - <%= time_ago_in_words comment.timestamp %> ago 	<br />
+	<%= textilize comment.comment %></td>
+
+<% if @p != :false %>
+      <% if @p.login.upcase == 'N7ICE' %>
+       <td><%= link_to 'Delete', { :action => 'destroycomment', :id => comment }, :confirm => 'Are you sure?', :method=>:post %></td>
+      <% end %>      
+<% end %>      
+    
+  </tr>
+<% end %>
+</table>
+
+<br /><br />
+<% if @p != :false %>
+  <%= render(:partial => 'postcomment') %> 
+<% else %>  
+  <%= link_to 'Sign In', :controller => 'account', :action => 'signin', :deeplink => '/reviews/show/' + params[:id].to_s %> to post a comment...
+<% end %>

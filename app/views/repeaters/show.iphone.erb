@@ -1,0 +1,62 @@
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => "/repeaters", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+	<h2>Repeater Details</h2>
+
+
+<p>
+  <b>Trustee:</b>
+  <%=h @repeater.trustee %>
+</p>
+
+<p>
+  <b>Frequency:</b>
+  <%=h @repeater.frequency %>
+</p>
+
+<p>
+  <b>Long:</b>
+  <%=h @repeater.long %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%=h @repeater.lat %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @repeater.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @repeater.state %>
+</p>
+
+<p>
+  <b>Range:</b>
+  <%=h @repeater.range %> miles
+</p>
+
+<p>
+  <b>Offset:</b>
+  <%=h @repeater.offset %> Mhz
+</p>
+
+<p>
+  <b>PL Tone:</b>
+  <%=h @repeater.pl %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%=h @repeater.notes %>
+</p>

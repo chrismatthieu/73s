@@ -1,0 +1,7 @@
+<h1>Connect 73s to Twitter</h1>
+
+<% if @client.authorized? %>
+	<p>	Congratulations your 73s account is now linked to your Twitter account!</p>
+<% else %>
+	<p>Oops, something went wrong! <%= link_to 'Try again', '/connect'%></p>
+<% end %>

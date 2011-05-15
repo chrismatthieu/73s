@@ -1,0 +1,25 @@
+<div id="forum">
+  <h1><%= link_to "Forums", forums_path %> &gt; <%= link_to h(@forum.title), forum_path(@forum) %></h1>
+
+  <h2>Title : <%= @topic.title %> </h2>
+<% if @u %>
+  <%= link_to "Reply to Post", new_forum_topic_post_path(@forum, @topic) %>
+<% else %>
+	<strong>You must <%= link_to 'Login', login_path %> or <%= link_to 'Sign-up', signup_path %> to participate</strong>
+<% end %>
+<br /><br />
+  <% div_for @topic do %>
+    <%= render :partial => 'posts/post', :collection => @posts %>
+    <div class="clear"></div>
+  <% end %>
+
+  <div class="pages">
+    <%= will_paginate @posts %>
+  </div>
+
+<% if @u %>
+  <%= link_to "Reply to Post", new_forum_topic_post_path(@forum, @topic) %>
+<% else %>
+	<strong>You must <%= link_to 'Login', login_path %> or <%= link_to 'Sign-up', signup_path %> to participate</strong>
+<% end %>
+</div>

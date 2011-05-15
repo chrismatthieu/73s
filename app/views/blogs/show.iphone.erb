@@ -1,0 +1,17 @@
+<%=
+if me  
+	l = { :caption => 'New', :url => new_profile_blog_path(@profile), :html_options => {}  }
+else
+	l = {}
+end		
+  r = { :back => true, :caption => 'Back', :url => profile_blogs_path(@p), :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+
+  <h1><%= icon @profile %><br /><%= @profile.f %>'s Blog</h1>
+
+
+  <%= render :partial => 'blogs/blog' %>
+
+<%# render :partial => 'history' %>

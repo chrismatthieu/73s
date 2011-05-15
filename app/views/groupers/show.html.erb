@@ -1,0 +1,13 @@
+<p>
+  <b>Profile:</b>
+  <%=h @grouper.profile_id %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%=h @grouper.group_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_grouper_path(@grouper) %> |
+<%= link_to 'Back', groupers_path %>

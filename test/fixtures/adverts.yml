@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  profile_id: 1
+  description: MyText
+  placement: 1
+  name: MyString
+  content_type: MyString
+  data: 
+  startdate: 2009-01-27 18:56:58
+  enddate: 2009-01-27 18:56:58
+  url: MyString
+  viewcount: 1
+  clickcount: 1
+
+two:
+  profile_id: 1
+  description: MyText
+  placement: 1
+  name: MyString
+  content_type: MyString
+  data: 
+  startdate: 2009-01-27 18:56:58
+  enddate: 2009-01-27 18:56:58
+  url: MyString
+  viewcount: 1
+  clickcount: 1

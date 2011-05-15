@@ -1,0 +1,109 @@
+<div class="title">
+	<h2><%=  @callsign.upcase %> 
+	
+<% if @callelements[2] == nil or @callelements[2] == "" then %>
+  
+  - No such call sign on record </h2>
+  
+<% else %>  
+	
+	<% if @p != nil %>
+	  (<%= link_to_function '+ Add New Contact', "new Effect.toggle('target', 'slide')" %>)
+	<% end %>
+	</h2>
+<br /> 
+
+<div id="target" style="display:none">
+	<div><p>
+		<%= link_to_function 'cancel', "new Effect.toggle('target')" %>
+  		</p><br />
+    	<%= render :partial => "contacts/form" %>
+	</div>
+</div>
+	
+<div id="new_invite" class="hidden">
+	<%= render :partial => 'messages/invite' %>
+</div>
+	
+
+<div id="welcomex">
+<p>
+<% if @callelements[0] == nil or @callelements[0] == "" %>
+  <img src="/images/buddyicon.jpg" width="200" height="200" alt="" />
+<% else %>
+	<% if @callsign.upcase == "KA2ZOO" %>
+		<img src="/images/buddyicon.jpg" width="200" height="200" alt="" />
+	<% else %>
+  		<img src="<%=@callelements[0] %>" width="200" height="200" alt="" />
+	<% end %>
+<% end %>
+
+<br />
+<%# if @email != "" and @email != nil and @p != nil %>
+<% if @p != nil %>
+	<%# inline_tb_link '<img src="/images/send-e-invite.jpg" border="0">', "new_invite", {:title => "Invite #{@callsign.upcase} to join 73s"}, {:height => 370, :width => 430} if @p %>
+	<a href="/taf?email=<%= @email%>"><img src="/images/send-e-invite.jpg" border="0"></a>
+<% end %>
+</p>
+<br />
+
+<% if @skype != "" and @skype != nil %>
+  <p>
+  <b>Skype Status: <%= @skype %></b><br />
+  <a href="http://www.tduri.com/s.php?s-<%= @skype %>" target="_new"><img src="http://mystatus.skype.com/bigclassic/<%= @skype %>" border="0" alt="" /></a>
+<br />
+  </p><br />
+
+<% end %>
+
+
+<% # @calldata %>
+<p>
+<b>Name: </b><br />
+<%= @callelements[2] %><br />
+</p><br />
+
+<% if @website != "" and @website != nil %>
+  <p>
+  <b>Website: </b><br />
+  <a href="<%=@website%>" target="_new"><%=@website %></a><br />
+  </p><br />
+<% end %>
+
+
+<% if @email != "" and @email != nil and @p != nil %>
+<p>
+<b>Email: </b><br />
+  <a href="mailto:<%= @email%>"><%= @email %></a><br />
+</p><br />
+<% end %>
+
+
+<p>
+<b>Address: </b><br />
+<% if @callelements[3] != "" %>
+  <%= @callelements[3] %><br />
+<% end %>
+<%= @callelements[4] %><br />
+</p><br />
+<p>
+<b>Country: </b><br />
+<%= @callelements[5] %><br />
+</p><br />
+
+<% if @profile != "" %>
+  <p>
+  <b>Profile: </b><br />
+  <%= @profile %><br />
+  </p>
+<% end %>
+
+</div>
+
+<% end %>
+
+<br />
+
+
+
+</div>

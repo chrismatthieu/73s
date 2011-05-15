@@ -1,0 +1,130 @@
+<html>
+<head>	
+	<style type="text/css">
+
+	/* begin css tabs */
+
+	ul#tabnav { /* general settings */
+	text-align: left; /* set to left, right or center */
+	margin: 1em 0 1em 0; /* set margins as desired */
+	font: bold 11px verdana, arial, sans-serif; /* set font as desired */
+	border-bottom: 1px solid #6c6; /* set border COLOR as desired */
+	list-style-type: none;
+	padding: 3px 10px 3px 10px; /* THIRD number must change with respect to padding-top (X) below */
+	}
+
+	ul#tabnav li { /* do not change */
+	display: inline;
+	}
+
+	body#tab1 li.tab1, body#tab2 li.tab2, body#tab3 li.tab3, body#tab4 li.tab4 { /* settings for selected tab */
+	border-bottom: 1px solid #fff; /* set border color to page background color */
+	background-color: #fff; /* set background color to match above border color */
+	}
+
+	body#tab1 li.tab1 a, body#tab2 li.tab2 a, body#tab3 li.tab3 a, body#tab4 li.tab4 a { /* settings for selected tab link */
+	background-color: #fff; /* set selected tab background color as desired */
+	color: #000; /* set selected tab link color as desired */
+	position: relative;
+	top: 1px;
+	padding-top: 4px; /* must change with respect to padding (X) above and below */
+	}
+
+	ul#tabnav li a { /* settings for all tab links */
+	padding: 3px 4px; /* set padding (tab size) as desired; FIRST number must change with respect to padding-top (X) above */
+	border: 1px solid #6c6; /* set border COLOR as desired; usually matches border color specified in #tabnav */
+	background-color: #cfc; /* set unselected tab background color as desired */
+	color: #666; /* set unselected tab link color as desired */
+	margin-right: 0px; /* set additional spacing between tabs as desired */
+	text-decoration: none;
+	border-bottom: none;
+	}
+
+	ul#tabnav a:hover { /* settings for hover effect */
+	background: #fff; /* set desired hover color */
+	}
+
+	/* end css tabs */
+
+	</style>
+	
+	<script type="text/javascript">
+	var current = 'have'
+    function show(id) {
+      // document.getElementById(current).style.visibility = 'hidden';
+      document.getElementById('have').style.display = 'none';
+      document.getElementById('want').style.display = 'none';
+      document.getElementById('had').style.display = 'none';
+      document.getElementById(id).style.display = '';
+
+	if (id == 'have')
+	document.body.id = 'tab1';
+	if (id == 'want')
+	document.body.id = 'tab2';
+	if (id == 'had')
+	document.body.id = 'tab3';
+	
+      current = id;
+    }
+  </script>
+  
+	<%# javascript_include_tag :defaults %>
+</head>	
+
+<body id="tab1">
+
+<ul id="tabnav">
+	<a href="http://73s.org/<%=@userx.login rescue ''%>"><%= iconx @profile rescue '' %></a> Gear
+	<li class="tab1"><a href="#" onclick="show('have'); return false;">Have</a></li>
+	<li class="tab2"><a href="#" onclick="show('want'); return false;">Want</a></li>
+	<li class="tab3"><a href="#" onclick="show('had'); return false;">Had</a></li>	
+</ul>
+
+<div id="want" style="display:none;">
+
+<h2>Want (<%=@want.size rescue "0" %>)</h2>
+<% @want.each do |list| %>
+
+<% product = Product.find(list.product_id) rescue false %>
+<% if product %>
+<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+
+<% end %>
+
+<% end %>
+
+</div>
+
+
+<div id="have">
+<h2>Have (<%=@have.size rescue "0" %>)</h2>
+
+<% @have.each do |list| %>
+
+<% product = Product.find(list.product_id) rescue false %>
+<% if product %>
+<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+
+<% end %>
+<% end %>
+
+</div>
+
+<div id="had" style="display:none;">
+<h2>Had (<%=@had.size rescue "0" %>)</h2>
+
+<% @had.each do |list| %>
+
+<% product = Product.find(list.product_id) rescue false %>
+<% if product %>
+<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+
+
+<% end %>
+<% end %>
+
+
+</div>
+
+</body>
+</html>

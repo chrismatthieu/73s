@@ -1,0 +1,27 @@
+<% 
+
+profile ||= @profile
+type ||= 'friends'
+size ||= 20
+list = profile.send(type).find(:all, :limit => size, :order => 'RAND()') rescue []
+total = profile.send(type).count
+with_friending ||= false
+
+
+
+title = type == 'followings' ? 'Following' : type
+%>
+
+<%- unless list.empty? -%>
+	<h2><%= title.titleize %> <%= link_to '(see all)', profile_friends_path(@profile) if list.size > total %></h2>
+	
+<% list.each do |p| %>
+	<% if p != nil %>
+		<%# icon p rescue "" %><%= image_tag p.gravatar_url, :width => "50"%>
+		<br /><%= p.f rescue "" %>
+		<%= get_friend_link(@p, p) if with_friending %>
+		<br />
+	<% end %>
+<% end %>
+
+<%- end -%>

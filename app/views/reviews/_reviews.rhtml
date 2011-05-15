@@ -1,0 +1,108 @@
+
+<div id="reviews">
+
+<% counter = 0 %>
+
+<% for review in @reviews %>
+
+<% @mychug = Profile.find(review.profile_id) %>
+
+<% if !@mychug.user.blank?  %>
+
+<% counter = counter + 1 %>
+
+<div class="review">	
+	
+<% @revid = review.id %>
+
+<h1>
+<%
+@getrating = Rating.find(:all, :conditions => [ "controllername = ? and controllerid = ?", "reviews", @revid])
+if @getrating.nil?
+  @rating=0
+else
+  average = 0.0
+  counter = 0
+  @getrating.each { |r|
+    average = average + r.rating
+    counter = counter + 1
+  }
+  if counter != 0
+    average = average / counter 
+  end
+  @rating = average    
+end     
+%>
+
+<!-- <div>
+<ul class='star-rating'>
+    <li class='current-rating' style='width:<%= (@rating * 30).to_i -%>px;'>
+          Currently <%= number_with_precision(@rating, 1) %>/5 Stars.
+    </li>
+<ul>
+</div> -->
+
+
+
+<%= link_to review.title,  :controller => 'reviews', :action => 'show', :id => review %><span>, <%= time_ago_in_words review.timestamp %> ago</span> (<%= review.viewcount %> views)<br />
+
+<%
+if @mychug.location.nil? 
+	@location = 'somewhere'
+else
+	@location = @mychug.location
+end
+%>
+
+<!p>By <%= link_to @mychug.user.login.upcase, :controller => "profiles", :action => "show", :id => @mychug.id %> (QTH <%=@location%>) <!/p>
+</h1>
+<h4>
+<br />
+<p>  <%= textilize review.body[0, 199] + " ..." %></p>
+<%= link_to 'Read full review', :controller=> 'reviews', :action => 'show', :id => review %>
+
+<% @comments = 0 # Comment.count(:all, :conditions => [ "controllername = ? and controllerid = ?", 'reviews', @revid ])%>
+ 
+<% #image_tag "icon-comment.gif"%> <%= link_to 'Comments (' + @comments.to_s + ')', :controller=> 'reviews', :action => 'show', :id => review %> 
+<br />
+<%= image_tag "tag.gif"%>
+<b>Tags:</b> 
+<% 
+# for tagger in review.tag_list
+%>
+  <a href="/reviews/tag/<%# tagger %>"><%# tagger %></a></center>
+<%
+# end
+%>
+    <% if @p != nil %>
+      <% if @u.login.upcase == 'N7ICE' %>
+		| 
+        <%= link_to 'Edit', :controller => 'reviews', :action => 'edit', :id => review %> | 
+        <%= link_to 'Destroy', { :controller => 'reviews', :action => 'destroy', :id => review }, :confirm => 'Are you sure?', :method=>:post %>
+      <% end %>    
+    <% end %>    
+
+
+	</p>
+
+	<div id="comments">
+	  <%# render(:partial => 'comments') %> 
+	</div>
+</div>
+
+<br />
+<hr width="95%">
+<br />
+</h4>
+
+<% end %>
+    
+<% end %>
+
+<%= will_paginate @reviews, :inner_window => 10, :outer_window => 10 %>
+
+</div>
+
+ 
+
+    

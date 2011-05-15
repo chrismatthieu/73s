@@ -1,0 +1,25 @@
+<% if params[:country] == "United States" %>
+<%= state_select 'club', 'clubstate', country='US_WITH_CODE' %>
+<% elsif params[:country] == "India" %>
+<%= state_select 'club', 'clubstate', country='INDIA' %>
+<% elsif params[:country] == "Canada" %>
+<%= state_select 'club', 'clubstate', country='CANADA' %>
+<% elsif params[:country] == "Australia" %>
+<%= state_select 'club', 'clubstate', country='AUSTRALIA' %>
+<% elsif params[:country] == "Spain" %>
+<%= state_select 'club', 'clubstate', country='SPAIN' %>
+<% elsif params[:country] == "Uganda" %>
+<%= state_select 'club', 'clubstate', country='UGANDA' %>
+<% elsif params[:country] == "France" %>
+<%= state_select 'club', 'clubstate', country='FRANCE' %>
+<% elsif params[:country] == "Germany" %>
+<%= state_select 'club', 'clubstate', country='GERMAN' %>
+<% elsif params[:country] == "Brazil" %>
+<%= state_select 'club', 'clubstate', country='BRAZIL' %>
+<% elsif params[:country] == "Ireland" %>
+<%= state_select 'club', 'clubstate', country='IRELAND' %>
+<% elsif params[:country] == "Poland" %>
+<%= state_select 'club', 'clubstate', country='POLAND' %>
+<% else %>
+<%= text_field 'club', 'clubstate', :class=>"text" %>
+<% end %>

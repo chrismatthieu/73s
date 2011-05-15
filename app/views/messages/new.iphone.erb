@@ -1,0 +1,11 @@
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => profile_path(@p), :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+<%= render :partial => 'messages/form' %>

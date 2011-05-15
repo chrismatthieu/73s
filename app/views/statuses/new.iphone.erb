@@ -1,0 +1,19 @@
+<%=
+  l = {   }
+  r = { :back => true, :caption => 'Back', :url => statuses_path, :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+<h1>New Status</h1>
+
+<%= error_messages_for :status %>
+
+<% form_for(@status) do |f| %>
+<br />
+  <p>&nbsp;What are you doing right now?<br />
+    <%= f.text_field :message, :size => 110 %>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
+
+

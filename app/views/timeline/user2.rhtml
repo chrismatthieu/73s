@@ -1,0 +1,57 @@
+<% 
+require 'date' 
+@time = Time.now
+@timey = @time - 84600 * 600
+%>
+<html>
+<head>
+<script src="http://simile.mit.edu/timeline/api/timeline-api.js" type="text/javascript"></script>
+</head>
+<body>
+<!body onload="onLoad();" onresize="onResize();">
+<script>
+var tl;
+function onLoad() {
+  var eventSource = new Timeline.DefaultEventSource();
+  var bandInfos = [
+    Timeline.createBandInfo({
+        eventSource:    eventSource,
+        date:           "<%=@timey.strftime("%b %d %Y %H:%M:%S GMT")%>",
+        width:          "70%", 
+        intervalUnit:   Timeline.DateTime.MONTH, 
+        intervalPixels: 100
+    }),
+    Timeline.createBandInfo({
+        eventSource:    eventSource,
+        date:           "<%=@timey.strftime("%b %d %Y %H:%M:%S GMT")%>",
+        width:          "30%", 
+        intervalUnit:   Timeline.DateTime.YEAR, 
+        intervalPixels: 200
+    })
+  ];
+  bandInfos[1].syncWith = 0;
+  bandInfos[1].highlight = true;
+  
+  tl = Timeline.create(document.getElementById("my-timeline2"), bandInfos);
+  Timeline.loadXML("/timelines/<%=@userid%>.xml", function(xml, url) { eventSource.loadXML(xml, url); });
+}
+
+var resizeTimerID = null;
+function onResize() {
+    if (resizeTimerID == null) {
+        resizeTimerID = window.setTimeout(function() {
+            resizeTimerID = null;
+            tl.layout();
+        }, 500);
+    }
+}
+
+onLoad();
+onResize();
+
+</script>
+
+<h1>Health Record Timeline (<%=link_to_close_redbox('close', html_options = {})%>)</h1>
+<div id="my-timeline2" style="height: 300px; width: 600px; border: 1px solid #aaa"></div>
+</body>
+</html>

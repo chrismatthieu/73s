@@ -1,0 +1,143 @@
+<%
+require 'hpricot'
+can_send = !@p.blank?
+%>
+<div id="sub_nav">
+<%= link_to( 'Edit this page', edit_profile_path(@p)) if me %>
+</div>
+<div class="left" id="column_l">
+  
+  <% if @p != nil %>
+	  (<%= link_to_function '+ Add As New Contact', "new Effect.toggle('target', 'slide')" %>)
+	<% end %>
+	
+  <%= render :partial => 'profiles/bio' %>
+  <div class="clear"></div>  
+  
+  <div id="target" style="display:none">
+  	<div><p>
+  	<%= link_to_function 'cancel', "new Effect.toggle('target')" %>
+    </p><br />
+      <%= render :partial => "contacts/form" %>
+
+  	</div>
+  </div>
+
+<% if @profile.aprs %>
+<div class="activity_box">
+	<h2>Automatic Packet Reporting System</h2>
+	<p>
+	<script type="text/javascript">
+	<% if !@profile.aprs_suffix.blank? %>
+		he_track = "<%=@profile.user.login + '-' + @profile.aprs_suffix.to_s  %>";
+	<% else %>
+		he_track = "<%=@profile.user.login %>";
+	<% end %>
+	he_show_others = 1;
+	</script>
+	<script type="text/javascript" src="http://aprs.fi/js/embed.js">
+	</script>
+	</p>
+</div>
+<% end %>
+
+  <%= render :partial => 'profiles/recent_user_activity' %>	
+
+  <%= render :partial => 'blogs/list' %>	
+  <%= render :partial => 'comments/list', :locals => {:with_form => true, :with_wall_to_wall => true} %>	
+  <%= render :partial => 'profiles/groups' %>
+  <%# render :partial => 'photos/gallery', :locals => {:mini => true} %>
+  <%= render :partial => 'lists/list' %>
+  <%- if @video -%>
+  <div class="activity_box">
+    <h2>Latest YouTube Video</h2>
+    <%= @video.embed_html %>
+  </div>
+  <%- end -%>
+
+  <% if @flickr %>  
+  <div class="activity_box">
+    <h2>Latest Flickr Pictures</h2>
+    <% @flickr.each do |flickr|%>
+    <div class="flickr left">
+      <div>
+        <a href="http://www.flickr.com/photos/<%= flickr.owner_id %>/<%= flickr.id %>" target="_blank">
+          <%= image_tag flickr.url('t'), :alt => 'FlickrHolder', :class => 'flickr_image' %>
+        </a>
+      </div>
+    </div>
+    <%end%>
+  </div>
+  <% end %>
+
+
+
+  <%- if can_send -%>
+  <div id="new_direct_message" class="hidden">
+    <%= render :partial => 'messages/form', :locals => {:hide_header => true} %>
+  </div>
+
+  <div id="new_nudge" class="hidden">
+    <%= render :partial => 'messages/nudge' %>
+  </div>
+  <%- end -%>
+
+  <div class="clear"></div>
+</div>
+
+
+<div class="right" id="column_r">
+  <ul>
+      <li><div id="votecount">
+      <div id="cnttxt">
+      <a id="mnms-0" style="text-decoration: none; "> <%= @contacts %> QSOs</a>  
+      <br/>
+        
+      </div>
+      </div></li>
+    <%- unless me -%>
+	    <li><%= get_friend_link @p, @profile %></li>
+	    <%- if can_send -%>
+		    <li><%= inline_tb_link 'Direct Message', "new_direct_message", {:title => "New Message To #{h @profile.f}"}, {:height => 380} %></li>
+		    <li><%= inline_tb_link 'Nudge ' + @profile.f.upcase, "new_nudge", {:title => "Nudge #{h @profile.f} to participate"}, {:height => 370, :width => 430} if @p %></li>
+		    <li><%= inline_tb_link 'Leave a Comment', "new_comment", {:title => "Leaving A Comment On #{h @profile.f}'s Wall"}, {:height => 370, :width => 430} if @p %></li>
+	    <%- end -%>
+	    <%- if can_send && !me && @p.has_wall_with(@profile) -%>
+		    <li><%= link_to 'Our Wall-to-Wall', profile_comments_path(@profile) %></li>
+	    <%- end -%>
+	<%- end -%>
+  </ul>
+  
+  <div id="twitter_div" class="activity_box">
+  <h2 class="twitter-title">Twitter Updates</h2><!br />
+  <ul id="twitter_update_list"></ul></div>
+  <% if @profile.twitter_name != nil %>
+	  <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	  <script text="text/javascript" src="http://twitter.com/statuses/user_timeline/<%=@profile.twitter_name%>.json?callback=twitterCallback2&count=5"></script>
+
+		<%  
+		# @url = 'curl -i -X GET http://twitter.com/statuses/user_timeline/' + @profile.twitter_name + '.xml' 
+		# @results = `#{@url}`
+		# @count = 1
+		# 
+		#  doc = Hpricot.parse(@results)
+		#  (doc/:status).each do |item|
+		# 	
+		#    	@text = (item/:text).inner_html 
+		# 	@created_at = (item/:created_at).first.inner_html 
+		# 	puts @created_at
+		# 	if !@text.blank? and @count < 6
+		# 		@count = @count + 1
+		# 		%><%= @text + ' about ' + time_ago_in_words(@created_at) %> ago<br /><br /><% #Sun Jun 28 03:29:12 +0000 2009
+		# 	end	
+		#  end
+
+		%>
+
+  <% end %>  
+  
+  <%= render :partial => 'friends/list', :locals => {:type => 'friends'} %>
+  <%= render :partial => 'friends/list', :locals => {:type => 'followers'} %>
+  <%= render :partial => 'friends/list', :locals => {:type => 'followings'} %> 
+</div>
+

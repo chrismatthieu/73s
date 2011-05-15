@@ -1,0 +1,13 @@
+<%=
+if me
+  l = { :caption => 'New', :url => new_profile_blog_path(@profile), :html_options => {} }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => profile_path(@p), :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+
+
+<%= render :partial => 'history' %>

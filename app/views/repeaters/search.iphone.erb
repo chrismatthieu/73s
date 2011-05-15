@@ -1,0 +1,23 @@
+<%=
+if me
+  l = {  }
+else
+  l = {  }
+end
+  r = { :back => true, :caption => 'Back', :url => "/repeaters", :html_options => {} }
+  te_navigation_bar( r, "73s.org", l )
+%>
+
+	<h2>Ham Radio Repeaters in <%= h(@city.capitalize) %>, <%= h(@repeaters[0].state.upcase) %> </h2>
+
+<p>
+
+<ul>
+<% for repeater in @repeaters %>
+
+<li><%= link_to h(repeater.frequency) + ' ' + h(repeater.offset) + ' ' + h(repeater.pl) + ' PL', :controller => :repeaters, :action => :show, :id => repeater.id %> </li>
+
+<% end %>
+</ul>
+</p>
+<p><%= will_paginate @repeaters, :inner_window => 10, :outer_window => 10 %></p>

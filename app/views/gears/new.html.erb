@@ -1,0 +1,33 @@
+<h1>New Ham Gear Entry</h1>
+
+<div id="blog">
+
+
+<%= error_messages_for :gear %>
+
+<% form_for(@gear) do |f| %>
+  <p>
+    <b>Gear Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <b>Gear Description</b><br />
+    <%= f.text_area :desc %>
+  </p>
+
+  <p>
+    <b>Asking Price</b><br />
+    $<%= f.text_field :price %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+</div>
+
+
+
+<%= link_to 'Back', gears_path %>

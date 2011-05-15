@@ -1,0 +1,38 @@
+<div class="newest_member clear">
+  <div class="left">
+  <% profile = @gear.profile %>
+  <%= icon profile %> 
+  </div>
+  <div class="left" style="margin-left: 10px; font-size:20px;">
+
+<p>
+  <b>Title:</b>
+  <%=h @gear.title %>
+</p>
+
+<p>
+  <b>Gear Description:</b>
+  <%=h @gear.desc %>
+</p>
+
+
+<p>
+  <b>Asking Price:</b>
+  <%= sprintf('$%0.2f',@gear.price).gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")  %> 
+</p>
+
+<p>
+  <b>Contact Owner:</b> <a href="mailto:<%=@gear.profile.email%>"><%=@gear.profile.email%></a> 
+</p>
+
+
+  </div>
+  <div class="clear"></div>
+</div>
+
+<% if @p != nil and @gear.profile_id == @p.id %>
+<%= link_to 'Edit', edit_gear_path(@gear) %> |
+<% end %>
+<%= link_to 'Back', gears_path %>
+
+

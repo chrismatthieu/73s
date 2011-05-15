@@ -1,0 +1,10 @@
+<% form_remote_tag(:update => "comments", 
+:url => { :action => :postcomment } ) do %> 
+<label for="comments">Enter comment below: </label> <br />
+<% # text_area 'comment', 'comment', :rows => 5  %>
+<%= textile_editor 'comment', 'comment', :rows => "5", :cols => "50" -%>
+
+<%= hidden_field("comment", 'controllerid', :value => @revid ) %><br />
+<%= textile_editor_initialize -%>
+<%= submit_tag "Post Comment" %> 
+<% end %>

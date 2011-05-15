@@ -1,0 +1,49 @@
+<%= error_messages_for :club %>
+
+<% form_for(:club, :url => clubs_path) do |f| %>
+  <p>
+    <b>Club Name</b><br />
+    <%= f.text_field :clubname %>
+  </p>
+
+  <p>
+    <b>Club Website</b><br />
+    <%= f.text_field :cluburl %>
+  </p>
+
+  <p>
+    <b>Club Description</b><br />
+    <%# f.text_area :clubdesc %>
+	<%= textile_editor 'club', 'clubdesc', :cols => "60" -%>
+  </p>
+
+  <p>
+    <b>Country</b><br />
+    <% #f.text_field :clubcountry %>
+    <%= country_select 'club', 'clubcountry' %>
+    <%# observe_field :club_clubcountry, :frequency=>0.5,
+    :update=>"state_select",
+    :url=> {:action=>'state_select', :only_path=>false},
+    :with=>"'country=' + encodeURIComponent(value)" %>
+    
+  </p>
+
+  <p>
+    <b>State</b><br />
+		<!span id="state_select">
+    <!/span>
+	<%= f.text_field :clubstate %>
+  </p>
+
+
+  <p>
+    <b>City</b><br />
+    <%= f.text_field :clubcity %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+<%= textile_editor_initialize -%>
+

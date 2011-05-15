@@ -1,0 +1,112 @@
+
+<%= error_messages_for :contact %>
+
+<% #form_for(@contact) do |f| %>
+<% form_for(:contact, :url => contacts_path) do |f| %>
+  
+  <p>
+    <b>CallSign</b><br />
+    <%= f.text_field(:callsign, :value => @callsign) %> 
+  </p>
+
+  <p>
+    <b>Name</b><br />
+    <% if @callelements == nil %>
+      <%= f.text_field :name %>
+    <% else %>
+      <%= f.text_field(:name, :value => @callelements[2]) %>
+    <% end %>
+  </p>
+
+
+	<p>
+  	<b>Email</b><br />
+    <% if @email == nil %>
+      <%= f.text_field :email %> 
+	
+    <% else %>
+		<% if @p == nil %>
+			You must be logged in to access email.
+		<% else %>	
+      		<%= f.text_field(:email, :value => @email) unless @p == nil%>
+	    <% end %>
+    <% end %>
+  </p>
+
+  <p>
+    <b>DXCC</b><br />
+    <%= f.text_field :dxcc %>
+  </p>
+
+  <p>
+    <b>Country</b><br />
+    <%= f.text_field :country %>
+  </p>
+
+  <p>
+    <b>State</b><br />
+    <%= f.text_field :state %>
+  </p>
+
+  <p>
+    <b>City</b><br />
+    <%= f.text_field :city %>
+  </p>
+
+  <p>
+    <b>Address</b><br />
+    <%= f.text_field :address %>
+  </p>
+
+  <p>
+    <b>Band</b><br />
+	<%= f.select( "band",  %w{ 160m 80m 40m 30m 20m 17m 15m 12m 10m 6m 2m 1.25m 70cm 35cm 23cm 13cm 9cm 6cm 3cm 1.25cm 6mm 4mm 2.5mm 2mm 1mm }) %>
+  </p>
+
+  <p>
+    <b>Frequency</b><br />
+    <%= f.text_field :frequency %>
+  </p>
+
+  <p>
+    <b>Grid Square</b><br />
+    <%= f.text_field :gridsquare %>
+  </p>
+
+  <p>
+    <b>Signal Strength</b><br />
+    <%= f.text_field :signal %>
+  </p>
+
+  <p>
+    <b>Event</b><br />
+    <%= f.text_field :event %>
+  </p>
+
+  <p>
+    <b>Private Notes</b><br />
+    <%= f.text_area :notes %>
+  </p>
+
+  <p>
+    <b>QSL Message (included in email to Contact)</b><br />
+    <%= f.text_area :qslmessage %>
+  </p>
+
+  <p>
+    <b>Contacttime</b><br />
+    <%= f.datetime_select :contacttime %>
+  </p>
+  
+  <p>
+  <img src="/images/tag_blue.png" alt="" /> <b>Tags (separate tags with commas)</b><br />
+  <% # f.text_field(:tag_list) %>
+  <% # text_field_tag('tags', @contact.tag_list) %>
+  <%= text_field 'contact', 'tag_list' %>
+  
+  </p>
+  
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>

@@ -1,0 +1,30 @@
+xml.instruct! :xml, :version=>"1.0" 
+xml.rss(:version=>"2.0"){
+  xml.channel{
+    if @candidate
+      xml.title("73s")
+      xml.link("http://www.votespin.com/reviews/rss/")
+      xml.description(@candidate.candidatename + " reviews on votespin")
+    else
+      xml.title("73s.org - Ham Radio Web 2.0 Style")
+      xml.link("http://www.73s.org/reviews/rss")
+      xml.description("Ham radio reviews on 73s.org")
+    end
+    xml.language("en-us")
+    for review in @reviews
+      xml.item do
+
+        @user = User.find(review.profile_id) 
+        xml.title(review.title + " by " + @user.login.capitalize )
+        # xml.title(review.candidate_id.to_s + " by " + review.user_id.to_s )
+
+        xml.description(review.body[0, 199] + '...')
+        # rfc822
+        xml.pubDate(review.timestamp.rfc2822)
+        @link = "http://www.73s.org/reviews/show/" + review.id.to_s
+        xml.link(@link)
+        xml.guid(@link)
+      end
+    end
+  }
+}

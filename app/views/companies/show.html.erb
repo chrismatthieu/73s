@@ -1,0 +1,18 @@
+<%=image_tag(url_for_file_column(@company, :image, :small.to_s), {:title=>@company.name, :alt=>@company.name}) rescue "" %>
+  <%=h @company.name %>
+<br/><br/><br/>
+
+<p>
+  <b>Website:</b>
+  <a href="<%=h @company.url %>" target="_new"><%=h @company.url %></a>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @company.description %>
+</p>
+
+<% if @u %>
+	<%= link_to 'Edit', edit_company_path(@company) %> |
+<% end %>
+<%= link_to 'Back', companies_path %>
