@@ -12,10 +12,10 @@ GEM
     activeresource (2.3.11)
       activesupport (= 2.3.11)
     activesupport (2.3.11)
-    colored (1.2)
+    colored (1.1)
     flickr (1.0.2)
       xml-simple (>= 1.0.7)
-    gravtastic (2.2.0)
+    gravtastic (3.1.0)
     hoe (2.9.4)
       rake (>= 0.8.7)
     hpricot (0.6.161)
@@ -47,9 +47,9 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
-  colored
+  colored (= 1.1)
   flickr
-  gravtastic (= 2.2.0)
+  gravtastic
   hpricot (= 0.6.161)
   rails (= 2.3.11)
   redgreen
