@@ -15,7 +15,7 @@ GEM
     colored (1.1)
     flickr (1.0.2)
       xml-simple (>= 1.0.7)
-    gravtastic (3.1.0)
+    gravtastic (2.2.0)
     hoe (2.9.4)
       rake (>= 0.8.7)
     hpricot (0.6.161)
@@ -32,6 +32,7 @@ GEM
       rake (>= 0.8.3)
     rake (0.8.7)
     redgreen (1.2.2)
+    rmagick (2.13.1)
     twitter_oauth (0.4.3)
       json (>= 1.1.9)
       mime-types (>= 1.16)
@@ -49,10 +50,11 @@ DEPENDENCIES
   RedCloth
   colored (= 1.1)
   flickr
-  gravtastic
+  gravtastic (= 2.2.0)
   hpricot (= 0.6.161)
   rails (= 2.3.11)
   redgreen
+  rmagick
   twitter_oauth
   uuidtools
   will_paginate
