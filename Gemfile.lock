@@ -16,8 +16,6 @@ GEM
     flickr (1.0.2)
       xml-simple (>= 1.0.7)
     gravtastic (2.2.0)
-    hoe (2.9.4)
-      rake (>= 0.8.7)
     hpricot (0.6.161)
     json (1.5.1)
     mime-types (1.16)
@@ -40,8 +38,6 @@ GEM
     uuidtools (2.1.2)
     will_paginate (2.3.15)
     xml-simple (1.0.15)
-    youtube-g (0.4.1)
-      hoe (>= 1.5.0)
 
 PLATFORMS
   ruby
@@ -51,7 +47,6 @@ DEPENDENCIES
   colored (= 1.1)
   flickr
   gravtastic (= 2.2.0)
-  hoe
   hpricot (= 0.6.161)
   rails (= 2.3.11)
   redgreen
@@ -59,4 +54,3 @@ DEPENDENCIES
   twitter_oauth
   uuidtools
   will_paginate
-  youtube-g (= 0.4.1)
