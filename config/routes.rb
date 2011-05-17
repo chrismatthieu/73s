@@ -165,6 +165,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/products/:id/edit', :controller => 'products', :action => 'update'
   map.connect '/companies/:id/edit', :controller => 'companies', :action => 'update'
+  map.connect '/twitter/deauthorize/:id', :controller => 'profiles', :action => 'deauth'
 
 
 

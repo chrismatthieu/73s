@@ -1,7 +1,8 @@
 <div class="newest_member clear">
   <div class="left">
   <% profile = @gear.profile %>
-  <%= icon profile %> 
+  <%# icon profile %> 
+<%= image_tag profile.gravatar_url, :width => "50"%>
   </div>
   <div class="left" style="margin-left: 10px; font-size:20px;">
 

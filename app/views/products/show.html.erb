@@ -48,7 +48,7 @@
 <br/>
 
 <% if !@u.nil? %>
-<a href="<%= '/products/' + @product.id.to_s %>"><%=image_tag(url_for_file_column(@product, :image, :small.to_s), {:title=>@product.name, :alt=>@product.name}) rescue "" %></a>
+<a href="<%= '/products/' + @product.id.to_s %>"><%#image_tag(url_for_file_column(@product, :image, :small.to_s), {:title=>@product.name, :alt=>@product.name}) rescue "" %></a>
 
 
 <%= link_to 'Discuss', '/forums/' + @product.forum_id.to_s %>

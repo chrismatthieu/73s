@@ -36,10 +36,10 @@
 <table>
 <% @companies.each do |company| %>
 <tr><td>
-	<a href="<%= '/company/' + company.id.to_s + '/products/' %>"><%=image_tag(url_for_file_column(company, :image, :small.to_s), {:title=>company.name, :alt=>company.name}) rescue "" %></a>
+	<a href="<%= '/company/' + company.id.to_s + '/products/' %>"><%= company.name rescue "unkown" %></a> 
 	<!-- <a href="<%= '/company/' + company.id.to_s + '/products/' %>"><%=h company.name %></a> -->
 </td><td>
-	<%= link_to ' View Products (' + company.products.size.to_s + ')', "/company/" + company.id.to_s + "/products" %>
+	- <%= link_to ' View Products (' + company.products.size.to_s + ')', "/company/" + company.id.to_s + "/products" %>
 	| 
     <%= link_to 'Edit Company', edit_company_path(company) %>
 	<% if  !@u.nil? and @u.is_admin  %>

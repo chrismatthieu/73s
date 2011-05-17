@@ -58,39 +58,13 @@
 
 
 <div class="right half">
-
-  <% if @p.user.access_token.nil? %>
-  <div id="Twitter">
-	<form>
-	<h2>Connect 73s to Twitter</h2>
-	<%= link_to 'Authorize!', '/connect'%>
-	</form>  
-  </div>
-  <% end %>
 	
   <div id="upload_icon">
-    <% less_form_for @p, :html=>{:method=>:put, :multipart=>true, :class=>"box no_top"} do |p| %>
-      <h2><%= "Upload Avatar Photo:" %></h2>
-    
-      <%= p.front :icon, :label => 'Select your Icon' %>
-      <%= file_column_field( "profile", "icon", :size => 15)%>
-      <div class="clear"></div>
-      <% unless @p.icon.blank? %>
-      <div id="avatar_edit">
-        <span id="profile_icon_picture">
-          <%= icon @p %>
-          <%= link_to_remote 'delete icon', :url=>delete_icon_profile_path(@p), :confirm=>DELETE_CONFIRM  %>
-        </span>
-      </div>
-      <% end %>
-      <%= p.back :icon %>
-
-      <div class="row button">
-      <%= p.submit 'Upload', :class => 'button' %>
-      </div>
-
-      <input type="hidden" name="switch" value="image" />
-    <% end %>
+	<form>
+      <h2><%= "Your Avatar" %></h2>
+		<%= image_tag @p.gravatar_url, :width => "50"%>
+		<%= link_to 'Change Avatar', 'http://gravatar.com'%>
+	</form>
   </div>
 
 
@@ -119,6 +93,20 @@
       <input type="hidden" name="switch" value="password" />
     <% end %>
   </div>
+
+<div id="Twitter">
+<form>
+<h2><%= 'Connect 73s to Twitter' %></h2>
+<% if @p.user.access_token.nil? %>
+	<form>
+	<%= link_to 'Authorize!', '/connect'%>
+	</form>  
+<% else %>
+	<%= link_to 'De-Authorize', '/twitter/deauthorize/' + @p.id.to_s %>
+<% end %>
+</form>
+</div>
+
 
   <div id="change_passwords">
     <% less_form_for @p, :html=>{:method=>:put, :class=>"box no_top"} do |p| %>

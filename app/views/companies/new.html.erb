@@ -8,7 +8,7 @@
     <%= f.text_field :name %>
     <%= f.text_field :url %>
     <%= f.text_area :description %>
-	<%= f.wrap(:image, :label => 'Icon: '){file_column_field "company", "image", :size => 15} %>
+	<%# f.wrap(:image, :label => 'Icon: '){file_column_field "company", "image", :size => 15} %>
     <%= f.submit 'Create', :class=>"button" %>
 <% end %>
 <br/><br/>

@@ -112,6 +112,14 @@ class ProfilesController < ApplicationController
     end      
   end
 
+  def deauth
+    # deauth twitter - remove token and redirect to twitter revoke page
+    @user.access_token = nil
+    @user.access_secret = nil
+    @user.save
+    redirect_to "https://twitter.com/settings/applications"
+  end
+
 
 
   def callsign

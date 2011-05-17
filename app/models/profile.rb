@@ -82,6 +82,7 @@ class Profile < ActiveRecord::Base
   has_many :contacts
   has_many :statuses
   has_many :lists
+  has_many :gears
   
   
   # acts_as_ferret :fields => [ :location, :f, :about_me ], :remote=>true

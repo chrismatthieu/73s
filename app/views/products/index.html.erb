@@ -4,7 +4,7 @@
 <% end %>
 
 <% if !@company.nil? %>
-<a href="<%= '/companies/' + @company.id.to_s %>"><%=image_tag(url_for_file_column(@company, :image, :small.to_s), {:title=>@company.name, :alt=>@company.name}) rescue "" %></a
+<a href="<%= '/companies/' + @company.id.to_s %>"><%=@company.name rescue "" %></a
 <br/>
 <br/>
 <% end %>
@@ -48,10 +48,10 @@
 		<ul>
 		</div>
 	
-			<a href="<%= '/products/' + product.id.to_s %>"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+			<a href="<%= '/products/' + product.id.to_s %>"><%=product.name rescue "" %></a>
 
 	</td><td>
-			<a href="<%= '/products/' + product.id.to_s %>"> View/Rate <%=h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %><br/>
+			<a href="<%= '/products/' + product.id.to_s %>"> View/Rate <%#h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %><br/>
 			
     		<p id="add_link<%=product.id.to_s%>"><%= button_to_function("+ Add to List",
 			"Element.remove('add_link#{product.id.to_s}'); Element.show('add_list#{product.id.to_s}')")%></p>

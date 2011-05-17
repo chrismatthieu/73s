@@ -17,11 +17,11 @@ profile ||= @profile
 
 		<% product = Product.find(list.product_id) rescue false %>
 		<% if product %>
-		<a href="<%= '/products/' + list.product_id.to_s %>"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
-		<a href="<%= '/products/' + list.product_id.to_s %>"> View <%=h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %> <br />
+		<a href="<%= '/products/' + list.product_id.to_s %>"><%=product.name rescue "" %></a> - 
+		<a href="<%= '/products/' + list.product_id.to_s %>"> View <%#h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %> <br />
 
 		<% if @u %>
-			<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
+			<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update Your List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
 		<% end %> 
 		
 		<div id="add_list<%=list.id.to_s%>" style="display:none;">
@@ -56,11 +56,11 @@ profile ||= @profile
 
 		<% product = Product.find(list.product_id)  rescue false %>
 		<% if product %>
-		<a href="<%= '/products/' + list.product_id.to_s %>"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
-		<a href="<%= '/products/' + list.product_id.to_s %>"> View <%=h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %>  <br/>
+		<a href="<%= '/products/' + list.product_id.to_s %>"><%=product.name rescue "" %></a> - 
+		<a href="<%= '/products/' + list.product_id.to_s %>"> View <%#h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %>  <br/>
 		
 		<% if @u %>
-			<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
+			<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update Your List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
 		<% end %>
 		
 		<div id="add_list<%=list.id.to_s%>" style="display:none;">
@@ -95,11 +95,11 @@ profile ||= @profile
 
 		<% product = Product.find(list.product_id) rescue false%>
 		<% if product %>
-		<a href="<%= '/products/' + list.product_id.to_s %>"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
-		<a href="<%= '/products/' + list.product_id.to_s %>"> View <%=h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %> <br/>
+		<a href="<%= '/products/' + list.product_id.to_s %>"><%=product.name rescue "" %></a> - 
+		<a href="<%= '/products/' + list.product_id.to_s %>"> View <%#h product.name %></a> | <%= link_to 'Discuss', '/forums/' + product.forum_id.to_s %> <br/>
 
 		<% if @u %>
-			<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
+			<p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update Your List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
 		<% end %>
 		
 		<div id="add_list<%=list.id.to_s%>" style="display:none;">

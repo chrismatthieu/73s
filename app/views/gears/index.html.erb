@@ -10,7 +10,8 @@
 <div class="newest_member clear">
   <div class="left">
   <% profile = gear.profile %>
-  <%= icon profile rescue '' %> 
+  <%# icon profile rescue '' %> 
+<%= link_to image_tag(profile.gravatar_url, :width => "50"), profile%>
   </div>
   <div class="left" style="margin-left: 10px; font-size:20px;">
   <%= link_to h(gear.title), gear %>
