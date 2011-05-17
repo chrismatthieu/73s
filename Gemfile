@@ -14,4 +14,6 @@ gem 'twitter_oauth'
 gem 'gravtastic', '2.2.0'
 gem 'rmagick'
 
-
+group :test, :development do
+  gem "hoe"
+end
