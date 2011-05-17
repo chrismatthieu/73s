@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
   
   def index
     if @p && @p == @profile && @p.blogs.empty?
-      flash[:notice] = 'You have not create any blog posts.  Try creating one now.'
+      flash[:notice] = 'You have not create any blog posts.  Try creating one now.' 
       redirect_to new_profile_blog_path(@p) and return
     end
     respond_to do |wants|
