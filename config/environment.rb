@@ -44,6 +44,7 @@ Rails::Initializer.run do |config|
   config.gem 'gravtastic', :version => '= 2.2.0'
   # config.gem 'rmagick'
   config.gem "rmagick", :lib => "RMagick"
+  config.gem "avatar"
   
 end
 
