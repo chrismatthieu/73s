@@ -5,7 +5,7 @@ blog ||= @blog
 %>
 
 <div id="blog_<%= blog.id %>" class="border_top">
-	<%= icon blog.profile, :small, :class => 'left avatar_on_comment' %> <br />
+	<%#  icon blog.profile, :small, :class => 'left avatar_on_comment' %> <br />
 	<%= link_to h(blog.profile.f), '/' + blog.profile.user.login %>
     Posted <%= time_ago_in_words blog.created_at  %>
 		<%- if @p == @profile -%>

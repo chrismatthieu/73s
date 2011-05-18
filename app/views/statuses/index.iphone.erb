@@ -20,7 +20,9 @@
 
 <div class="bubble">
 		<blockquote>
-			<p><%= icon status.profile, :small, :class => 'left avatar_on_comment' rescue "" %> 
+			<p><%# icon status.profile, :small, :class => 'left avatar_on_comment' rescue "" %> 
+				<%= image_tag(status.profile.gravatar_url, :width => "50") %>
+				
 				<cite><strong><a href="/<%= status.profile.user.login rescue ""%>"><%= status.profile.user.login rescue ""%></a>: </strong> </cite>
 			 <%=h status.message rescue ""%> (<a href="/<%= status.profile.user.login rescue ""%>/status">...more</a>) updated <%= time_ago_in_words status.created_at %> ago
 			</p>

@@ -1,9 +1,9 @@
-require 'avatar/view/action_view_support'
+# require 'avatar/view/action_view_support'
 require 'digest/md5'
 
 module HomeHelper
   
-  include Avatar::View::ActionViewSupport
+  # include Avatar::View::ActionViewSupport
   
   def newest_pictures limit = 12
     Photo.find(:all, :order => 'created_at desc', :limit => limit)
@@ -23,8 +23,7 @@ module HomeHelper
     #return "" if profile.nil?
     if profile != nil
       img_opts = {:title => profile.full_name, :alt => profile.full_name, :class => size}.merge(img_opts)
-      #link_to(avatar_tag(profile, {:size => size, :file_column_version => size }, img_opts), profile_path(profile))
-      link_to(avatar_tag(profile, {:size => size, :file_column_version => size }, img_opts), '/' + profile.user.login)
+      # link_to(avatar_tag(profile, {:size => size, :file_column_version => size }, img_opts), '/' + profile.user.login)
     end
   end
   
