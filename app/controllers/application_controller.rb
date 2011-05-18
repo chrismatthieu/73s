@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   layout 'application'  
   
   require 'RMagick'
+  require 'avatar'
   
   def check_featured
     # return if Profile.featured_profile[:date] == Date.today
