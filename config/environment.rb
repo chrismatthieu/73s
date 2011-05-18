@@ -42,7 +42,8 @@ Rails::Initializer.run do |config|
   config.gem 'flickr'
   config.gem 'twitter_oauth'
   config.gem 'gravtastic', :version => '= 2.2.0'
-  config.gem 'rmagick'
+  # config.gem 'rmagick'
+  config.gem "rmagick", :lib => "RMagick"
   
 end
 
