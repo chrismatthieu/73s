@@ -1,8 +1,8 @@
-require 'avatar/view/action_view_support'
+# require 'avatar/view/action_view_support'
 
 module ForumHelper
   
-  include Avatar::View::ActionViewSupport
+  # include Avatar::View::ActionViewSupport
   
   
   def forum_session
