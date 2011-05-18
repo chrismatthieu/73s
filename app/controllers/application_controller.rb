@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   layout 'application'  
   
+  require 'RMagick'
   
   def check_featured
     # return if Profile.featured_profile[:date] == Date.today
