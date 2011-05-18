@@ -33,10 +33,10 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
 
   # Gem dependencies
-  config.gem 'will_paginate', :version => '~> 2.2.2'
+  config.gem 'will_paginate' #, :version => '~> 2.2.2'
   config.gem 'colored', :version=> '1.1'
-  config.gem 'youtube-g', :version=> '0.4.1', :lib=>'youtube_g'
-  config.gem 'uuidtools', :version=> '1.0.3'
+  # config.gem 'youtube-g', :version=> '0.4.1', :lib=>'youtube_g'
+  config.gem 'uuidtools' #, :version=> '1.0.3'
   config.gem 'hpricot', :version=> '0.6.161'
   config.gem 'redgreen', :version=> '1.2.2' unless ENV['TM_MODE']
   config.gem 'flickr'
