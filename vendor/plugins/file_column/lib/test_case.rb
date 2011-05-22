@@ -73,8 +73,8 @@ class Test::Unit::TestCase
     tmp_path = File.join(RAILS_ROOT, "test", "tmp", "file_column")
     file_fixtures = Dir.glob File.join(RAILS_ROOT, "test", "fixtures", "file_column", "*")
     
-    FileUtils.mkdir_p tmp_path unless File.exists?(tmp_path)
-    FileUtils.cp_r file_fixtures, tmp_path
+    # FileUtils.mkdir_p tmp_path unless File.exists?(tmp_path)
+    # FileUtils.cp_r file_fixtures, tmp_path
   end
   
   # Removes the directory "RAILS_ROOT/test/tmp/file_column/" so the files

@@ -119,11 +119,11 @@ class CalendarHelperTest < Test::Unit::TestCase
   end
 
   def write_sample(filename, content)
-    FileUtils.mkdir_p "test/output"
-    File.open("test/output/#{filename}", 'w') do |f|
-      f.write %(<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html><head><title>Stylesheet Tester</title><link href="../../generators/calendar_styles/templates/grey/style.css" media="screen" rel="Stylesheet" type="text/css" /></head><body>)
-      f.write content
-      f.write %(</body></html>)
+    # FileUtils.mkdir_p "test/output"
+    # File.open("test/output/#{filename}", 'w') do |f|
+    #   f.write %(<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html><head><title>Stylesheet Tester</title><link href="../../generators/calendar_styles/templates/grey/style.css" media="screen" rel="Stylesheet" type="text/css" /></head><body>)
+    #   f.write content
+    #   f.write %(</body></html>)
     end
   end
 

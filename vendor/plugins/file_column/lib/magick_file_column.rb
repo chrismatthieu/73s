@@ -17,7 +17,7 @@ module FileColumn # :nodoc:
           options[:magick][:versions].each_pair do |version, version_options|
             next if version_options[:lazy]
             dirname = version_options[:name]
-            FileUtils.mkdir File.join(@dir, dirname)
+            # FileUtils.mkdir File.join(@dir, dirname)
             transform_image(img, version_options, absolute_path(dirname))
           end
         end
@@ -55,7 +55,7 @@ module FileColumn # :nodoc:
           return nil
         end
         dirname = version_options[:name]
-        FileUtils.mkdir File.join(@dir, dirname)
+        # FileUtils.mkdir File.join(@dir, dirname)
         transform_image(img, version_options, absolute_path(dirname))
       end
 

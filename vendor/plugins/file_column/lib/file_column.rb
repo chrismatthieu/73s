@@ -213,7 +213,7 @@ module FileColumn # :nodoc:
     def store_upload(file)
       @tmp_dir = FileColumn.generate_temp_name
       @dir = File.join(tmp_base_dir, @tmp_dir)      
-      FileUtils.mkdir(@dir)
+      # FileUtils.mkdir(@dir)
       
       @filename = FileColumn::sanitize_filename(file.original_filename)
       local_file_path = File.join(tmp_base_dir,@tmp_dir,@filename)

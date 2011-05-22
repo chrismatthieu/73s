@@ -1,7 +1,7 @@
 namespace :tank_engine do
 
   task :install_images => :environment do
-    FileUtils.mkdir("#{RAILS_ROOT}/public/images/tank_engine")
+    # FileUtils.mkdir("#{RAILS_ROOT}/public/images/tank_engine")
     Dir.chdir("#{RAILS_ROOT}/vendor/plugins/tank-engine/assets/images") do
       images = Dir.glob('*.png') + Dir.glob('*.gif')
       images.each do |image|
