@@ -48,7 +48,7 @@ Rails::Initializer.run do |config|
   
 end
 
-Less::JsRoutes.generate!
+# Less::JsRoutes.generate!
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
