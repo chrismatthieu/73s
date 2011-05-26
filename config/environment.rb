@@ -5,7 +5,7 @@ ENV['RAILS_ENV'] ||= 'production'
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-require "RedCloth"
+# require "RedCloth"
 
 Rails::Initializer.run do |config|
     
@@ -37,13 +37,14 @@ Rails::Initializer.run do |config|
   config.gem 'colored', :version=> '1.1'
   # config.gem 'youtube-g', :version=> '0.4.1', :lib=>'youtube_g'
   config.gem 'uuidtools' #, :version=> '1.0.3'
-  config.gem 'hpricot', :version=> '0.6.161'
+  config.gem 'hpricot' #, :version=> '0.6.161'
   config.gem 'redgreen', :version=> '1.2.2' unless ENV['TM_MODE']
   config.gem 'flickr'
   config.gem 'twitter_oauth'
   config.gem 'gravtastic', :version => '= 2.2.0'
   # config.gem 'rmagick'
   config.gem "rmagick", :lib => "RMagick"
+  config.gem 'RedCloth', :lib => 'redcloth'
   
 end
 
