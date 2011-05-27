@@ -48,6 +48,11 @@ Rails::Initializer.run do |config|
   
 end
 
+# For the heroku people:
+# remove Less::JsRoutes.generate!
+# .gitignore: remove js_routes.js from .gitignore
+# remember to run `rake less:js:routes` every time routes is modified.
+
 # Less::JsRoutes.generate!
 
 ActionMailer::Base.delivery_method = :smtp
