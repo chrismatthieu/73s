@@ -2,7 +2,7 @@
   
 <% 
 counter = 0 
-@comments = Comment.find(:all, :conditions => [ "commentable_type = ? and commentable_id = ?", 'Reviews', @revid ])
+@comments = Comment.find(:all, :conditions => [ "commentable_type = ? and commentable_id = ?", 'Reviews', @revid.split("-")[0] ])
 
 for comment in @comments
 counter = counter + 1
