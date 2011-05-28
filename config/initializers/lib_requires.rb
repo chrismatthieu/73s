@@ -7,4 +7,4 @@ require 'william_paginate'
 # require 'youtube_g'
 require 'colored'
 
-Less::JsRoutes.generate!
+# Less::JsRoutes.generate!

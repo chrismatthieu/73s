@@ -11,7 +11,7 @@ Rails::Initializer.run do |config|
     
   # Cookie sessions (limit = 4K)
   config.action_controller.session = {
-    :session_key => '_73s_session',
+    :key => '_73s_session',
     :secret      => '81a1d4bbc82cc0daa30bdd4ac94469bb85d8a474b2d4e42b8463fe1adbaa7187715a14c91e67084e0d3203b04dc4d1a682c0a62ac2507b8f84137c32abeda9f5'
   }
   config.action_controller.session_store = :active_record_store
