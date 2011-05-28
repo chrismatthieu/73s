@@ -55,7 +55,7 @@ TheTextBox.value = '@' + text + ' ' + TheTextBox.value;
 				<tr>
 				<td valign="top" style="padding-left: 8px; width: 89px;">
 					<%# icon @qst.profile, :small, :class => 'left' rescue ""%>
-					<%= image_tag @qst.profile.gravatar_url, :width => "50"%>
+					<%= image_tag @qst.profile.gravatar_url, :width => "50" rescue ""%>
 			
 					
 				</td>
