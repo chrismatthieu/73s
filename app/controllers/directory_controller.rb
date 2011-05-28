@@ -6,7 +6,7 @@ class DirectoryController < ApplicationController
 
   def index
     @users = Profile.paginate(:order => 'created_at ASC', 
-    :conditions => ["user_id <> ''"],
+    :conditions => ["user_id > 0"],
     :per_page => 10,
     :page => params[:page])
     
