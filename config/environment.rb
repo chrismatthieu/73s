@@ -55,13 +55,13 @@ end
 
 # Less::JsRoutes.generate!
 
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-  :address => "127.0.0.1",
-  :port  => '25', 
-  :domain  => '73s.org',
-  :user_name  => "admin.73s-org",
-  :password  => "mwhmwh",
-  :authentication  => :login
-}
+# ActionMailer::Base.delivery_method = :smtp
+# ActionMailer::Base.smtp_settings = {
+#   :address => "127.0.0.1",
+#   :port  => '25', 
+#   :domain  => '73s.org',
+#   :user_name  => "admin.73s-org",
+#   :password  => "mwhmwh",
+#   :authentication  => :login
+# }
 
