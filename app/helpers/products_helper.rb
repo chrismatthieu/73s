@@ -11,7 +11,7 @@ module ProductsHelper
   def product_path product = nil, size = :square
     path = nil
     unless product.nil? || product.image.blank?
-      path = url_for_file_column(product, :image, size.to_s) rescue nil
+      # path = url_for_file_column(product, :image, size.to_s) rescue nil
     end
     path = missing_product_path(size) if path.nil?
     return path

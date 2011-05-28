@@ -25,11 +25,11 @@ class Photo < ActiveRecord::Base
     ([profile] + profile.friends + profile.followers).each{ |p| p.feed_items << feed_item }
   end
 
-  file_column :image, :magick => {
-    :versions => { 
-      :square => {:crop => "1:1", :size => "50x50", :name => "square"},
-      :small => "175x250>"
-    }
-  }
+  # file_column :image, :magick => {
+  #   :versions => { 
+  #     :square => {:crop => "1:1", :size => "50x50", :name => "square"},
+  #     :small => "175x250>"
+  #   }
+  # }
     
 end

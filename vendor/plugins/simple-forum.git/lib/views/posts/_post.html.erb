@@ -25,7 +25,7 @@
 	<%= image_tag @profile.gravatar_url, :width => "50"%>
 	
 	<!-- <% if !@profile.nil? && !@profile.icon.blank? %>
-		<a href="/<%=@profile.user.login%>"><img src="<%=url_for_file_column(@profile, :icon, :small.to_s) rescue ''%>">
+		<a href="/<%=@profile.user.login%>"><img src="<%#url_for_file_column(@profile, :icon, :small.to_s) rescue ''%>">
 			<%#image_tag(url_for_file_column(@profile, :icon, :medium.to_s), {:title=>@profile.user.login, :alt=>@profile.user.login}) %>
 		</a>
 		<%# image_tag(profile_path( @profile, "small"), {:title=>@profile.user.login, :alt=>@profile.user.login, :class=>"small"}) %>

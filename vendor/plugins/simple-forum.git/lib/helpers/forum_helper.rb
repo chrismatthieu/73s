@@ -50,7 +50,7 @@ module ForumHelper
   def profile_path profile = nil, size = :square
     path = nil
     unless profile.nil? || profile.icon.blank?
-      path = url_for_file_column(profile, :icon, size.to_s) rescue nil
+      # path = url_for_file_column(profile, :icon, size.to_s) rescue nil
     end
     path = missing_profile_path(size) if path.nil?
     return path

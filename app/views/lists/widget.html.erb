@@ -87,7 +87,7 @@
 
 <% product = Product.find(list.product_id) rescue false %>
 <% if product %>
-<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%#image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
 
 <% end %>
 
@@ -103,7 +103,7 @@
 
 <% product = Product.find(list.product_id) rescue false %>
 <% if product %>
-<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%#image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
 
 <% end %>
 <% end %>
@@ -117,7 +117,7 @@
 
 <% product = Product.find(list.product_id) rescue false %>
 <% if product %>
-<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%=image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
+<a href="<%= 'http://73s.org/products/' + list.product_id.to_s %>" target="_new"><%#image_tag(url_for_file_column(product, :image, :small.to_s), {:title=>product.name, :alt=>product.name}) rescue "" %></a>
 
 
 <% end %>
