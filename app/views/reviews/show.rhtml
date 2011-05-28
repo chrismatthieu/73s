@@ -58,7 +58,7 @@
 	<td valign="top"><strong><%= @review.viewcount %> views</strong></td>
       <% if @p != nil %>
 
-        <% if @p.user.login.upcase == 'N7ICE' %>
+        <% if @callsign.upcase == 'N7ICE' %>
           <td valign="top"><%= link_to 'Edit', :action => 'edit', :id => @review %></td>
           <td valign="top"><%= link_to 'Destroy', { :action => 'destroy', :id => @review }, :confirm => 'Are you sure?', :method=>:post %></td>
 		<% elsif @p.id == @u.id %>
