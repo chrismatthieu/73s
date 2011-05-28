@@ -5,7 +5,7 @@
 
   <h1>
   <%= @review.title %> - <%= time_ago_in_words @review.timestamp %> ago<br />
-   by <%= link_to @user.login.upcase, '/' + @user.login %>  (QTH <%=@location%>) </h1>
+   by <%= link_to @callsign.upcase, '/' + @callsign %>  (QTH <%=@location%>) </h1>
 	<!-- AddThis Bookmark Button BEGIN -->
 	<script type="text/javascript">
 	  addthis_url    = location.href;   

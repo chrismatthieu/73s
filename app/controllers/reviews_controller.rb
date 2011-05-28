@@ -57,6 +57,7 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @user = @review.profile.user
+    @callsign = @review.profile.user.login
     @revid = params[:id]
     @reviewid = @review.id
     if @review.profile.location.nil? 
