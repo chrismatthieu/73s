@@ -141,12 +141,12 @@
 
 <ul id="tabnav">
 	<li class="tab1"><a href="/statuses">All Updates</a></li>
-	<li class="tab2"><a href="/hamfeed">Hams on Twitter</a></li>
+	<!-- <li class="tab2"><a href="/hamfeed">Hams on Twitter</a></li> -->
 	<% if @p != nil %>
-	<li class="tab3"><a href="/<%=@p.user.login%>/status">My Friends' Updates</a></li>
-	<li class="tab4"><a href="/<%=@p.user.login%>/mystatus">My Updates Only</a></li>
-	<li class="tab5"><a href="/<%=@p.user.login%>/replies">@<%=@p.user.login.upcase %> Replies</a></li>
-	<li class="tab6"><a href="/<%=@p.user.login%>/directs">Direct Messages</a></li>
+	<!-- <li class="tab2"><a href="/<%=@p.user.login%>/status">My Friends' Updates</a></li> -->
+	<li class="tab2"><a href="/<%=@p.user.login%>/mystatus">My Updates Only</a></li>
+	<li class="tab3"><a href="/<%=@p.user.login%>/replies">@<%=@p.user.login.upcase %> Replies</a></li>
+	<li class="tab4"><a href="/<%=@p.user.login%>/directs">Direct Messages</a></li>
 	<% end %>
 </ul>
 

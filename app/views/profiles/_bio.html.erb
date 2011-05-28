@@ -23,7 +23,7 @@ profile ||= @profile
 		<% unless profile.twitter_name.blank? %><div><strong>Twitter:</strong> <a href="http://twitter.com/<%= h profile.twitter_name %>"><%=h profile.twitter_name %></a></div><% end %>
 		<% unless profile.skype_name.blank? %><div><strong>Skype:</strong> <a href="http://www.tduri.com/s.php?s-<%= h profile.skype_name %>" target="_new"><%=h profile.skype_name %><br /><img src="http://mystatus.skype.com/<%= h profile.skype_name %>" border="0" alt="" /></a></div><% end %>
 <% end %>		
-<br/><a href="http://www.qrz.com/db/<%=profile.user.login%>" target="_new">&rarr View QRZ Info</a>
+<br/><a href="http://www.qrz.com/db/<%=profile.user.login%>" target="_new">View QRZ Info</a>
 	</div>
     <div class="clear"></div>
 </div>

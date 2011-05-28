@@ -74,7 +74,7 @@
 					<strong>You must <%= link_to 'Login', login_path %> or <%= link_to 'Sign-up', signup_path %> to participate</strong>
 					<% else %>	
 					<% @messages = @p.unread_messages.count rescue 0 %>
-					<%# icon(@p, :small) unless @p.blank? rescue ""%><%= image_tag @p.gravatar_url, :width => "25"%> <br /> <strong>Hi, <%= @u.f  rescue ""%></strong> (<%= link_to 'logout', logout_path %> <%= link_to(' | New Message!', '/messages') unless @messages == 0 %> <%= link_to(' | dashboard', '/' + @u.login) %> <%= link_to(' | admin', admin_users_path) if @p && @p.user.is_admin  rescue ""%>)
+					<%# icon(@p, :small) unless @p.blank? rescue ""%><%= image_tag @p.gravatar_url, :width => "25" rescue ""%> <br /> <strong>Hi, <%= @u.f  rescue ""%></strong> (<%= link_to 'logout', logout_path %> <%= link_to(' | New Message!', '/messages') unless @messages == 0 %> <%= link_to(' | dashboard', '/' + @u.login) %> <%= link_to(' | admin', admin_users_path) if @p && @p.user.is_admin  rescue ""%>)
 					<% end %>
 				</div>  
 				<div class="clear"></div>   

@@ -41,7 +41,7 @@ can_send = !@p.blank?
 </div>
 <% end %>
 
-  <%= render :partial => 'profiles/recent_user_activity' %>	
+  <%# render :partial => 'profiles/recent_user_activity' %>	
 
   <%= render :partial => 'blogs/list' %>	
   <%= render :partial => 'comments/list', :locals => {:with_form => true, :with_wall_to_wall => true} %>	
@@ -88,13 +88,11 @@ can_send = !@p.blank?
 
 <div class="right" id="column_r">
   <ul>
-      <li><div id="votecount">
-      <div id="cnttxt">
+      <li><!div id="votecount">
+      <!div id="cnttxt">
       <a id="mnms-0" style="text-decoration: none; "> <%= @contacts %> QSOs</a>  
-      <br/>
-        
-      </div>
-      </div></li>
+      <!/div>
+      <!/div></li>
     <%- unless me -%>
 	    <li><%= get_friend_link @p, @profile %></li>
 	    <%- if can_send -%>
