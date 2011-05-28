@@ -21,7 +21,7 @@ class DirectoryController < ApplicationController
   
   def newest
     @users = Profile.paginate(:order => 'created_at DESC', 
-    :conditions => ['user_id <> ""'],
+    :conditions => ["user_id > 0"],
     :per_page => 10,
     :page => params[:page])
     render :action =>  'index'
@@ -29,7 +29,7 @@ class DirectoryController < ApplicationController
 
   def twitterview
     @users = Profile.paginate(:order => 'created_at ASC',
-    :conditions => ['twitter_name <> "" and user_id <> ""'], 
+    :conditions => ['twitter_name <> "" and user_id > 0'], 
     :per_page => 10,
     :page => params[:page])
     render :action =>  'index'
@@ -37,7 +37,7 @@ class DirectoryController < ApplicationController
 
   def aprs
     @users = Profile.paginate(:order => 'created_at ASC',
-    :conditions => ['aprs = ? and user_id <> ""', true], 
+    :conditions => ['aprs = ? and user_id > 0', true], 
     :per_page => 10,
     :page => params[:page])
     render :action =>  'index'
@@ -45,7 +45,7 @@ class DirectoryController < ApplicationController
 
   def skype
     @users = Profile.paginate(:order => 'created_at ASC',
-    :conditions => ['skype_name <> "" and user_id <> ""'], 
+    :conditions => ['skype_name <> "" and user_id > 0'], 
     :per_page => 10,
     :page => params[:page])
     render :action =>  'index'

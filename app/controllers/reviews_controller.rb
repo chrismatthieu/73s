@@ -59,6 +59,11 @@ class ReviewsController < ApplicationController
     @user = @review.profile.user
     @revid = params[:id]
     @reviewid = @review.id
+    if @review.profile.location.nil? 
+    	@location = 'somewhere'
+    else
+    	@location = @review.profile.location
+    end
     
     # update view counter for most popular
     @views = @review.viewcount + 1

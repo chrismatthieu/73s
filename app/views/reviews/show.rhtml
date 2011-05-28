@@ -3,14 +3,6 @@
 <div id="reviews">
 <div class="review">	
 
-<%
-if @user.profile.location.nil? 
-	@location = 'somewhere'
-else
-	@location = @user.profile.location
-end
-%>
-
   <h1>
   <%= @review.title %> - <%= time_ago_in_words @review.timestamp %> ago<br />
    by <%= link_to @user.login.upcase, '/' + @user.login %>  (QTH <%=@location%>) </h1>
