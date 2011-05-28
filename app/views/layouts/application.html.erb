@@ -31,7 +31,7 @@
 		<div id="topper">		
 			<% 
 			# placement=0 is top banner
-			@banner = Advert.find(:all, :conditions => [ "startdate <= ? && enddate >= ? && placement=0", Time.now, Time.now ])
+			@banner = Advert.find(:all, :conditions => [ "startdate <= ? AND enddate >= ? AND placement=0", Time.now, Time.now ])
 			if @banner 
 				banner = @banner[rand(@banner.size)]
 				if not banner.nil?
