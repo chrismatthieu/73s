@@ -8,7 +8,7 @@ sent = params[:action]=='sent'
 
 <h1>Message Center</h1>	
 <div id="sub_nav">
-	<%= link_to '&larr; Back to Dashboard', @p %>  
+	<%= link_to '&larr; Back to Dashboard', '/' + @p.user.login %>  
 	<%= link_to "Inbox", messages_path if sent %>
 	<%= link_to "Sent", sent_messages_path, :class=>"selected"  unless sent || @p.sent_messages.empty? %>
 </div>

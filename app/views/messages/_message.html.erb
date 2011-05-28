@@ -7,7 +7,7 @@ to_list ||= @to_list
 
 
 <div id="sub_nav">
-	<%= link_to '&larr; Back to Dashboard', @p %> 
+	<%= link_to '&larr; Back to Dashboard', '/' + @p.user.login %> 
 	<%= inline_tb_link 'Reply', "new_reply", {:title => "Reply To #{message.sender.f}"}, {:height => 480} if message && message.sender != @p %>
 	<%= link_to "Inbox", messages_path %>
 	<%= link_to "Sent", sent_messages_path unless @p.sent_messages.empty? %>

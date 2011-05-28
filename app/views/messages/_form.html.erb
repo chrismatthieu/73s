@@ -15,7 +15,7 @@ end
 <% unless hide_header %>
   <br /><br /><h1>Compose New Message</h1>
   <div id="sub_nav">
-  	<%= link_to '&larr; Back to Dashboard', @p %>  
+  	<%= link_to '&larr; Back to Dashboard', '/' + @p.user.login %>  
   	<%= link_to "Inbox", messages_path unless @p.received_messages.empty? %>
   	<%= link_to "Sent", sent_messages_path, :class=>"selected"  unless @p.sent_messages.empty? %>
   </div>
