@@ -135,7 +135,7 @@ class Profile < ActiveRecord::Base
     find_options = {
       :include => :user,
       :conditions => ["is_active = ? and about_me IS NOT NULL and user_id is not null", true],
-      :order => "rand()",
+      :order => "RANDOM()",
     }
     #find(:first, find_options.merge(:offset => rand( count(find_options) - 1)))
     find(:first, find_options.merge(:offset => rand(count(find_options)).floor))
