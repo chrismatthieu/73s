@@ -8,7 +8,7 @@ can_send = !@p.blank?
 <div class="left" id="column_l">
   
   <% if @p != nil %>
-	  (<%= link_to_function '+ Add As New Contact', "new Effect.toggle('target', 'slide')" %>)
+	  (<%= link_to_function '+ Add As New QSO Contact', "new Effect.toggle('target', 'slide')" %>)
 	<% end %>
 	
   <%= render :partial => 'profiles/bio' %>
