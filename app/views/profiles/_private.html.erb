@@ -2,7 +2,7 @@
 <div id="sub_nav">
   <%= link_to 'View Public Profile', profile_path(@p).add_param(:public_view => true) %>
   <%# link_to 'Messages Center (' + @p.received_messages.count.to_s + ')', messages_path unless @p.received_messages.empty? && !@p.has_network? %>
-  <%= link_to 'Messages Center (' + @messages + ' new)', messages_path unless @p.received_messages.empty? && !@p.has_network? %>
+  <% link_to 'Messages Center (' + @messages + ' new)', messages_path unless @p.received_messages.empty? && !@p.has_network? %>
   <%# link_to 'Manage Photos', '/' + @p.user.login + '/photos' %>
   <%= link_to 'My Network', profile_friends_path(@p) if @p.has_network? %>
   <%= link_to 'My Blog', '/' + @p.user.login + '/blogs' %>
@@ -30,7 +30,7 @@
 
 
 <div class="half left">
-  <%= render :partial => 'profiles/recent_activity' %>
+  <%# render :partial => 'profiles/recent_activity' %>
   <%= render :partial => 'comments/list', :locals => {:with_form => true, :with_wall_to_wall => true} %>
   <%= render :partial => 'profiles/groups' %>
 </div>

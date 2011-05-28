@@ -31,7 +31,9 @@ class ProfilesController < ApplicationController
     @website = @profile.website      
     @callsign = @user.login
 
-    @comments = @profile.comments.paginate(:page => @page, :per_page => @per_page)
+    @comments = @profile.comments.paginate(:page => @page, :per_page => 10)
+    
+    
     @statuses = Status.find(:first, :conditions => ["profile_id = ?", @profile.id], :order => "created_at desc")
     
     

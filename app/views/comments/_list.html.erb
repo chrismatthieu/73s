@@ -4,7 +4,7 @@ with_form ||= false
 with_wall_to_wall ||= false
 
 comments ||= @comments
-@count = comments.total_entries
+@count = comments.total_entries rescue 0
 
 parent ||= @parent
 parent = @blog || @profile || nil
