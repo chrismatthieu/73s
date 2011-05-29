@@ -2,7 +2,12 @@
 
 profile ||= @profile
 type ||= 'friends'
-size ||= 20
+size ||= 18
+
+# LOCALHOST
+# list = profile.send(type).find(:all, :limit => size, :order => 'RAND()') rescue []
+
+# Hereko
 list = profile.send(type).find(:all, :limit => size, :order => 'RANDOM()') rescue []
 total = profile.send(type).count
 with_friending ||= false
@@ -20,11 +25,11 @@ title = type == 'followings' ? 'Following' : type
     
 <% list.each do |p| %>
 	<% if p != nil %>
-	<div class="left my_network">
+	<div class="left">
 		<%# icon p rescue "" %><%= link_to image_tag(p.gravatar_url, :width => "50"), p %>
-		<br /><%= link_to p.f, p rescue "" %>
+		<br /><%= link_to p.user.login.upcase, p rescue "" %>
 		
-		<%= get_friend_link(@p, p) if with_friending %>
+		<%= '<br/>' + get_friend_link(@p, p) if with_friending %>
 	</div>
 	<% end %>
 <% end %>
