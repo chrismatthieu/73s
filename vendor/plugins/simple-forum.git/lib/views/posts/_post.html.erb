@@ -20,20 +20,7 @@
 	<%# img_opts = {:title => @profile.user.login, :alt => @profile.user.login, :class => "50"} %>
 	<%# link_to avatar_tag(@profile, {:size => "50", :file_column_version => "50" }, img_opts) + ' ' + @profile.user.login, '/' + @profile.user.login %>
 	
-	<%# icon @profile, :small  rescue "" %>	
-	
 	<%= image_tag @profile.gravatar_url, :width => "50"%>
-	
-	<!-- <% if !@profile.nil? && !@profile.icon.blank? %>
-		<a href="/<%=@profile.user.login%>"><img src="<%#url_for_file_column(@profile, :icon, :small.to_s) rescue ''%>">
-			<%#image_tag(url_for_file_column(@profile, :icon, :medium.to_s), {:title=>@profile.user.login, :alt=>@profile.user.login}) %>
-		</a>
-		<%# image_tag(profile_path( @profile, "small"), {:title=>@profile.user.login, :alt=>@profile.user.login, :class=>"small"}) %>
-	<% else %>
-		<%= link_to image_tag("/images/avatar_default_small.png"), '/' + @profile.user.login %>
-    <% end %> -->
-
-	<%# url_for_file_column(@profile, :icon, :medium.to_s) %>
 	
 <br />
   Posted by <%= link_to h(@profile.user.login), "/#{@profile.user.login}" %><br/>
