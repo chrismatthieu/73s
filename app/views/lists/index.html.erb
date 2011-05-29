@@ -1,5 +1,5 @@
 <div>	
-  <h1><%= icon @profile rescue '' %><br /><%= "#{@profile.f.upcase rescue ''}'s Gear" %></h1>
+  <h1><%# icon @profile rescue '' %><%= image_tag @profile.gravatar_url, :width => "50"%> <br /><%= "#{@profile.f.upcase rescue ''}'s Gear" %></h1>
 
   <div id="sub_nav">
     <%= link_to '&larr; Back to Dashboard', '/' + @profile.user.login if me %>
