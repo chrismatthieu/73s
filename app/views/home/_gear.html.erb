@@ -17,15 +17,16 @@ truncate = truncate.nil? ? true : truncate
 </tr>
 <tr>
 <td valign="top" style="padding-left: 8px; width: 89px;">
-<%= link_to image_tag(gear.profile.gravatar_url, :width => "50"), gear%>	
+<% @profile = Profile.find(gear.user_id) %>	
+<%= link_to image_tag(@profile.gravatar_url, :width => "50"), '/' + @profile.user.login%> <%= link_to @profile.user.login, '/' + @profile.user.login %>	
 
 </td>
 <td class="feature_summary" valign="top" style="padding-left: 8px; width: 306px;">
-	<strong><a href="<%= '/products/' + gear.id.to_s %>"><%= sanitize gear.title %></a></strong>
+	<strong><a href="<%= '/products/' + gear.product_id.to_s %>"><%= sanitize gear.product.name %></a></strong>
 
 <!p>
 	<div class="comment_message jstruncate">
-	  <%= sanitize textilize(gear.desc) %>
+	  <%= sanitize textilize(gear.product.description) %>
 	</div>
 <!/p>
 </td>

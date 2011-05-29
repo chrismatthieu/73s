@@ -33,7 +33,8 @@ class HomeController < ApplicationController
         @hambrief ||= Hambrief.find(:all, :order => 'updated_at DESC', :limit => 1)
         @qst ||= Review.find(:first, :order => 'timestamp DESC', :limit => 1)
         # @gear ||= Product.find(:all, :order => 'created_at DESC', :limit => 3)
-        @gear ||= Gear.find(:all, :order => 'created_at DESC', :limit => 3)
+        @gear ||= List.find(:all, :order => 'created_at DESC', :limit => 3)
+        # @gear ||= Gear.find(:all, :order => 'created_at DESC', :limit => 3)
         
         render
         }
