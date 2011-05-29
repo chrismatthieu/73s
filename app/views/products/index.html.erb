@@ -56,7 +56,7 @@
     		<p id="add_link<%=product.id.to_s%>"><%= button_to_function("+ Add to List",
 			"Element.remove('add_link#{product.id.to_s}'); Element.show('add_list#{product.id.to_s}')")%></p>
 			<div id="add_list<%=product.id.to_s%>" style="display:none;">
-				<table bgcolor="#CCFFCC" width="200"><tr><td>
+				<table bgcolor="#FFEC70" width="200"><tr><td>
 
 				<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
 				    :html => {:id => 'list_form'}) do %>

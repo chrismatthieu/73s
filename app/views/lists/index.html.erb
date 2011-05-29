@@ -21,7 +21,7 @@
 <p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update Your List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
 
 <div id="add_list<%=list.id.to_s%>" style="display:none;">
-	<table bgcolor="#CCFFCC" width="200"><tr><td>
+	<table bgcolor="#FFEC70" width="200"><tr><td>
 
 	<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
 	    :html => {:id => 'list_form'}) do %>
@@ -58,7 +58,7 @@
 <p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update Your List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
 
 <div id="add_list<%=list.id.to_s%>" style="display:none;">
-	<table bgcolor="#CCFFCC" width="200"><tr><td>
+	<table bgcolor="#FFEC70" width="200"><tr><td>
 
 	<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
 	    :html => {:id => 'list_form'}) do %>
@@ -95,7 +95,7 @@
 <p id="add_link<%=list.id.to_s%>"><%= button_to_function("+ Update Your List", "Element.remove('add_link#{list.id.to_s}'); Element.show('add_list#{list.id.to_s}')")%></p>
 
 <div id="add_list<%=list.id.to_s%>" style="display:none;">
-	<table bgcolor="#CCFFCC" width="200"><tr><td>
+	<table bgcolor="#FFEC70" width="200"><tr><td>
 
 	<% form_remote_tag(:url => {:controller => 'lists', :action => 'create'},
 	    :html => {:id => 'list_form'}) do %>
