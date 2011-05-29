@@ -3,7 +3,7 @@
 <div class="newest_member clear">
   	<div class="left">
 	<%# icon newest_member %> 
-	<%= image_tag newest_member.gravatar_url, :width => "50"%>
+	<%= link_to image_tag(newest_member.gravatar_url, :width => "50"), '/' + newest_member.user.login%>
 	</div>
 	
 	<div class="left" style="margin-left: 10px;">

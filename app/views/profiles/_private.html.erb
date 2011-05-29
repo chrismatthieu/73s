@@ -11,11 +11,11 @@
 </div>
 
 <div id="status_form">
-&nbsp;What are you doing right now? (<a href="/<%=@p.user.login%>/mystatus">View my updates</a> | <a href="/<%=@p.user.login%>/status">View my friends' updates</a> | <a href="/statuses">View public timeline</a>) - <span id="counter_box">150</span> characters remaining
+&nbsp;What are you doing right now? (<a href="/<%=@p.user.login%>/mystatus">View my updates</a> | <a href="/<%=@p.user.login%>/status">View my friends' updates</a> | <a href="/statuses">View public timeline</a>) - <span id="counter_box">140</span> characters remaining
 <%    @status = Status.new %>
 <% form_for(@status) do |f| %>
   <!p>
-    <%= f.text_field :message, :size => 100, :maxlength => 150, :id => "status_input_box", :onKeyPress => status_counter %>
+    <%= f.text_field :message, :size => 100, :maxlength => 140, :id => "status_input_box", :onKeyPress => status_counter %>
     <%# f.text_area :message, :size => 10, :id => "status_input_box", :onKeyPress => status_counter %>
 	<%# f.text_field :counter, :value => 140, :size => 3, :id => "counter_box", :readonly => 'true' %>
     <%= f.submit "Submit" %>

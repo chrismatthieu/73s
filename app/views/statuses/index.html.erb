@@ -130,9 +130,9 @@
 <% form_for(@status) do |f| %>
 <br />
 
-  <p>&nbsp;What are you doing right now? - <span id="counter_box">150</span> characters remaining 	- 
+  <p>&nbsp;What are you doing right now? - <span id="counter_box">140</span> characters remaining 	- 
 		<%= link_to_redbox('Help?', :inline_box, html_options = {})%>		<br />
-    <%= f.text_field :message, :size => 100, :maxlength => 150, :id => "status_input_box", :value => @replycall, :onKeyPress => status_counter  %>
+    <%= f.text_field :message, :size => 100, :maxlength => 140, :id => "status_input_box", :value => @replycall, :onKeyPress => status_counter  %>
     <%= f.submit "Submit" %>
   </p>
 <% end %>
@@ -161,7 +161,7 @@
 	<div class="bubble">
 			<blockquote>
 				<p><%# icon status.profile, :small, :class => 'left avatar_on_comment' rescue "" %> 
-					<%= image_tag status.profile.gravatar_url, :width => "50"%>
+					<%= link_to image_tag(status.profile.gravatar_url, :width => "50"), '/' + status.profile.user.login %>
 					
 	<br />
 				<% 
@@ -177,7 +177,7 @@
 				<br />
 				</p><br /><br />
 			</blockquote>
-			<cite><strong><a href="/<%= status.profile.user.login rescue ""%>"><%= status.profile.user.login rescue ""%></a> </strong> updated <%= time_ago_in_words status.created_at %> ago</cite>
+			<cite><strong><a href="/<%= status.profile.user.login rescue ""%>"><%= status.profile.user.login.upcase rescue ""%></a> </strong> updated <%= time_ago_in_words status.created_at %> ago</cite>
 	</div>
 	
 	<% end %>

@@ -22,7 +22,7 @@
 					<%# icon profile, :small, :class => 'left avatar_on_comment'   rescue "" %>
 					<%= image_tag profile.gravatar_url, :width => "50"%>
 					
-					<%= link_to profile.user.login, '/' + profile.user.login  rescue ""%>
+					<%= link_to profile.user.login.upcase, '/' + profile.user.login  rescue ""%>
 				</td>
 				<td class="feature_summary" valign="top" style="padding-left: 8px; width: 306px;">
 

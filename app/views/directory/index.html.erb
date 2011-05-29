@@ -132,7 +132,7 @@
 <div class="newest_member clear">
   <div class="left">
   <%# icon profile  rescue "" %> 
-	<%= image_tag profile.gravatar_url, :width => "50"%>
+	<%= link_to image_tag(profile.gravatar_url, :width => "50"), '/' + profile.user.login %>
 
   </div>
 
@@ -147,7 +147,7 @@
 
 			</p>
 		</blockquote>
-		<cite><strong><a href="http://73s.org/<%= profile.user.login rescue ""%>"><%= profile.user.login  rescue ""%></a> </strong> <%= h(profile.location) || 'Nowhere' %> </cite>
+		<cite><strong><a href="http://73s.org/<%= profile.user.login rescue ""%>"><%= profile.user.login.upcase  rescue ""%></a> </strong> <%= h(profile.location) || 'Nowhere' %> </cite>
 
 	
   <div class="clear"></div>

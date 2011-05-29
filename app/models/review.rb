@@ -9,7 +9,7 @@ class Review < ActiveRecord::Base
   validates_presence_of :title, :body
 
   def to_param
-    "#{id}-#{title[0, 150].gsub(/[^a-z1-9]+/i, '-')}"
+    "#{id}-#{title[0, 140].gsub(/[^a-z1-9]+/i, '-')}"
   end
 
 

@@ -13,8 +13,8 @@
 			<tr>
 				<td valign="top" style="padding-left: 8px; width: 89px;">
 					<%#  icon status.profile, :small, :class => 'left avatar_on_comment'   rescue "" %>
-					<%= image_tag(status.profile.gravatar_url, :width => "50") %>
-					<%= link_to h(status.profile.user.login), status.profile  rescue ""%>
+					<%= link_to image_tag(status.profile.gravatar_url, :width => "50"), '/' + status.profile.user.login %>
+					<%= link_to h(status.profile.user.login.upcase), '/' + status.profile.user.login  rescue ""%>
 				</td>
 				<td class="feature_summary" valign="top" style="padding-left: 8px; width: 306px;">
 

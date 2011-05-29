@@ -19,9 +19,9 @@ if blog.profile.user != nil
 <tr>
 <td valign="top" style="padding-left: 8px; width: 89px;">
 <%# icon blog.profile, :small, :class => 'left avatar_on_comment' rescue "" %>
-<%= image_tag blog.profile.gravatar_url, :width => "50"%>
+<%= link_to image_tag(blog.profile.gravatar_url, :width => "50"), '/' + blog.profile.user.login %>
 
-<%= link_to h(blog.profile.user.login), blog.profile %>
+<%= link_to h(blog.profile.user.login), '/' + blog.profile.user.login.upcase %>
 </td>
 <td class="feature_summary" valign="top" style="padding-left: 8px; width: 306px;">
 	<strong><a href="/<%= blog.profile.user.login%>/blog/<%= blog.id%>"><%= sanitize blog.title %></a></strong>

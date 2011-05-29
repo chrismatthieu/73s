@@ -27,8 +27,8 @@ TheTextBox.value = '@' + text + ' ' + TheTextBox.value;
 	<%    @statustop = Status.new %>
 	<% form_for(@statustop) do |f| %>
 	<br />
-	  <p>&nbsp;What are you doing right now? - <span id="counter_box">150</span> characters remaining <br />
-	    <%= f.text_field :message, :size => 100, :maxlength => 150, :id => "status_input_box", :onKeyPress => status_counter  %>
+	  <p>&nbsp;What are you doing right now? - <span id="counter_box">140</span> characters remaining <br />
+	    <%= f.text_field :message, :size => 100, :maxlength => 140, :id => "status_input_box", :onKeyPress => status_counter  %>
 	    <%= f.submit "Submit" %>
 	  </p>
 	<% end %>
@@ -55,7 +55,8 @@ TheTextBox.value = '@' + text + ' ' + TheTextBox.value;
 				<tr>
 				<td valign="top" style="padding-left: 8px; width: 89px;">
 					<%# icon @qst.profile, :small, :class => 'left' rescue ""%>
-					<%= image_tag @qst.profile.gravatar_url, :width => "50" rescue ""%>
+					<%= link_to image_tag(@qst.profile.gravatar_url, :width => "50"), '/' + @qst.profile.user.login rescue ""%>
+					<%= link_to @qst.profile.user.login.upcase, '/' + @qst.profile.user.login rescue ""%>
 			
 					
 				</td>

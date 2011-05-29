@@ -1,7 +1,7 @@
 class Status < ActiveRecord::Base
   belongs_to :profile
   validates_presence_of :message
-  validates_length_of :message, :within => 1..150
+  validates_length_of :message, :within => 1..140
   
   def after_create
     if self.privatemsg != true
