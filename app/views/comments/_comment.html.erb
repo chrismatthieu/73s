@@ -11,7 +11,7 @@ c = comment.comment.dup.gsub(/\[youtube:+.+\]/, '')
 
 <div id="<%= comment.dom_id %>" class="comment_holder"> 
   <%#icon comment.profile, :small, :class => 'left avatar_on_comment' rescue '' %> 
-	<%= link_to image_tag(comment.profile.gravatar_url, :width => "50"), '/' + comment.profile.user.login %>
+	<%= link_to image_tag(comment.profile.gravatar_url, :width => "50"), '/' + comment.profile.user.login rescue ''%>
 
   <!-- <div class="date_details_black">
     <%# time_ago_in_words comment.created_at %> <%# link_to h(comment.profile.f), '/' + comment.profile.user.login %>
