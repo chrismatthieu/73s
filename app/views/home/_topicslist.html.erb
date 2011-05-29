@@ -26,9 +26,13 @@
 				</td>
 				<td class="feature_summary" valign="top" style="padding-left: 8px; width: 306px;">
 
-					<p>
-						<strong><a href="/forums/<%= topic.topic.forum.id %>/topics/<%=topic.topic.id%>"> <%= sanitize textilize(topic.topic.title) %></a></strong>
-					</p>
+						<strong><a href="/forums/<%= topic.topic.forum.id %>/topics/<%=topic.topic.id%>"> <%= topic.topic.title %></a></strong>
+						<!p>
+							<div class="comment_message jstruncate">
+							  <%= sanitize textilize(topic.body) %>
+							</div>
+						<!/p>
+
 				</td>
 			</tr>
 		</tbody>

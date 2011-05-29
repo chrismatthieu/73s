@@ -154,7 +154,7 @@ class StatusesController < ApplicationController
             @twituser = " (@#{@twitusername})"
           end
 
-          @tweet = @p.user.login + @twituser + " status - " + params[:status][:message] + " - http://73s.org/" + @p.user.login 
+          @tweet = params[:status][:message] + " - http://73s.org/" + @p.user.login 
           twitter(@tweet)
   
         end  
