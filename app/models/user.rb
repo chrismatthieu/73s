@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
   
   def forgot_password
     @forgot = true
-    self.password = UUID.random_create.to_s[0,8]
+    self.password = UUID.random_create.to_s[0,8] rescue rand(1000000000)
     self.password_confirmation = password
     encrypt_password
     save!
