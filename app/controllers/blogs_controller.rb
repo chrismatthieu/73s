@@ -97,7 +97,7 @@ class BlogsController < ApplicationController
   
     #@user = User.find_by_login(@callsign) 
     # @userx = User.find(:first, :conditions => ['login = ?', @callsign])
-    @userx = User.find(:first, :conditions => ['login = UPPER(?)', @callsign.upcase])        
+    @userx = User.find(:first, :conditions => ['login ILIKE ?)', @callsign])          
     
   
     if @userx

@@ -32,7 +32,7 @@ class TimelineController < ApplicationController
   
     #@user = User.find_by_login(@callsign) 
     # @user = User.find(:first, :conditions => ['login = ?', @callsign])
-    @user = User.find(:first, :conditions => ['login = UPPER(?)', @callsign.upcase])        
+    @user = User.find(:first, :conditions => ['login ILIKE ?)', @callsign])            
     
   
     if @user

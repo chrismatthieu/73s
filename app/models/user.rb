@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   # Returns the user or nil.
   def self.authenticate(login, password)
     # u = find_by_login(login) # need to get the salt
-    u = User.find(:first, :conditions => ['login = UPPER(?)', login.upcase])        
+    u = User.find(:first, :conditions => ['login ILIKE ?)', @callsign])           
     
     u && u.authenticated?(password) ? u : nil
   end

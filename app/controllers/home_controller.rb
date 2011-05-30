@@ -373,8 +373,8 @@ class HomeController < ApplicationController
     else
       
       # @userx = User.find_by_login(@callsign) 
-      @userx = User.find(:first, :conditions => ['login = UPPER(?)', @callsign.upcase])        
-      
+      @userx = User.find(:first, :conditions => ['login ILIKE ?)', @callsign])        
+      # LOCALHOST use LIKE for mysql
       
       @callelements = Array.new 
       if @userx
