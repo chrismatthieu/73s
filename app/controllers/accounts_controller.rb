@@ -192,9 +192,8 @@ class AccountsController < ApplicationController
       if u.save
         self.user = u
         
-        #@tweet = u.login + " just signed up for 73s.org - " + "http://73s.org/profiles/" + u.id.to_s 
-        @tweet = u.login + " just signed up for 73s.org - " + "http://73s.org/" + u.login
-        twitter(@tweet)
+        # @tweet = u.login + " just signed up for 73s.org - " + "http://73s.org/" + u.login
+        # twitter(@tweet)
         
 
         remember_me if params[:remember_me] == "1"
