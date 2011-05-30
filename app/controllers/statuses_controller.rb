@@ -207,7 +207,7 @@ class StatusesController < ApplicationController
   
     #@user = User.find_by_login(@callsign) 
     # @userx = User.find(:first, :conditions => ['login = ?', @callsign])
-    @userx = User.find(:first, :conditions => ['login ILIKE ?)', @callsign])           
+    @userx = User.find(:first, :conditions => ['login ILIKE ?', @callsign])           
     
   
     if @userx
