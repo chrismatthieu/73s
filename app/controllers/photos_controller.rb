@@ -51,7 +51,8 @@ class PhotosController < ApplicationController
     @callsign = params[:callsign]
   
     #@user = User.find_by_login(@callsign) 
-    @userx = User.find(:first, :conditions => ['login = ?', @callsign])
+    # @userx = User.find(:first, :conditions => ['login = ?', @callsign])
+    @userx = User.find(:first, :conditions => ['login = UPPER(?)', @callsign.upcase])        
     
   
     if @userx

@@ -372,7 +372,9 @@ class HomeController < ApplicationController
       redirect_back_or_default(:controller => 'home', :action => 'index')
     else
       
-      @userx = User.find_by_login(@callsign) 
+      # @userx = User.find_by_login(@callsign) 
+      @userx ||= User.find(:first, :conditions => ['login = UPPER(?)', @callsign.upcase])        
+      
       
       @callelements = Array.new 
       if @userx

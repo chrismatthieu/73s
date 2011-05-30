@@ -16,7 +16,9 @@ class AccountsController < ApplicationController
       wants.html {
 
     if @u and @p.user.is_admin 
-      @u = User.find_by_login(params[:login])
+      # @u = User.find_by_login(params[:login])
+      @u = User.find(:first, :conditions => ['login = UPPER(?)', params[:login].upcase])        
+      
       flash[:notice] = "Hello #{@u.f rescue ''}"
       # cookies[:auth_token] = {:expires => Time.now-1.day, :value => "" }
       session[:user] = @u

@@ -5,7 +5,8 @@ class AprsController < ApplicationController
     @callsign = params[:callsign]
   
     #@user = User.find_by_login(@callsign) 
-    @user = User.find(:first, :conditions => ['login = ?', @callsign])
+    # @user = User.find(:first, :conditions => ['login = ?', @callsign])
+    @user = User.find(:first, :conditions => ['login = UPPER(?)', @callsign.upcase])        
     
   
     # if @user
