@@ -17,8 +17,11 @@ class AccountsController < ApplicationController
 
     if @u and @p.user.is_admin 
       # @u = User.find_by_login(params[:login])
-        # @u = User.find(:first, :conditions => ['login LIKE ?', params[:login]])        
-        @u = User.find(:first, :conditions => ['login ILIKE ?', params[:login]])        
+      if request.url.index('localhost')
+        @u = User.find(:first, :conditions => ['login LIKE ?', params[:login]])        
+       else
+         @u = User.find(:first, :conditions => ['login ILIKE ?', params[:login]])        
+      end
 
       
       flash[:notice] = "Hello #{@u.f rescue ''}"
@@ -31,7 +34,7 @@ class AccountsController < ApplicationController
       # self.user = User.authenticate(params[:login], params[:password])
       redirect_back_or_default(home_path) and return if @u
       @user = User.new
-      #return unless request.post?
+      return unless request.post?
     
     
       #plays double duty login/forgot (due to the ajax nature of the login/forgot form)
@@ -119,7 +122,7 @@ class AccountsController < ApplicationController
     
     redirect_back_or_default(home_path) and return if @u
     @user = User.new
-    #return unless request.post?
+    return unless request.post?
     
 #COMMENTED OUT TO DEAL WITH QRZ.COM BLOCKING OUR REQUESTS
     @callelements = Array.new 
