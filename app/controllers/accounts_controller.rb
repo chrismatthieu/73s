@@ -31,7 +31,7 @@ class AccountsController < ApplicationController
       # self.user = User.authenticate(params[:login], params[:password])
       redirect_back_or_default(home_path) and return if @u
       @user = User.new
-      return #unless request.post?
+      #return unless request.post?
     
     
       #plays double duty login/forgot (due to the ajax nature of the login/forgot form)
@@ -119,7 +119,7 @@ class AccountsController < ApplicationController
     
     redirect_back_or_default(home_path) and return if @u
     @user = User.new
-    return unless request.post?
+    #return unless request.post?
     
 #COMMENTED OUT TO DEAL WITH QRZ.COM BLOCKING OUR REQUESTS
     @callelements = Array.new 
