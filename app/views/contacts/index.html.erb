@@ -26,9 +26,9 @@
 <p>
 <% for contact in @contacts %>
   <% if contact.confirmed %>
-    <img src="/images/icon_star.gif" width="16" height="16" border="0" alt="" />
+    <img src="/images/icon_star.gif" width="16" height="16" alt="" />
   <% else %>
-    <img src="/images/cleardot.gif" width="16" height="16" border="0" alt="" />
+    <img src="/images/cleardot.gif" width="16" height="16" alt="" />
   <% end %>
 
     <%=h contact.name %> (<b><a href="/<%= contact.callsign %>"><%=h contact.callsign %></a></b>) from <%=h contact.country %> <%=h time_ago_in_words(contact.contacttime) %> ago 
