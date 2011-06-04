@@ -348,12 +348,10 @@ class StatusesController < ApplicationController
 
                  if @callsign
                     @status.profile_id = @callsign.profile.id
-                 else
-                   @status.profile_id = 1
+                    @status.message = @message
+                    @status.save
                  end 
 
-                 @status.message = @message
-                 @status.save
 
                  #retweeting 
                  if @callsign and @callsign.access_token
