@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
     @totalcontacts = Contact.count(:conditions => ['profile_id = ?', @u.id])
 
 #    @totalconfirmed = current_user.contacts.count("confirmed")
-    @totalconfirmed = Contact.count(:conditions => ['confirmed AND (profile_id = ? OR callsign ILIKE ?)', @u.id, @u.login])
+    @totalconfirmed = Contact.count(:conditions => ['confirmed IS NOT NULL AND (profile_id = ? OR callsign ILIKE ?)', @u.id, @u.login])
     
 #    @contacts = current_user.contacts.paginate(:order => 'contacttime DESC', 
 #    :per_page => 10,
