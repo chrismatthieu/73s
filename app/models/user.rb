@@ -85,11 +85,11 @@ class User < ActiveRecord::Base
   # Returns the user or nil.
   def self.authenticate(login, password)
     # u = find_by_login(login) # need to get the salt
-    if request.url.index('localhost')
-      u = User.find(:first, :conditions => ['login LIKE ?', login])           
-    else
+    # if request.url.index('localhost')
+      # u = User.find(:first, :conditions => ['login LIKE ?', login])           
+    # else
       u = User.find(:first, :conditions => ['login ILIKE ?', login])           
-    end
+    # end
     
     u && u.authenticated?(password) ? u : nil
   end
