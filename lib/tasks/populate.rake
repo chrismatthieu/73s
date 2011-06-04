@@ -13,6 +13,12 @@ namespace :utils do
     @feed = `#{@url}`
   end
 
+
+# APRS.FI APIKEY = 27286.QJTmrxJGMvlNh
+# http://api.aprs.fi/api/get?what=msg&dst=N7ICE&apikey=27286.QJTmrxJGMvlNh&format=json
+# {"command":"get","result":"ok","found":1,"what":"msg","entries":[{"messageid":"19963994","time":"1307195053","srccall":"73S","dst":"N7ICE","message":"N7ICE-test from 73s via 73s.org"}]} 
+
+
   # rake utils:aprs_feeds  
   task(:aprs_feeds => :environment) do
     @aprsupdate = Aprsupdate.find(:first)

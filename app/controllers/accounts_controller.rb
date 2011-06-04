@@ -17,7 +17,12 @@ class AccountsController < ApplicationController
 
     if @u and @p.user.is_admin 
       # @u = User.find_by_login(params[:login])
-      @u = User.find(:first, :conditions => ['login ILIKE ?', params[:login]])        
+      if request.url.index('localhost')
+        @u = User.find(:first, :conditions => ['login LIKE ?', params[:login]])        
+       else
+         @u = User.find(:first, :conditions => ['login ILIKE ?', params[:login]])        
+      end
+
       
       flash[:notice] = "Hello #{@u.f rescue ''}"
       # cookies[:auth_token] = {:expires => Time.now-1.day, :value => "" }

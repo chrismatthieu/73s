@@ -4,11 +4,13 @@ profile ||= @profile
 type ||= 'friends'
 size ||= 18
 
-# LOCALHOST
-# list = profile.send(type).find(:all, :limit => size, :order => 'RAND()') rescue []
 
-# Hereko
-list = profile.send(type).find(:all, :limit => size, :order => 'RANDOM()') rescue []
+if request.url.index('localhost')
+	list = profile.send(type).find(:all, :limit => size, :order => 'RAND()') rescue []
+else
+	list = profile.send(type).find(:all, :limit => size, :order => 'RANDOM()') rescue []
+end
+
 total = profile.send(type).count
 with_friending ||= false
 

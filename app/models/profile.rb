@@ -132,19 +132,20 @@ class Profile < ActiveRecord::Base
   
   
   def self.featured
-    # LOCALHOST
-      # find_options = {
-      #   :include => :user,
-      #   :conditions => ["is_active = ? and about_me IS NOT NULL and user_id is not null", true],
-      #   :order => "RAND()",
-      # }
+    
+      # LOCALHOST
+        # find_options = {
+        #   :include => :user,
+        #   :conditions => ["is_active = ? and about_me IS NOT NULL and user_id is not null", true],
+        #   :order => "RAND()",
+        # }
 
-    # HEROKU
-    find_options = {
-      :include => :user,
-      :conditions => ["is_active = ? and about_me IS NOT NULL and user_id is not null", true],
-      :order => "RANDOM()",
-    }
+      # HEROKU
+      find_options = {
+        :include => :user,
+        :conditions => ["is_active = ? and about_me IS NOT NULL and user_id is not null", true],
+        :order => "RANDOM()",
+      }
 
     #find(:first, find_options.merge(:offset => rand( count(find_options) - 1)))
     find(:first, find_options.merge(:offset => rand(count(find_options)).floor))

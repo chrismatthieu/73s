@@ -32,7 +32,12 @@ class TimelineController < ApplicationController
   
     #@user = User.find_by_login(@callsign) 
     # @user = User.find(:first, :conditions => ['login = ?', @callsign])
-    @user = User.find(:first, :conditions => ['login ILIKE ?', @callsign])            
+    # @user = User.find(:first, :conditions => ['login ILIKE ?', @callsign])            
+    if request.url.index('localhost')
+      @user = User.find(:first, :conditions => ['login LIKE ?', @callsign])         
+    else
+      @user = User.find(:first, :conditions => ['login ILIKE ?', @callsign])         
+    end
     
   
     if @user

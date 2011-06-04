@@ -137,7 +137,12 @@ class ListsController < ApplicationController
   
     # @user = User.find_by_login(@callsign) 
     # @userx = User.find(:first, :conditions => ['login = ?', @callsign])
-    @userx = User.find(:first, :conditions => ['login ILIKE ?', @callsign])           
+    # @userx = User.find(:first, :conditions => ['login ILIKE ?', @callsign])           
+    if request.url.index('localhost')
+      @userx = User.find(:first, :conditions => ['login LIKE ?', @callsign])         
+    else
+      @userx = User.find(:first, :conditions => ['login ILIKE ?', @callsign])         
+    end
     
   
     if @userx

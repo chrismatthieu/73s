@@ -2,12 +2,13 @@
 require 'rubygems'
 require 'open-uri'
 require 'cgi'
+require 'json'
 
 
 class StatusesController < ApplicationController
 
-  skip_filter :login_required, :only => [:callsign, :index, :hamfeed]
-  before_filter :setup, :except => [:callsign, :hamfeed]
+  skip_filter :login_required, :only => [:callsign, :index, :hamfeed, :poll]
+  before_filter :setup, :except => [:callsign, :hamfeed, :poll]
   
   include Net
   
@@ -207,7 +208,12 @@ class StatusesController < ApplicationController
   
     #@user = User.find_by_login(@callsign) 
     # @userx = User.find(:first, :conditions => ['login = ?', @callsign])
-    @userx = User.find(:first, :conditions => ['login ILIKE ?', @callsign])           
+    # @userx = User.find(:first, :conditions => ['login ILIKE ?', @callsign])           
+    if request.url.index('localhost')
+      @userx = User.find(:first, :conditions => ['login LIKE ?', @callsign])         
+    else
+      @userx = User.find(:first, :conditions => ['login ILIKE ?', @callsign])         
+    end
     
   
     if @userx
@@ -278,6 +284,109 @@ class StatusesController < ApplicationController
       format.xml  { render :xml => @statuses }
       format.iphone { render :action => 'index' }
     end
+  end
+
+  def poll
+    
+    # APRS.FI APIKEY = 27286.QJTmrxJGMvlNh
+    # http://api.aprs.fi/api/get?what=msg&dst=N7ICE&apikey=27286.QJTmrxJGMvlNh&format=json
+    # {"command":"get","result":"ok","found":1,"what":"msg","entries":[{"messageid":"19963994","time":"1307195053","srccall":"73S","dst":"N7ICE","message":"N7ICE-test from 73s via 73s.org"}]}
+    
+        @aprsupdate = Aprsupdate.find(:first)
+        #OPENAPRS - DEFAULT TIMEZONE: America/Los_Angeles
+        #TimeStamp is in Unix timestamp epoch format Time.now.to_i
+
+
+        #@published = (@aprsupdate.published + 7.hours).to_i  #UTC = -5 hours at server location 
+        #@published = @aprsupdate.published.to_i  #UTC  
+        @published = (@aprsupdate.published - 6.minutes).to_i #do get around a slow clock on open aprs
+
+        @aprs = open("http://api.aprs.fi/api/get?what=msg&dst=73S&apikey=27286.QJTmrxJGMvlNh&format=json") {|f| f.read }
+        result = JSON.parse(@aprs)
+        
+        result["entries"].each do |msg| 
+          if msg["time"].to_i > @published
+
+            @source = msg['srccall']
+            @rawmsg = msg['message'] 
+            @message = @rawmsg + ' via APRS'
+          
+            if !@rawmsg.blank? 
+
+              @txtarray = @rawmsg.split(" ")
+
+              if @txtarray[0].downcase == "time"
+
+                 @time = Time.now.gmtime
+
+                 aprsmsg = 'Current Time is ' + @time.to_s + ' UTC via 73s.org'
+                 @url = 'http://www.findu.com/cgi-bin/sendmsg.cgi?fromcall=73S&tocall=' + @source.upcase + '&msg=' + CGI.escape(aprsmsg)
+                 @results = open(@url).read
+
+
+              elsif @txtarray[0].downcase == "echo"
+
+                   @data = @rawmsg.split('echo')
+                   aprsmsg = @data[1].strip() + ' via 73s.org'
+                   @url = 'http://www.findu.com/cgi-bin/sendmsg.cgi?fromcall=73S&tocall=' + @source.upcase + '&msg=' + CGI.escape(aprsmsg)
+                   @results = open(@url).read
+
+               else 
+
+                 #update 73s status
+                 #NEED TO ACCOUNT FOR SUFFIX HANDLING
+                 @rootsource = @source.split("-")
+                 @source = @rootsource[0]
+
+                 if request.url.index('localhost')
+                   @callsign = User.find(:first, :conditions => ['login LIKE ?', @source])
+                  else
+                   @callsign = User.find(:first, :conditions => ['login ILIKE ?', @source])
+                 end
+                 
+                 @status = Status.new
+
+                 if @callsign
+                    @status.profile_id = @callsign.profile.id
+                 else
+                   @status.profile_id = 1
+                 end 
+
+                 @status.message = @message
+                 @status.save
+
+                 #retweeting 
+                 if @callsign and @callsign.access_token
+                   @tweet = @message + " - http://73s.org/" + @callsign.login 
+
+                   if @tweet.length > 133
+                     @tweet = @tweet[0..130] + "..."
+                   end
+
+                  @client = TwitterOAuth::Client.new(
+                       :consumer_key => '5Yr0l7nhb8JbwCpnsxyCA',
+                       :consumer_secret => 'sxHqc42O0eNU8C2KlVmDB67jsXRftOwLMYrgh6PGM4',
+                       :token => @callsign.access_token,
+                       :secret => @callsign.access_secret
+                   )
+                   @client.update(@tweet)    
+
+
+                 end
+                 
+              end
+
+            end
+
+           end
+         end
+
+
+        @aprsupdate.published = Time.now()
+        @aprsupdate.save
+        
+        render :layout=>false
+    
   end
 
   

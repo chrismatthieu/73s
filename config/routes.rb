@@ -167,6 +167,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/companies/:id/edit', :controller => 'companies', :action => 'update'
   map.connect '/twitter/deauthorize/:id', :controller => 'profiles', :action => 'deauth'
 
+  map.connect '/aprs/poll', :controller => 'statuses', :action => 'poll'
 
 
   # Install the default routes as the lowest priority.
