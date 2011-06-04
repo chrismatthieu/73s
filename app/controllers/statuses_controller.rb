@@ -299,7 +299,7 @@ class StatusesController < ApplicationController
 
         #@published = (@aprsupdate.published + 7.hours).to_i  #UTC = -5 hours at server location 
         #@published = @aprsupdate.published.to_i  #UTC  
-        @published = (@aprsupdate.published - 6.minutes).to_i #do get around a slow clock on open aprs
+        @published = (@aprsupdate.published - 5.minutes).to_i #do get around a slow clock on open aprs
 
         @aprs = open("http://api.aprs.fi/api/get?what=msg&dst=73S&apikey=27286.QJTmrxJGMvlNh&format=json") {|f| f.read }
         result = JSON.parse(@aprs)
