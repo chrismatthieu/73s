@@ -20,7 +20,7 @@
 	<%# img_opts = {:title => @profile.user.login, :alt => @profile.user.login, :class => "50"} %>
 	<%# link_to avatar_tag(@profile, {:size => "50", :file_column_version => "50" }, img_opts) + ' ' + @profile.user.login, '/' + @profile.user.login %>
 	
-	<%= image_tag @profile.gravatar_url, :width => "50"%>
+	<%= image_tag @profile.gravatar_url, :width => "50" rescue ""%>
 	
 <br />
   Posted by <%= link_to h(@profile.user.login), "/#{@profile.user.login}" %><br/>
